@@ -8,11 +8,14 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed-database": "node"
+    "seed-database": "node seed.js"
   },
   "dependencies": {
+    "mysql": "^2.18.1",
+    "sequelize": "^6.3.5"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "mysql2": "^2.2.5"
   }
 }
