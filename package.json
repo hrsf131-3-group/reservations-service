@@ -8,7 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed-database": "node seed.js"
+    "seed-database": "node seed.js",
+    "clean-database": "node ./db/index.js"
   },
   "dependencies": {
     "mysql": "^2.18.1",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "faker": "^5.1.0",
     "mysql2": "^2.2.5"
   }
 }
