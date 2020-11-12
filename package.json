@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "rest-n-react-reservation-service",
   "version": "",
   "description": "",
   "author": "",
@@ -8,6 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "seed-database": "node"
   },
   "dependencies": {
   },
