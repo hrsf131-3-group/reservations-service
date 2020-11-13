@@ -129,7 +129,7 @@ const listingSeedData = (numOfListings) => {
   }
 }
 
-listingSeedData(1)
+listingSeedData(100)
 
 
 // stock inserts for testing
