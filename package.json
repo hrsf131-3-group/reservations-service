@@ -11,7 +11,8 @@
     "seed-database": "node seed.js",
     "clean-database": "node ./db/index.js",
     "start": "nodemon ./server/index.js",
-    "dev-react": "webpack --watch"
+    "dev-react": "webpack --watch",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -31,6 +32,7 @@
     "faker": "^5.1.0",
     "jest": "^26.6.3",
     "mysql2": "^2.2.5",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "webpack-cli": "^4.2.0"
   }
 }

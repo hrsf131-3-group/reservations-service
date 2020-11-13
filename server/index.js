@@ -57,31 +57,45 @@ sequelize.sync()
 app.use(bodyParser.json())
 
 // get requests
-app.get('/api/homes/calendar', (req, res) => {
+app.get('/api/homes/:id/calendar', (req, res) => {
   Dates.findAll({
-    where: {listingId: req.body.id},
+    where: {listingId: req.params.id},
     attributes: ['date', 'available']
   })
-  .then((data) => res.send(data))
-  .catch((err) => res.sendStatus(404))
+    .then((data) => res.send(data))
+    .catch((err) => res.sendStatus(404))
 })
 
+// find all
+app.get('/api/homes/:id/reservations', (req, res) => {
+  Dates.findAll({
+    where: {
+      listingId: req.params.id,
+      date: {[Op.between]: [req.body.checkIn, req.body.checkOut]}
+    },
+    attributes: ['listing_id', 'base_price_per_night', 'cleaning_fee', 'service_fee', 'occupancy_taxes_and_fees', 'total_price', 'weekly_discount', 'monthly_discount']
+  })
+    .then((data) => res.send(data))
+    .catch((err) => res.send(404))
+})
+
+
 // post request
-app.post('/api/homes/reservations', (req, res) => {
+app.post('/api/homes/:id/reservations', (req, res) => {
   Reservations.create({
     check_in: req.body.checkIn,
     check_out: req.body.checkOut,
     adults: req.body.adults,
     children: req.body.children,
     infants: req.body.infants,
-    listingId: req.body.id
+    listingId: req.params.id
   })
     .then(
       Dates.update({
       available: false
     }, {
       where: {
-        listingId: req.body.id,
+        listingId: req.params.id,
         date: {[Op.between]: [req.body.checkIn, req.body.checkOut]}
       }
     }))
