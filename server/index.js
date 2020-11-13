@@ -68,7 +68,6 @@ app.get('/api/homes/calendar', (req, res) => {
 
 // post request
 app.post('/api/homes/reservations', (req, res) => {
-  console.log(req.body)
   Reservations.create({
     check_in: req.body.checkIn,
     check_out: req.body.checkOut,
