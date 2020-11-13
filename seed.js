@@ -64,13 +64,13 @@ const listingSeedData = (numOfListings) => {
 // create listing helper function
 const createListing = (listing) => {
 
-  const maxGuest = `${(Math.floor(Math.random() * 15)) + 2}`;
-  const minStay = `${Math.ceil(Math.random() * 2)}`;
+  const maxGuest = (Math.floor(Math.random() * 15)) + 2;
+  const minStay = Math.ceil(Math.random() * 2);
   const days = 180;
   const numReservations = 5;
   Listings.create({
-    max_guest_count: `${maxGuest}`,
-    minimum_stay: `${minStay}`
+    max_guest_count: maxGuest,
+    minimum_stay: minStay
   })
     .then(createDates(days, listing))
     .then(createReservations(numReservations, listing))
@@ -93,14 +93,14 @@ const createDates = (numOfDays, listing) => {
     Dates.create({
       date: currentDay,
       available: true,
-      base_price_per_night: `${basePricePerNight[listing%3]}`,
-      cleaning_fee: `${cleaningFees[listing%3]}`,
-      service_fee: `${serviceFees[listing%3]}`,
-      occupancy_taxes_and_fees: `${occupancyTaxesAndFees[listing%3]}`,
-      weekly_discount: `${weeklyDiscount[listing%2]}`,
-      monthly_discount: `${monthlyDiscount[listing%2]}`,
-      total_price: `${cleaningFees[listing%3] + serviceFees[listing%3] + occupancyTaxesAndFees[listing%3]}`,
-      listingId: `${listing}`
+      base_price_per_night: basePricePerNight[listing%3],
+      cleaning_fee: cleaningFees[listing%3],
+      service_fee: serviceFees[listing%3],
+      occupancy_taxes_and_fees: occupancyTaxesAndFees[listing%3],
+      weekly_discount: weeklyDiscount[listing%2],
+      monthly_discount: monthlyDiscount[listing%2],
+      total_price: cleaningFees[listing%3] + serviceFees[listing%3] + occupancyTaxesAndFees[listing%3],
+      listingId: listing
     })
     currentDay.setDate(currentDay.getDate() + 1);
     day++;
