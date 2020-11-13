@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const Faker = require('faker')
 const fs = require('fs')
+const {Op} = require('sequelize')
 
 // ------------connection to database -----------
 const sequelize = new Sequelize('reservations', 'root', '', {
@@ -54,16 +55,18 @@ const createListing = (listing) => {
 
   const maxGuest = `${(Math.floor(Math.random() * 15)) + 2}`;
   const minStay = `${Math.ceil(Math.random() * 2)}`;
-  const days = 7;
+  const days = 180;
+  const numReservations = 5;
   Listings.create({
     max_guest_count: `${maxGuest}`,
     minimum_stay: `${minStay}`
   })
     .then(createDates(days, listing))
-    .then(createReservations(listing))
+    .then(createReservations(numReservations, listing))
 }
 
 const createDates = (numOfDays, listing) => {
+  const basePricePerNight = [150, 300, 450];
   const cleaningFees = [50, 100, 150];
   const serviceFees = [25, 50, 75];
   const occupancyTaxesAndFees = [25, 50, 75];
@@ -76,13 +79,13 @@ const createDates = (numOfDays, listing) => {
     Dates.create({
       date: currentDay,
       available: true,
-      base_price_per_night: Math.floor(Math.random() * 200 + 100),
-      cleaning_fee: `${cleaningFees[day%3]}`,
-      service_fee: `${serviceFees[day%3]}`,
-      occupancy_taxes_and_fees: `${occupancyTaxesAndFees[day%3]}`,
-      weekly_discount: `${weeklyDiscount[day%2]}`,
-      monthly_discount: `${monthlyDiscount[day%2]}`,
-      total_price: `${cleaningFees[day%3] + serviceFees[day%3] + occupancyTaxesAndFees[day%3]}`,
+      base_price_per_night: `${basePricePerNight[listing%3]}`,
+      cleaning_fee: `${cleaningFees[listing%3]}`,
+      service_fee: `${serviceFees[listing%3]}`,
+      occupancy_taxes_and_fees: `${occupancyTaxesAndFees[listing%3]}`,
+      weekly_discount: `${weeklyDiscount[listing%2]}`,
+      monthly_discount: `${monthlyDiscount[listing%2]}`,
+      total_price: `${cleaningFees[listing%3] + serviceFees[listing%3] + occupancyTaxesAndFees[listing%3]}`,
       listingId: `${listing}`
     })
     currentDay.setDate(currentDay.getDate() + 1);
@@ -91,17 +94,31 @@ const createDates = (numOfDays, listing) => {
   return listing
 };
 
-const createReservations = (listing) => {
-  let randomDate = Faker.date.between('2020/12/01', '2020/12/31');
-  let checkInDate = `${randomDate.getFullYear()}-${randomDate.getMonth() + 1}-${randomDate.getDate()}`;
-  randomDate.setDate(randomDate.getDate() + Math.floor((Math.random() * 14) + 1))
-  let checkOutDate = `${randomDate.getFullYear()}-${randomDate.getMonth() + 1}-${randomDate.getDate()}`;
-  Reservations.create({
-    check_in: checkInDate,
-    check_out: checkOutDate,
-    adults: Math.floor((Math.random() * 10) + 1),
-    listingId: listing
-  })
+const createReservations = (numReservations, listing) => {
+  let reservation = 1;
+  while(reservation <= numReservations) {
+    let randomDate = Faker.date.between('2020/12/01', '2021/05/01');
+    let checkInDate = `${randomDate.getFullYear()}-${randomDate.getMonth() + 1}-${randomDate.getDate()}`;
+    randomDate.setDate(randomDate.getDate() + Math.floor((Math.random() * 10) + 1))
+    let checkOutDate = `${randomDate.getFullYear()}-${randomDate.getMonth() + 1}-${randomDate.getDate()}`;
+    Reservations.create({
+      check_in: checkInDate,
+      check_out: checkOutDate,
+      adults: Math.floor((Math.random() * 10) + 1),
+      children: Math.floor((Math.random() * 6)),
+      infants: Math.floor((Math.random() * 6)),
+      listingId: listing
+    })
+      .then(Dates.update({
+        available: false
+      }, {
+        where: {
+          listing_id: listing,
+          date: {[Op.between]: [checkInDate, checkOutDate]}
+        }
+      }))
+    reservation++;
+  }
 };
 
 const listingSeedData = (numOfListings) => {
@@ -112,7 +129,7 @@ const listingSeedData = (numOfListings) => {
   }
 }
 
-listingSeedData(2)
+listingSeedData(1)
 
 
 // stock inserts for testing
