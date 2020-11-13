@@ -3,13 +3,13 @@ const Faker = require('faker')
 const fs = require('fs')
 const {Op} = require('sequelize')
 
-// ------------connection to database -----------
+// -------------- connection to database -----------------
 const sequelize = new Sequelize('reservations', 'root', '', {
   dialect: 'mysql',
   define: { timestamps: false }
 });
 
-// ------------------ tables --------------------
+// ------------------ tables / models --------------------
 const Listings = sequelize.define('listing', {
   max_guest_count: Sequelize.INTEGER,
   minimum_stay: Sequelize.INTEGER
@@ -42,15 +42,26 @@ const Dates = sequelize.define('date', {
   underscored: true
 })
 
-// ------------ set foreign keys ----------------
+// ----------------- set foreign keys -------------------
 Listings.hasMany(Reservations);
 Reservations.belongsTo(Listings);
 Listings.hasMany(Dates);
 Dates.belongsTo(Listings);
 
+// --------------- sync sequelize to database -----------
 sequelize.sync()
 
-// -------------- randomize seed data --------------
+// -------------------  seed data ------------------------
+// create listings
+const listingSeedData = (numOfListings) => {
+  let listingId = 1;
+  while (listingId <= numOfListings) {
+    createListing(listingId);
+    listingId++;
+  }
+}
+
+// create listing helper function
 const createListing = (listing) => {
 
   const maxGuest = `${(Math.floor(Math.random() * 15)) + 2}`;
@@ -65,6 +76,7 @@ const createListing = (listing) => {
     .then(createReservations(numReservations, listing))
 }
 
+// create dates
 const createDates = (numOfDays, listing) => {
   const basePricePerNight = [150, 300, 450];
   const cleaningFees = [50, 100, 150];
@@ -75,7 +87,9 @@ const createDates = (numOfDays, listing) => {
 
   let currentDay = new Date();
   let day = 1;
+
   while (day <= numOfDays) {
+
     Dates.create({
       date: currentDay,
       available: true,
@@ -94,13 +108,16 @@ const createDates = (numOfDays, listing) => {
   return listing
 };
 
+// create reservations
 const createReservations = (numReservations, listing) => {
   let reservation = 1;
+
   while(reservation <= numReservations) {
     let randomDate = Faker.date.between('2020/12/01', '2021/05/01');
     let checkInDate = `${randomDate.getFullYear()}-${randomDate.getMonth() + 1}-${randomDate.getDate()}`;
     randomDate.setDate(randomDate.getDate() + Math.floor((Math.random() * 10) + 1))
     let checkOutDate = `${randomDate.getFullYear()}-${randomDate.getMonth() + 1}-${randomDate.getDate()}`;
+
     Reservations.create({
       check_in: checkInDate,
       check_out: checkOutDate,
@@ -121,18 +138,5 @@ const createReservations = (numReservations, listing) => {
   }
 };
 
-const listingSeedData = (numOfListings) => {
-  let listingId = 1;
-  while (listingId <= numOfListings) {
-    createListing(listingId);
-    listingId++;
-  }
-}
-
+// --------------- invocation to populate seed data -----------------
 listingSeedData(100)
-
-
-// stock inserts for testing
-// INSERT INTO dates (date, available, base_price_per_night, listing_id) VALUES ('2020/11/15', true, 500, 1);
-// INSERT INTO listings (max_guest_count, minimum_stay) VALUES (6, 2);
-// INSERT INTO reservations (check_in, check_out, adults) VALUES ('2013-12-30', '2014-01-01', 6);
