@@ -9,15 +9,20 @@
   },
   "scripts": {
     "seed-database": "node seed.js",
-    "clean-database": "node ./db/index.js"
+    "clean-database": "node ./db/index.js",
+    "start": "nodemon ./server/index.js"
   },
   "dependencies": {
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "mysql": "^2.18.1",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "faker": "^5.1.0",
-    "mysql2": "^2.2.5"
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.6"
   }
 }
