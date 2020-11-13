@@ -2,6 +2,7 @@ const express = require('express')
 const axios = require('axios')
 const Sequelize = require('sequelize')
 const bodyParser = require('body-parser')
+const {Op} = require('sequelize')
 
 var app = express();
 const port = 3000;
@@ -66,6 +67,28 @@ app.get('/api/homes/calendar', (req, res) => {
 })
 
 // post request
+app.post('/api/homes/reservations', (req, res) => {
+  console.log(req.body)
+  Reservations.create({
+    check_in: req.body.checkIn,
+    check_out: req.body.checkOut,
+    adults: req.body.adults,
+    children: req.body.children,
+    infants: req.body.infants,
+    listingId: req.body.id
+  })
+    .then(
+      Dates.update({
+      available: false
+    }, {
+      where: {
+        listingId: req.body.id,
+        date: {[Op.between]: [req.body.checkIn, req.body.checkOut]}
+      }
+    }))
+    .then(() => res.sendStatus(201))
+    .catch(() => res.sendStatus(404))
+})
 
 // listen to port
 app.listen(port, () => {
