@@ -57,8 +57,10 @@ sequelize.sync()
 app.use(bodyParser.json())
 
 // get requests
+// get booking availabilities
 app.get('/api/homes/:id/calendar', (req, res) => {
   Dates.findAll({
+    include: {model: Listings, attributes: ['max_guest_count', 'minimum_stay']},
     where: {listingId: req.params.id},
     attributes: ['date', 'available']
   })
