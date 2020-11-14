@@ -1,5 +1,4 @@
 const express = require('express')
-const axios = require('axios')
 const Sequelize = require('sequelize')
 const bodyParser = require('body-parser')
 const {Op} = require('sequelize')
@@ -81,8 +80,8 @@ app.get('/api/homes/:id/reservations', (req, res) => {
     .catch((err) => res.send(404))
 })
 
-
 // post request
+// post new reservation and update dates available
 app.post('/api/homes/:id/reservations', (req, res) => {
   Reservations.create({
     check_in: req.body.checkIn,
