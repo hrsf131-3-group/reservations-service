@@ -2,10 +2,9 @@ const axios = require('axios')
 const mysql = require('mysql')
 const request = require('request')
 
-describe('tests for server side apis', () => {
+describe('Test functionality for server side apis', () => {
 
   beforeEach(() => {
-    // console.log('before each')
     dbConnection = mysql.createConnection({
       user: 'root',
       password: '',
@@ -17,10 +16,9 @@ describe('tests for server side apis', () => {
 
   afterEach(() => {
     dbConnection.end();
-    // console.log('after each')
   })
 
-  it('post request to reservation', (done) => {
+  it('POST request to reservations and then DELETE record from database', (done) => {
     request({
       method: 'POST',
       uri: 'http://localhost:3000/api/homes/1/reservations',
