@@ -30,14 +30,16 @@ describe('Test functionality for server side apis', () => {
         infants: 1
       }
     }, () => {
-      let queryString = 'SELECT * FROM reservations';
+      let queryString = 'SELECT * FROM reservations WHERE adults = 100';
       let queryArgs = [];
       dbConnection.query(queryString, queryArgs, (err, results) => {
         expect(results[0].adults).toBe(100)
+        expect(results.length).toEqual(1)
       })
       queryString = 'DELETE FROM reservations WHERE adults = 100';
       dbConnection.query(queryString, queryArgs, (err, results) => {
         console.log(results)
+        expect(results.length).toBe(undefined)
         done()
       })
     })
