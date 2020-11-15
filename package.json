@@ -9,7 +9,6 @@
   },
   "scripts": {
     "seed-database": "node seed.js",
-<<<<<<< HEAD
     "clean-database": "node ./db/index.js",
     "start": "nodemon ./server/index.js",
     "dev-react": "webpack --watch",
@@ -28,24 +27,13 @@
     "request": "^2.88.2",
     "sequelize": "^6.3.5",
     "webpack": "^5.4.0"
-=======
-    "clean-database": "node ./db/index.js"
-  },
-  "dependencies": {
-    "mysql": "^2.18.1",
-    "sequelize": "^6.3.5"
->>>>>>> c001f23eb4ee97a85639b414a7ae9bb62788c3c3
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "faker": "^5.1.0",
-<<<<<<< HEAD
     "jest": "^26.6.3",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.6",
     "webpack-cli": "^4.2.0"
-=======
-    "mysql2": "^2.2.5"
->>>>>>> c001f23eb4ee97a85639b414a7ae9bb62788c3c3
   }
 }
