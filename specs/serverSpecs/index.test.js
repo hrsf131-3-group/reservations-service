@@ -47,7 +47,7 @@ describe('Test functionality for server side apis', () => {
   })
 })
 
-describe('testing 1 + 1', () => {
+xdescribe('testing 1 + 1', () => {
   it('1 + 1 should equal 2', () => {
     expect(1 + 1).toEqual(2);
   })

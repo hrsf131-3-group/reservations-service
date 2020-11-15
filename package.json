@@ -1,8 +1,8 @@
 {
   "name": "rest-n-react-reservation-service",
-  "version": "",
-  "description": "",
-  "author": "",
+  "version": "1.0.0",
+  "description": "reservation service module for FEC",
+  "author": "ldang",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
@@ -37,6 +37,8 @@
     "faker": "^5.1.0",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.6",
     "webpack-cli": "^4.2.0"
