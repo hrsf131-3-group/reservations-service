@@ -1,3 +1,5 @@
+// this file is only used to wipe development seed data and repopulate
+
 const Sequelize = require('sequelize')
 const Faker = require('faker')
 const fs = require('fs')
