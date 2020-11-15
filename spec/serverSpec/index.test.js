@@ -33,6 +33,7 @@ describe('Test functionality for server side apis', () => {
       let queryString = 'SELECT * FROM reservations WHERE adults = 100';
       let queryArgs = [];
       dbConnection.query(queryString, queryArgs, (err, results) => {
+        console.log(results)
         expect(results[0].adults).toBe(100)
         expect(results.length).toEqual(1)
       })
@@ -43,5 +44,11 @@ describe('Test functionality for server side apis', () => {
         done()
       })
     })
+  })
+})
+
+describe('testing 1 + 1', () => {
+  it('1 + 1 should equal 2', () => {
+    expect(1 + 1).toEqual(2);
   })
 })
