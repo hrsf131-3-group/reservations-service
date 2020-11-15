@@ -9,6 +9,9 @@ const port = 3000;
 // json all incoming requests
 app.use(bodyParser.json())
 
+// server static files to client
+app.use(express.static(__dirname + '../public'))
+
 // route incoming request to router
 app.use('/api/homes', router)
 

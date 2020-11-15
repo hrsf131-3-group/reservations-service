@@ -99,11 +99,7 @@ const createDates = (numOfDays, listing) => {
       occupancy_taxes_and_fees: occupancyTaxesAndFees[listing%3],
       weekly_discount: weeklyDiscount[listing%2],
       monthly_discount: monthlyDiscount[listing%2],
-<<<<<<< HEAD
       total_price: basePricePerNight[listing%3] + cleaningFees[listing%3] + serviceFees[listing%3] + occupancyTaxesAndFees[listing%3],
-=======
-      total_price: cleaningFees[listing%3] + serviceFees[listing%3] + occupancyTaxesAndFees[listing%3],
->>>>>>> c001f23eb4ee97a85639b414a7ae9bb62788c3c3
       listingId: listing
     })
     currentDay.setDate(currentDay.getDate() + 1);
