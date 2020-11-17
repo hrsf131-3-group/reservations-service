@@ -19,6 +19,17 @@ class App extends React.Component {
       maxGuestCount: dummyDataDates[0].listing.max_guest_count,
       bookingInfoEntered: false
     }
+    this.handleCheckInChange = this.handleCheckInChange.bind(this)
+    this.handleCheckOutChange = this.handleCheckOutChange.bind(this)
+  }
+
+  handleCheckInChange(event) {
+    event.preventDefault();
+    this.setState({checkIn: event.target.value})
+  }
+  handleCheckOutChange(event) {
+    event.preventDefault();
+    this.setState({checkOut: event.target.value})
   }
 
   defaultPricePerNight() {
@@ -34,7 +45,12 @@ class App extends React.Component {
     return (
       <div>
         <Header pricePerNight={this.state.pricePerNight}/>
-        <BookingTable />
+        <BookingTable
+          checkInValue={this.state.checkIn}
+          checkInChange={this.handleCheckInChange}
+          checkOutvale={this.state.checkOut}
+          checkOutChange={this.handleCheckOutChange}
+        />
         <button>check availability / reserve</button>
       </div>
     )
