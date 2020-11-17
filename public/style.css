@@ -1,0 +1,21 @@
+/* #reservations {
+  width: 100px;
+  height: 100px;
+  position: relative;
+} */
+
+.bookingTable,
+  .showCalendar {
+    position: absolute;
+    top: 2.5%;
+    left: 0;
+  }
+
+.showCalendar {
+  z-index: 10;
+  background-color: white;
+}
+
+.hiddenCalendar {
+  display: none;
+}

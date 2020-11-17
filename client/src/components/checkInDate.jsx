@@ -9,6 +9,7 @@ function CheckInDate(props) {
         type="text"
         value={props.checkInValue}
         onChange={props.checkInChange}
+        onClick={props.displayCalendar}
       />
     </div>
   )

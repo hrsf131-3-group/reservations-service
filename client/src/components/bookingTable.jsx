@@ -8,10 +8,12 @@ function BookingTable(props) {
       <CheckInDate
         checkInValue={props.checkInValue}
         checkInChange={props.checkInChange}
+        displayCalendar={props.displayCalendar}
       />
       <CheckOutDate
         checkOutValue={props.checkOutValue}
         checkOutChange={props.checkOutChange}
+        displayCalendar={props.displayCalendar}
       />
       <div class="guestCount">
         <div>guests dropdown</div>

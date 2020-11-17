@@ -18,10 +18,12 @@ class App extends React.Component {
         infants: 0
       },
       maxGuestCount: dummyDataDates[0].listing.max_guest_count,
-      bookingInfoEntered: false
+      bookingInfoEntered: false,
+      showCalendar: false
     }
     this.handleCheckInChange = this.handleCheckInChange.bind(this)
     this.handleCheckOutChange = this.handleCheckOutChange.bind(this)
+    this.handleCalendarOnClick = this.handleCalendarOnClick.bind(this)
   }
 
   handleCheckInChange(event) {
@@ -32,31 +34,37 @@ class App extends React.Component {
     event.preventDefault();
     this.setState({checkOut: event.target.value})
   }
-
-  defaultPricePerNight() {
-    let min = Infinity;
-    for (let i = 0; i < dummyDataDates.length; i++) {
-      if (dummyDataDates[i].base_price_per_night < min) {
-        this.setState({minPricePerNight: dummyDataDates[i].base_price_per_night})
-      }
-    }
+  handleCalendarOnClick(event) {
+    console.log('click')
+    this.setState({showCalendar: true})
   }
+
+  // defaultPricePerNight() {
+  //   let min = Infinity;
+  //   for (let i = 0; i < dummyDataDates.length; i++) {
+  //     if (dummyDataDates[i].base_price_per_night < min) {
+  //       this.setState({minPricePerNight: dummyDataDates[i].base_price_per_night})
+  //     }
+  //   }
+  // }
 
   render() {
     return (
-      <div>
+      <div id="reservations">
         <Header pricePerNight={this.state.pricePerNight}/>
         <BookingTable
           checkInValue={this.state.checkIn}
           checkInChange={this.handleCheckInChange}
-          checkOutvale={this.state.checkOut}
+          checkOutValue={this.state.checkOut}
           checkOutChange={this.handleCheckOutChange}
+          displayCalendar={this.handleCalendarOnClick}
         />
         <Calendar
           checkInValue={this.state.checkIn}
           checkInChange={this.handleCheckInChange}
-          checkOutvale={this.state.checkOut}
+          checkOutValue={this.state.checkOut}
           checkOutChange={this.handleCheckOutChange}
+          isCalendarDisplay={this.state.showCalendar}
         />
         <button>check availability / reserve</button>
       </div>

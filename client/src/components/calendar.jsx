@@ -4,13 +4,15 @@ import CheckOutDate from './checkOutDate.jsx'
 
 function Calendar(props) {
   return (
-    <div>
+    <div
+      class={props.isCalendarDisplay ? "showCalendar" : 'hiddenCalendar'}
+    >
       <div>
         <div class="headerCalendar">
-          header
+          Header - Select dates / n-nights
         </div>
         <div class="dateRangeDisplayCalendar">
-          range of date
+          Add your travel dates for exact pricing / range of date
         </div>
       </div>
       <CheckInDate
@@ -21,6 +23,11 @@ function Calendar(props) {
         checkOutValue={props.checkOutValue}
         checkOutChange={props.checkOutChange}
       />
+      <div>Calendar Table 1</div>
+      <div>Calendar Table 2</div>
+      <div>Keyboard shortcuts</div>
+      <div>Clear dates button</div>
+      <div>Close button</div>
     </div>
   )
 }
