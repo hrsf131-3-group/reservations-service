@@ -2,9 +2,17 @@ import React from 'react'
 import CheckInDate from './checkInDate.jsx'
 import CheckOutDate from './checkOutDate.jsx'
 
-function BookingTable(props) {
+function Calendar(props) {
   return (
-    <div id="bookingTable">
+    <div>
+      <div>
+        <div class="headerCalendar">
+          header
+        </div>
+        <div class="dateRangeDisplayCalendar">
+          range of date
+        </div>
+      </div>
       <CheckInDate
         checkInValue={props.checkInValue}
         checkInChange={props.checkInChange}
@@ -13,12 +21,8 @@ function BookingTable(props) {
         checkOutValue={props.checkOutValue}
         checkOutChange={props.checkOutChange}
       />
-      <div class="guestCount">
-        <div>guests dropdown</div>
-        <div>should be hidden until dropdown is clicked</div>
-      </div>
     </div>
   )
 }
 
-export default BookingTable
+export default Calendar

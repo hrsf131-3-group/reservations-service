@@ -2,6 +2,7 @@ import React from 'react'
 import dummyDataDates from '../../dummyDataDates.js'
 import Header from './header.jsx'
 import BookingTable from './bookingTable.jsx'
+import Calendar from './calendar.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -46,6 +47,12 @@ class App extends React.Component {
       <div>
         <Header pricePerNight={this.state.pricePerNight}/>
         <BookingTable
+          checkInValue={this.state.checkIn}
+          checkInChange={this.handleCheckInChange}
+          checkOutvale={this.state.checkOut}
+          checkOutChange={this.handleCheckOutChange}
+        />
+        <Calendar
           checkInValue={this.state.checkIn}
           checkInChange={this.handleCheckInChange}
           checkOutvale={this.state.checkOut}
