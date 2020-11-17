@@ -23,7 +23,9 @@ class App extends React.Component {
     }
     this.handleCheckInChange = this.handleCheckInChange.bind(this)
     this.handleCheckOutChange = this.handleCheckOutChange.bind(this)
-    this.handleCalendarOnClick = this.handleCalendarOnClick.bind(this)
+    this.handleDisplayCalendarOnClick = this.handleDisplayCalendarOnClick.bind(this)
+    this.handleHideCalendarOnClick = this.handleHideCalendarOnClick.bind(this)
+    this.handleClearInputtedDates = this.handleClearInputtedDates.bind(this)
   }
 
   handleCheckInChange(event) {
@@ -34,9 +36,21 @@ class App extends React.Component {
     event.preventDefault();
     this.setState({checkOut: event.target.value})
   }
-  handleCalendarOnClick(event) {
-    console.log('click')
+  handleDisplayCalendarOnClick(event) {
     this.setState({showCalendar: true})
+  }
+  handleHideCalendarOnClick(event) {
+    event.preventDefault();
+    this.setState({showCalendar: false})
+  }
+  handleClearInputtedDates(event) {
+    Array.from(document.querySelectorAll('input')).forEach(
+      input => (input.value = '')
+    );
+    this.setState({
+      checkIn: undefined,
+      checkOut: undefined
+    })
   }
 
   // defaultPricePerNight() {
@@ -57,7 +71,7 @@ class App extends React.Component {
           checkInChange={this.handleCheckInChange}
           checkOutValue={this.state.checkOut}
           checkOutChange={this.handleCheckOutChange}
-          displayCalendar={this.handleCalendarOnClick}
+          displayCalendar={this.handleDisplayCalendarOnClick}
         />
         <Calendar
           checkInValue={this.state.checkIn}
@@ -65,6 +79,8 @@ class App extends React.Component {
           checkOutValue={this.state.checkOut}
           checkOutChange={this.handleCheckOutChange}
           isCalendarDisplay={this.state.showCalendar}
+          hideCalendar={this.handleHideCalendarOnClick}
+          clearDates={this.handleClearInputtedDates}
         />
         <button>check availability / reserve</button>
       </div>

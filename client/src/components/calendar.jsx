@@ -26,8 +26,8 @@ function Calendar(props) {
       <div>Calendar Table 1</div>
       <div>Calendar Table 2</div>
       <div>Keyboard shortcuts</div>
-      <div>Clear dates button</div>
-      <div>Close button</div>
+      <button onClick={props.clearDates}>Clear</button>
+      <button onClick={props.hideCalendar}>Close button</button>
     </div>
   )
 }
