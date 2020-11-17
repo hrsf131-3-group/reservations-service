@@ -11,7 +11,7 @@ router.route('/:id/calendar')
   Models.Dates.findAll({
     include: {model: Models.Listings, attributes: ['max_guest_count', 'minimum_stay']},
     where: {listingId: req.params.id},
-    attributes: ['date', 'available']
+    attributes: ['date', 'available', 'base_price_per_night']
   })
     .then((data) => res.send(data))
     .catch((err) => res.sendStatus(404))
@@ -25,7 +25,7 @@ router.route('/:id/reservations')
       listingId: req.params.id,
       date: {[Op.between]: [req.body.checkIn, req.body.checkOut]}
     },
-    attributes: ['listing_id', 'base_price_per_night', 'cleaning_fee', 'service_fee', 'occupancy_taxes_and_fees', 'total_price', 'weekly_discount', 'monthly_discount']
+    attributes: ['listing_id', 'cleaning_fee', 'service_fee', 'occupancy_taxes_and_fees', 'total_price', 'weekly_discount', 'monthly_discount']
   })
     .then((data) => res.send(data))
     .catch((err) => res.send(404))
