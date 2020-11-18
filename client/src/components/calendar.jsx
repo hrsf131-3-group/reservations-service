@@ -1,6 +1,7 @@
 import React from 'react'
 import CheckInDate from './checkInDate.jsx'
 import CheckOutDate from './checkOutDate.jsx'
+import CalendarTable from './calendarTable.jsx'
 
 function Calendar(props) {
   return (
@@ -23,7 +24,7 @@ function Calendar(props) {
         checkOutValue={props.checkOutValue}
         checkOutChange={props.checkOutChange}
       />
-      <div>Calendar Table 1</div>
+      <CalendarTable />
       <div>Calendar Table 2</div>
       <div>Keyboard shortcuts</div>
       <button onClick={props.clearDates}>Clear</button>
