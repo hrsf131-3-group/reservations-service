@@ -17,7 +17,7 @@ function GuestPicker(props) {
   return (
     <div class={props.isGuestDropdownDisplay ? "showGuestPicker" : "hiddenGuestPicker"}>
       <ul class="guestPickerList">
-        {chooseNumGuest(props.guestCount.adults)}
+        {chooseNumGuest(props.maxGuestCount)}
       </ul>
       <button>Close</button>
     </div>

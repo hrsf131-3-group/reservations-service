@@ -8,9 +8,9 @@ function GuestDropdown(props) {
       onClick={props.displayGuestPickerOnClick}
     >
       <div>GUESTS</div>
-      <div>{props.guestCount.adults} guests</div>
+      <div>{props.guestCount.adults} {props.guestCount.adults === 1 ? 'guest' : 'guests'}</div>
       <GuestPicker
-        guestCount={props.guestCount}
+        maxGuestCount={props.maxGuestCount}
         isGuestDropdownDisplay={props.isGuestDropdownDisplay}
       />
     </div>

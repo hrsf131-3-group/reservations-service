@@ -18,6 +18,7 @@ function BookingTable(props) {
       />
       <GuestDropdown
         guestCount={props.guestCount}
+        maxGuestCount={props.maxGuestCount}
         isGuestDropdownDisplay={props.isGuestDropdownDisplay}
         displayGuestPickerOnClick={props.displayGuestPickerOnClick}
       />

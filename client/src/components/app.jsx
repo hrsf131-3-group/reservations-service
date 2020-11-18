@@ -78,6 +78,7 @@ class App extends React.Component {
           checkOutChange={this.handleCheckOutChange}
           displayCalendar={this.handleDisplayCalendarOnClick}
           guestCount={this.state.guests}
+          maxGuestCount={this.state.maxGuestCount}
           isGuestDropdownDisplay={this.state.showGuestPicker}
           displayGuestPickerOnClick={this.handleDisplayGuestPickerOnClick}
         />
