@@ -6,9 +6,9 @@ function GuestPicker(props) {
     for (let i = 1; i <= num; i++) {
       let guestCount = `guestCount${i}`;
       if (i === 1) {
-        numGuest.push(<li class={guestCount}>{i} guest</li>);
+        numGuest.push(<button class="guestNumber" name={guestCount}>{i} guest</button>);
       } else {
-        numGuest.push(<li class={guestCount}>{i} guests</li>);
+        numGuest.push(<button class="guestNumber" name={guestCount}>{i} guests</button>);
       }
     }
     return numGuest;

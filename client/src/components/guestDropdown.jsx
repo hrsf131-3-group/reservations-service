@@ -4,6 +4,7 @@ import GuestPicker from './guestPicker.jsx'
 function GuestDropdown(props) {
   return (
     <div
+      name="guestDropdown"
       class="guestDropdown"
       onClick={props.displayGuestPickerOnClick}
     >

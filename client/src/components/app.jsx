@@ -42,7 +42,16 @@ class App extends React.Component {
     this.setState({showCalendar: true})
   }
   handleDisplayGuestPickerOnClick(event) {
-    this.setState({showGuestPicker: !this.state.showGuestPicker})
+    if (event.target.name !== undefined) {
+      let updateGuests = Object.assign({}, this.state.guests);
+      updateGuests.adults = Number(event.target.name[event.target.name.length - 1]);
+      this.setState({
+        showGuestPicker: !this.state.showGuestPicker,
+        guests: updateGuests
+      });
+    } else {
+      this.setState({showGuestPicker: !this.state.showGuestPicker})
+    }
   }
   handleHidePopUpsOnClick(event) {
     event.preventDefault();
