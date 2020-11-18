@@ -3,6 +3,7 @@ import dummyDataDates from '../../dummyDataDates.js'
 import Header from './header.jsx'
 import BookingTable from './bookingTable.jsx'
 import Calendar from './calendar.jsx'
+import moment from 'moment'
 
 class App extends React.Component {
   constructor(props) {
@@ -68,10 +69,9 @@ class App extends React.Component {
     })
   }
   handleUpdateBookingDates(event, date) {
-    console.log('date', date)
     if (this.state.checkIn === undefined) {
       this.setState({checkIn: date})
-    } else {
+    } else if (moment(date).isAfter(this.state.checkIn)){
       this.setState({checkOut: date})
     }
   }
