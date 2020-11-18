@@ -19,3 +19,7 @@
 .hiddenCalendar {
   display: none;
 }
+
+.hiddenGuestPicker {
+  display: none;
+}

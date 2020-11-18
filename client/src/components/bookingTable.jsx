@@ -1,6 +1,7 @@
 import React from 'react'
 import CheckInDate from './checkInDate.jsx'
 import CheckOutDate from './checkOutDate.jsx'
+import GuestDropdown from './guestDropdown.jsx'
 
 function BookingTable(props) {
   return (
@@ -15,10 +16,11 @@ function BookingTable(props) {
         checkOutChange={props.checkOutChange}
         displayCalendar={props.displayCalendar}
       />
-      <div class="guestCount">
-        <div>guests dropdown</div>
-        <div>should be hidden until dropdown is clicked</div>
-      </div>
+      <GuestDropdown
+        guestCount={props.guestCount}
+        isGuestDropdownDisplay={props.isGuestDropdownDisplay}
+        displayGuestPickerOnClick={props.displayGuestPickerOnClick}
+      />
     </div>
   )
 }

@@ -19,12 +19,14 @@ class App extends React.Component {
       },
       maxGuestCount: dummyDataDates[0].listing.max_guest_count,
       bookingInfoEntered: false,
-      showCalendar: false
+      showCalendar: false,
+      showGuestPicker: false
     }
     this.handleCheckInChange = this.handleCheckInChange.bind(this)
     this.handleCheckOutChange = this.handleCheckOutChange.bind(this)
     this.handleDisplayCalendarOnClick = this.handleDisplayCalendarOnClick.bind(this)
-    this.handleHideCalendarOnClick = this.handleHideCalendarOnClick.bind(this)
+    this.handleDisplayGuestPickerOnClick = this.handleDisplayGuestPickerOnClick.bind(this)
+    this.handleHidePopUpsOnClick = this.handleHidePopUpsOnClick.bind(this)
     this.handleClearInputtedDates = this.handleClearInputtedDates.bind(this)
   }
 
@@ -39,7 +41,10 @@ class App extends React.Component {
   handleDisplayCalendarOnClick(event) {
     this.setState({showCalendar: true})
   }
-  handleHideCalendarOnClick(event) {
+  handleDisplayGuestPickerOnClick(event) {
+    this.setState({showGuestPicker: !this.state.showGuestPicker})
+  }
+  handleHidePopUpsOnClick(event) {
     event.preventDefault();
     this.setState({showCalendar: false})
   }
@@ -72,6 +77,9 @@ class App extends React.Component {
           checkOutValue={this.state.checkOut}
           checkOutChange={this.handleCheckOutChange}
           displayCalendar={this.handleDisplayCalendarOnClick}
+          guestCount={this.state.guests}
+          isGuestDropdownDisplay={this.state.showGuestPicker}
+          displayGuestPickerOnClick={this.handleDisplayGuestPickerOnClick}
         />
         <Calendar
           checkInValue={this.state.checkIn}
@@ -79,7 +87,7 @@ class App extends React.Component {
           checkOutValue={this.state.checkOut}
           checkOutChange={this.handleCheckOutChange}
           isCalendarDisplay={this.state.showCalendar}
-          hideCalendar={this.handleHideCalendarOnClick}
+          hidePopUps={this.handleHidePopUpsOnClick}
           clearDates={this.handleClearInputtedDates}
         />
         <button>check availability / reserve</button>
