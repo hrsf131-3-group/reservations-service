@@ -24,8 +24,9 @@ function Calendar(props) {
         checkOutValue={props.checkOutValue}
         checkOutChange={props.checkOutChange}
       />
-      <CalendarTable />
-      <div>Calendar Table 2</div>
+      <CalendarTable
+        updateBookingDates={props.updateBookingDates}
+      />
       <div>Keyboard shortcuts</div>
       <button onClick={props.clearDates}>Clear</button>
       <button onClick={props.hidePopUps}>Close button</button>

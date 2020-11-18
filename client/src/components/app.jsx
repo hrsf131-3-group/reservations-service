@@ -28,6 +28,7 @@ class App extends React.Component {
     this.handleDisplayGuestPickerOnClick = this.handleDisplayGuestPickerOnClick.bind(this)
     this.handleHidePopUpsOnClick = this.handleHidePopUpsOnClick.bind(this)
     this.handleClearInputtedDates = this.handleClearInputtedDates.bind(this)
+    this.handleUpdateBookingDates = this.handleUpdateBookingDates.bind(this)
   }
 
   handleCheckInChange(event) {
@@ -66,6 +67,14 @@ class App extends React.Component {
       checkOut: undefined
     })
   }
+  handleUpdateBookingDates(event, date) {
+    console.log('date', date)
+    if (this.state.checkIn === undefined) {
+      this.setState({checkIn: date})
+    } else {
+      this.setState({checkOut: date})
+    }
+  }
 
   // defaultPricePerNight() {
   //   let min = Infinity;
@@ -82,8 +91,8 @@ class App extends React.Component {
         <Header pricePerNight={this.state.pricePerNight}/>
         <BookingTable
           checkInValue={this.state.checkIn}
-          checkInChange={this.handleCheckInChange}
           checkOutValue={this.state.checkOut}
+          checkInChange={this.handleCheckInChange}
           checkOutChange={this.handleCheckOutChange}
           displayCalendar={this.handleDisplayCalendarOnClick}
           guestCount={this.state.guests}
@@ -93,12 +102,13 @@ class App extends React.Component {
         />
         <Calendar
           checkInValue={this.state.checkIn}
-          checkInChange={this.handleCheckInChange}
           checkOutValue={this.state.checkOut}
+          checkInChange={this.handleCheckInChange}
           checkOutChange={this.handleCheckOutChange}
           isCalendarDisplay={this.state.showCalendar}
           hidePopUps={this.handleHidePopUpsOnClick}
           clearDates={this.handleClearInputtedDates}
+          updateBookingDates={this.handleUpdateBookingDates}
         />
         <button>check availability / reserve</button>
       </div>
