@@ -26,6 +26,9 @@ button,
   .calendar-day {
     cursor: pointer;
   }
+table {
+  border-spacing: 0px 0px;
+}
 #app {
   text-overflow: ellipsis;
   text-overflow: hidden;
@@ -127,6 +130,7 @@ button,
     width: 600px;
     margin-left: -85%;
     padding: 16px 0px 16px;
+    cursor: default;
 }
 .calendarHead {
   display: flex;
@@ -184,7 +188,6 @@ button,
   color: lightgrey;
   background: none;
   border: none;
-  cursor: text;
 }
 .calendar-table {
   table-layout: fixed;
@@ -196,14 +199,10 @@ button,
   height: 30px;
   padding-left: 8px;
   padding-right: 8px;
+  border: 1px solid white
 }
 .week-day {
   font-weight: 300;
-}
-.dateAvailable:hover {
-  background: lightgrey;
-  border-width: thin;
-  border-radius: 100%;
 }
 .selectedCheckInDate,
   .selectedCheckOutDate {
@@ -214,12 +213,24 @@ button,
 }
 .inDateRange {
   background: #f7f7f7;
+  border: 1px solid #f7f7f7
 }
+.dateAvailable:hover {
+  /* background: lightgrey; */
+  border: 1px solid black;
+  border-width: thin;
+  border-radius: 50%;
+}
+/* .minStay {
+  background: #f7f7f7;
+  border-radius: 50%;
+  cursor: not-allowed;
+} */
 .dateUnavailable {
   text-decoration: line-through;
   text-decoration-color: rgb(145, 143, 143);
   color: rgb(141, 139, 139);
-  cursor: text;
+  cursor: default;
   font-weight: 200;
   background: white;
 }
