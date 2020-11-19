@@ -6,7 +6,7 @@ import GuestDropdown from './guestDropdown.jsx'
 function BookingTable(props) {
   return (
     <div id="bookingTable">
-      <div class="bookingContainer">
+      <div className="bookingContainer">
           <CheckInDate
             checkInValue={props.checkInValue}
             checkInChange={props.checkInChange}

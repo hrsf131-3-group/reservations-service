@@ -27,7 +27,7 @@ button,
     cursor: pointer;
   }
 table {
-  border-spacing: 0px 0px;
+  border-spacing: 0px 1px;
 }
 #app {
   text-overflow: ellipsis;
@@ -265,5 +265,8 @@ table {
   border: none;
 }
 .hiddenGuestPicker {
+  display: none;
+}
+.hiddenPricingTable {
   display: none;
 }

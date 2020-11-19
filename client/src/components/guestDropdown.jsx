@@ -5,10 +5,10 @@ function GuestDropdown(props) {
   return (
     <div
       name="guestDropdown"
-      class="guestDropdown"
+      className="guestDropdown"
       onClick={props.displayGuestPickerOnClick}>
-      <section class="guestCountTitle">GUESTS</section>
-      <section class="guestCountDisplay">{props.guestCount.adults} {props.guestCount.adults === 1 ? 'guest' : 'guests'}</section>
+      <section className="guestCountTitle">GUESTS</section>
+      <section className="guestCountDisplay">{props.guestCount.adults} {props.guestCount.adults === 1 ? 'guest' : 'guests'}</section>
       <GuestPicker
         maxGuestCount={props.maxGuestCount}
         isGuestDropdownDisplay={props.isGuestDropdownDisplay}

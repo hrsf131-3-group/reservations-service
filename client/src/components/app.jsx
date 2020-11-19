@@ -4,6 +4,7 @@ import Header from './header.jsx'
 import BookingTable from './bookingTable.jsx'
 import Calendar from './calendar.jsx'
 import moment from 'moment'
+import PricingTable from './pricingTable.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +22,8 @@ class App extends React.Component {
       maxGuestCount: dummyDataDates[0].listing.max_guest_count,
       bookingInfoEntered: false,
       showCalendar: false,
-      showGuestPicker: false
+      showGuestPicker: false,
+      showPricing: false
     }
     this.handleCheckInChange = this.handleCheckInChange.bind(this)
     this.handleCheckOutChange = this.handleCheckOutChange.bind(this)
@@ -95,7 +97,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <div id="reservations">
           <Header pricePerNight={this.state.pricePerNight}/>
           <BookingTable
@@ -122,9 +124,15 @@ class App extends React.Component {
             currentCheckInInput={this.state.checkIn}
             currentCheckOutInput={this.state.checkOut}
           />
-          <div class="checkAvailability">
-            <button class="checkAvailabilityButton">check availability / reserve</button>
+          <div className="checkAvailability">
+            <button className="checkAvailabilityButton">Reserve</button>
           </div>
+          <PricingTable
+            checkInValue={this.state.checkIn}
+            checkOutValue={this.state.checkOut}
+            isPricingTableDisplay={this.state.showPricing}
+            data={this.state.availabilities}
+            />
         </div>
       </div>
     )

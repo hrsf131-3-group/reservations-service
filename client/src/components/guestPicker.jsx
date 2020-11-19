@@ -6,20 +6,20 @@ function GuestPicker(props) {
     for (let i = 1; i <= num; i++) {
       let guestCount = `guestCount${i}`;
       if (i === 1) {
-        numGuest.push(<button class="guestNumber" name={guestCount}>{i} guest</button>);
+        numGuest.push(<button className="guestNumber" name={guestCount}>{i} guest</button>);
       } else {
-        numGuest.push(<button class="guestNumber" name={guestCount}>{i} guests</button>);
+        numGuest.push(<button className="guestNumber" name={guestCount}>{i} guests</button>);
       }
     }
     return numGuest;
   }
 
   return (
-    <div class={props.isGuestDropdownDisplay ? "showGuestPicker" : "hiddenGuestPicker"}>
-      <ul class="guestPickerList">
+    <div className={props.isGuestDropdownDisplay ? "showGuestPicker" : "hiddenGuestPicker"}>
+      <ul className="guestPickerList">
         {chooseNumGuest(props.maxGuestCount)}
       </ul>
-      <button class="guestCloseButton">Close</button>
+      <button className="guestCloseButton">Close</button>
     </div>
   )
 }

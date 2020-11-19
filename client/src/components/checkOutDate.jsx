@@ -2,8 +2,8 @@ import React from 'react'
 
 function CheckOutDate(props) {
   return (
-    <section class='checkOutDate'>
-      <section class="checkOutTitle">CHECKOUT</section>
+    <section className='checkOutDate'>
+      <section className="checkOutTitle">CHECKOUT</section>
       <input
         placeholder="Add date"
         type="text"

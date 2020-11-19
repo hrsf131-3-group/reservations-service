@@ -5,15 +5,15 @@ import CalendarTable from './calendarTable.jsx'
 
 function Calendar(props) {
   return (
-    <div class={props.isCalendarDisplay ? "showCalendar" : 'hiddenCalendar'}>
-      <div class="calendarHead">
-        <div class="headerCalendar">
-          <span class="selectDates">Select dates</span>
-          <div class="dateRangeDisplayCalendar">
-            <span class="selectedDateRange">Minimum stay: 2 nights</span>
+    <div className={props.isCalendarDisplay ? "showCalendar" : 'hiddenCalendar'}>
+      <div className="calendarHead">
+        <div className="headerCalendar">
+          <span className="selectDates">Select dates</span>
+          <div className="dateRangeDisplayCalendar">
+            <span className="selectedDateRange">Minimum stay: 2 nights</span>
           </div>
         </div>
-        <div class="calendarBookingContainer">
+        <div className="calendarBookingContainer">
           <CheckInDate
             checkInValue={props.checkInValue}
             checkInChange={props.checkInChange}
@@ -30,9 +30,9 @@ function Calendar(props) {
         currentCheckInInput={props.currentCheckInInput}
         currentCheckOutInput={props.currentCheckOutInput}
       />
-      <div class="calendarButtons">
-        <button class="clearButton" onClick={props.clearDates}>Clear dates</button>
-        <button class="closeButton" onClick={props.hidePopUps}>Close</button>
+      <div className="calendarButtons">
+        <button className="clearButton" onClick={props.clearDates}>Clear dates</button>
+        <button className="closeButton" onClick={props.hidePopUps}>Close</button>
       </div>
     </div>
   )

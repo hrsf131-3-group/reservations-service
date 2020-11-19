@@ -48,7 +48,7 @@ class CalendarTable extends React.Component {
       //   return "calendar-day dateUnavailable"
       // }
       if (this.props.datesData[i].date === date) {
-        if (thisisMinimumStay.props.datesData[i].available === false) {
+        if (this.props.datesData[i].available === false) {
           // if (moment(date).isAfter(this.props.currentCheckInInput)) {
           //   console.log('this hit', date, this.state.isUnavailable)
           //   this.setState({isUnavailable: true})
@@ -127,9 +127,9 @@ class CalendarTable extends React.Component {
 
     return (
       <div className="calendars">
-        <div class="leftCalendar">
-          <div class="leftCalendarHeader">
-            <button class={this.state.dateObject.isBefore('2020-11-30') ? 'disableMonthButton' : "changeMonthButton"} onClick={this.state.dateObject.isBefore('2020-11-30') ? '' : event=>{this.onPrev()}}>{`<`}</button>
+        <div className="leftCalendar">
+          <div className="leftCalendarHeader">
+            <button className={this.state.dateObject.isBefore('2020-11-30') ? 'disableMonthButton' : "changeMonthButton"} onClick={()=>{this.state.dateObject.isBefore('2020-11-30') ? '' : event=>{this.onPrev()}}}>{`<`}</button>
             {this.month(this.state.dateObject)} {this.year(this.state.dateObject)}
           </div>
           <table className="calendar-table">
@@ -143,10 +143,10 @@ class CalendarTable extends React.Component {
             </tbody>
           </table>
         </div>
-        <div class="rightCalendar">
-          <div class="rightCalendarHeader">
+        <div className="rightCalendar">
+          <div className="rightCalendarHeader">
             {this.month(this.state.dateObjectNext)} {this.year(this.state.dateObjectNext)}
-            <button class="changeMonthButton" onClick={event=>{this.onNext()}}>{`>`}</button>
+            <button className="changeMonthButton" onClick={event=>{this.onNext()}}>{`>`}</button>
           </div>
           <table className="calendar-table">
             <thead>
