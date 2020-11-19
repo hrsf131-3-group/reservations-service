@@ -42,7 +42,6 @@ class CalendarTable extends React.Component {
     })
   }
   isDateAvailable(date) {
-    console.log(this.props.datesData, date)
     for (let i = 0; i < this.props.datesData.length; i++) {
       if (this.props.datesData[i].date === date) {
         if (this.props.datesData[i].available === false) {
@@ -59,7 +58,6 @@ class CalendarTable extends React.Component {
     for (let i = 0; i < this.firstDayOfMonth(month); i++) {
     blanks.push(<td className="calendar-day empty">{""}</td>);
     }
-
     // adds table columns with or without entries
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(month); d++) {
@@ -69,12 +67,14 @@ class CalendarTable extends React.Component {
         var dateDashFormat = month.format(`YYYY-MM-${d}`)
       }
       let date = month.format(`MM/${d}/YYYY`);
+      let isAvailable = moment().isBefore(date) ? this.isDateAvailable(dateDashFormat) : "calendar-day dateUnavailable";
+      let isCheckInDate = (moment(this.props.currentCheckInInput).isSame(date)) ? "selectedCheckInDate" : "";
+      let isCheckOutDate = (moment(this.props.currentCheckOutInput).isSame(date)) ? "selectedCheckOutDate" : "";
       daysInMonth.push(<td
           key={d}
-          className={moment().isBefore(date) ? this.isDateAvailable(dateDashFormat) : "calendar-day dateUnavailable"}
-        ><span onClick={(event)=>{this.onDateClick(event, date)}}>{d}</span></td>);
+          className={`${isAvailable} ${isCheckInDate} ${isCheckOutDate}`}
+        ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span></td>);
     }
-
     // play to populate each day
     var totalSlots = [...blanks, ...daysInMonth];
     let rows = [];
@@ -101,8 +101,8 @@ class CalendarTable extends React.Component {
     return daysOfMonth;
   }
   // get date
-  onDateClick(event, date) {
-    this.props.updateBookingDates(event, date);
+  onDateClick(event, date, isAvailable) {
+    this.props.updateBookingDates(event, date, isAvailable);
   }
 
   render() {
@@ -116,7 +116,7 @@ class CalendarTable extends React.Component {
       <div className="calendars">
         <div class="leftCalendar">
           <div class="leftCalendarHeader">
-            <button class="changeMonthButton" onClick={event=>{this.onPrev()}}>{`<`}</button>
+            <button class="changeMonthButton" onClick={event=>{this.onPrev()}}>{this.state.dateObject === moment() ? '' :`<`}</button>
             {this.month(this.state.dateObject)} {this.year(this.state.dateObject)}
           </div>
           <table className="calendar-table">

@@ -68,22 +68,15 @@ class App extends React.Component {
       checkOut: undefined
     })
   }
-  handleUpdateBookingDates(event, date) {
-    if (this.state.checkIn === undefined) {
-      this.setState({checkIn: date})
-    } else if (moment(date).isAfter(this.state.checkIn)){
-      this.setState({checkOut: date})
+  handleUpdateBookingDates(event, date, isAvailable) {
+    if (isAvailable === "calendar-day dateAvailable") {
+      if (this.state.checkIn === undefined) {
+        this.setState({checkIn: date})
+      } else if (moment(date).isAfter(this.state.checkIn)){
+        this.setState({checkOut: date})
+      }
     }
   }
-
-  // defaultPricePerNight() {
-  //   let min = Infinity;
-  //   for (let i = 0; i < dummyDataDates.length; i++) {
-  //     if (dummyDataDates[i].base_price_per_night < min) {
-  //       this.setState({minPricePerNight: dummyDataDates[i].base_price_per_night})
-  //     }
-  //   }
-  // }
 
   render() {
     return (
@@ -111,6 +104,8 @@ class App extends React.Component {
             clearDates={this.handleClearInputtedDates}
             updateBookingDates={this.handleUpdateBookingDates}
             datesData={this.state.availabilities}
+            currentCheckInInput={this.state.checkIn}
+            currentCheckOutInput={this.state.checkOut}
           />
           <div class="checkAvailability">
             <button class="checkAvailabilityButton">check availability / reserve</button>

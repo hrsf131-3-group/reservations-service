@@ -27,6 +27,8 @@ function Calendar(props) {
       <CalendarTable
         updateBookingDates={props.updateBookingDates}
         datesData={props.datesData}
+        currentCheckInInput={props.currentCheckInInput}
+        currentCheckOutInput={props.currentCheckOutInput}
       />
       <div class="calendarButtons">
         <button class="clearButton" onClick={props.clearDates}>Clear dates</button>
