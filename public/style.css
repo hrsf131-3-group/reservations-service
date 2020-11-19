@@ -180,6 +180,12 @@ button,
   justify-content: flex-end;
   padding-right: 32px;
 }
+.disableMonthButton {
+  color: lightgrey;
+  background: none;
+  border: none;
+  cursor: text;
+}
 .calendar-table {
   table-layout: fixed;
 }

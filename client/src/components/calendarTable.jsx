@@ -42,16 +42,22 @@ class CalendarTable extends React.Component {
     })
   }
   isDateAvailable(date) {
+    // var isUnavailable = false;
     for (let i = 0; i < this.props.datesData.length; i++) {
+      // if (isUnavailable) {
+      //   return "calendar-day dateUnavailable"
+      // }
       if (this.props.datesData[i].date === date) {
         if (this.props.datesData[i].available === false) {
+          // if (moment(date).isAfter(this.props.currentCheckInInput)) {
+          //   isUnavailable = true
+          // }
           return "calendar-day dateUnavailable"
         }
-        let minStay = moment(this.props.currentCheckInInput).add(this.props.datesData[0].listing.minimum_stay, 'day');
-        console.log('minStay:', minStay)
-        if (moment(date).isBetween(this.props.currentCheckInInput, minStay)) {
-          return
-        }
+        // let minStay = moment(this.props.currentCheckInInput).add(this.props.datesData[0].listing.minimum_stay, 'day');
+        // if (moment(date).isBetween(this.props.currentCheckInInput, minStay)) {
+        //   return
+        // }
       }
     }
     return "calendar-day dateAvailable"
@@ -122,7 +128,7 @@ class CalendarTable extends React.Component {
       <div className="calendars">
         <div class="leftCalendar">
           <div class="leftCalendarHeader">
-            <button class="changeMonthButton" onClick={event=>{this.onPrev()}}>{this.state.dateObject === moment() ? '' :`<`}</button>
+            <button class={this.state.dateObject.isBefore('2020-11-30') ? 'disableMonthButton' : "changeMonthButton"} onClick={this.state.dateObject.isBefore('2020-11-30') ? '' : event=>{this.onPrev()}}>{`<`}</button>
             {this.month(this.state.dateObject)} {this.year(this.state.dateObject)}
           </div>
           <table className="calendar-table">
