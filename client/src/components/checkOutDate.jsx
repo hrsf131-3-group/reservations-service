@@ -2,16 +2,17 @@ import React from 'react'
 
 function CheckOutDate(props) {
   return (
-    <div class='checkOutDate'>
-      <section>checkout</section>
+    <section class='checkOutDate'>
+      <section class="checkOutTitle">CHECKOUT</section>
       <input
         placeholder="Add date"
         type="text"
+        size="15"
         value={props.checkOutValue}
         onChange={props.checkOutChange}
         onClick={props.displayCalendar}
       />
-    </div>
+    </section>
   )
 }
 

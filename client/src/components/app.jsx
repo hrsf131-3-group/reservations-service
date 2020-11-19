@@ -87,30 +87,34 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="reservations">
-        <Header pricePerNight={this.state.pricePerNight}/>
-        <BookingTable
-          checkInValue={this.state.checkIn}
-          checkOutValue={this.state.checkOut}
-          checkInChange={this.handleCheckInChange}
-          checkOutChange={this.handleCheckOutChange}
-          displayCalendar={this.handleDisplayCalendarOnClick}
-          guestCount={this.state.guests}
-          maxGuestCount={this.state.maxGuestCount}
-          isGuestDropdownDisplay={this.state.showGuestPicker}
-          displayGuestPickerOnClick={this.handleDisplayGuestPickerOnClick}
-        />
-        <Calendar
-          checkInValue={this.state.checkIn}
-          checkOutValue={this.state.checkOut}
-          checkInChange={this.handleCheckInChange}
-          checkOutChange={this.handleCheckOutChange}
-          isCalendarDisplay={this.state.showCalendar}
-          hidePopUps={this.handleHidePopUpsOnClick}
-          clearDates={this.handleClearInputtedDates}
-          updateBookingDates={this.handleUpdateBookingDates}
-        />
-        <button>check availability / reserve</button>
+      <div class="container">
+        <div id="reservations">
+          <Header pricePerNight={this.state.pricePerNight}/>
+          <BookingTable
+            checkInValue={this.state.checkIn}
+            checkOutValue={this.state.checkOut}
+            checkInChange={this.handleCheckInChange}
+            checkOutChange={this.handleCheckOutChange}
+            displayCalendar={this.handleDisplayCalendarOnClick}
+            guestCount={this.state.guests}
+            maxGuestCount={this.state.maxGuestCount}
+            isGuestDropdownDisplay={this.state.showGuestPicker}
+            displayGuestPickerOnClick={this.handleDisplayGuestPickerOnClick}
+          />
+          <Calendar
+            checkInValue={this.state.checkIn}
+            checkOutValue={this.state.checkOut}
+            checkInChange={this.handleCheckInChange}
+            checkOutChange={this.handleCheckOutChange}
+            isCalendarDisplay={this.state.showCalendar}
+            hidePopUps={this.handleHidePopUpsOnClick}
+            clearDates={this.handleClearInputtedDates}
+            updateBookingDates={this.handleUpdateBookingDates}
+          />
+          <div class="checkAvailability">
+            <button class="checkAvailabilityButton">check availability / reserve</button>
+          </div>
+        </div>
       </div>
     )
   }

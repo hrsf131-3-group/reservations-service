@@ -83,44 +83,50 @@ class CalendarTable extends React.Component {
   }
   // get date
   onDateClick(event, date) {
-    console.log(event, 'date:', date)
-    console.log(this.props)
     this.props.updateBookingDates(event, date);
   }
 
   render() {
     let weekdayShortName = moment.weekdaysShort().map(day => {
       return (
-        <th key={day} className="week-day">{day}</th>
+        <th key={day} className="week-day">{day.slice(0, -1)}</th>
       );
     });
 
     return (
       <div className="calendars">
-        {this.month(this.state.dateObject)} {this.year(this.state.dateObject)}
-        <table className="calendar-day">
-          <thead>
-            <tr>
-              {weekdayShortName}
-            </tr>
-          </thead>
-          <tbody>
-            {this.populateCalendar(this.state.dateObject)}
-          </tbody>
-        </table>
-        {this.month(this.state.dateObjectNext)} {this.year(this.state.dateObjectNext)}
-        <table className="calendar-day">
-          <thead>
-            <tr>
-              {weekdayShortName}
-            </tr>
-          </thead>
-          <tbody>
-            {this.populateCalendar(this.state.dateObjectNext)}
-          </tbody>
-        </table>
-        <button onClick={event=>{this.onPrev()}}>Last month</button>
-        <button onClick={event=>{this.onNext()}}>Next month</button>
+        <div class="leftCalendar">
+          <div class="leftCalendarHeader">
+            <button class="changeMonthButton" onClick={event=>{this.onPrev()}}>{`<`}</button>
+            {this.month(this.state.dateObject)} {this.year(this.state.dateObject)}
+          </div>
+          <table className="calendar-day">
+            <thead>
+              <tr>
+                {weekdayShortName}
+              </tr>
+            </thead>
+            <tbody>
+              {this.populateCalendar(this.state.dateObject)}
+            </tbody>
+          </table>
+        </div>
+        <div class="rightCalendar">
+          <div class="rightCalendarHeader">
+            {this.month(this.state.dateObjectNext)} {this.year(this.state.dateObjectNext)}
+            <button class="changeMonthButton" onClick={event=>{this.onNext()}}>{`>`}</button>
+          </div>
+          <table className="calendar-day">
+            <thead>
+              <tr>
+                {weekdayShortName}
+              </tr>
+            </thead>
+            <tbody>
+              {this.populateCalendar(this.state.dateObjectNext)}
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   }

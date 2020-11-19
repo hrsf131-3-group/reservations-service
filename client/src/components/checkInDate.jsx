@@ -2,16 +2,17 @@ import React from 'react'
 
 function CheckInDate(props) {
   return (
-    <div class="checkInDate">
-      <section>checkin</section>
+    <section class="checkInDate">
+      <section class="checkInTitle">CHECK-IN</section>
       <input
         placeholder="Add date"
         type="text"
+        size="15"
         value={props.checkInValue}
         onChange={props.checkInChange}
         onClick={props.displayCalendar}
       />
-    </div>
+    </section>
   )
 }
 

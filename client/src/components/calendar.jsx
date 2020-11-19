@@ -5,25 +5,25 @@ import CalendarTable from './calendarTable.jsx'
 
 function Calendar(props) {
   return (
-    <div
-      class={props.isCalendarDisplay ? "showCalendar" : 'hiddenCalendar'}
-    >
-      <div>
+    <div class={props.isCalendarDisplay ? "showCalendar" : 'hiddenCalendar'}>
+      <div class="calendarHead">
         <div class="headerCalendar">
           Header - Select dates / n-nights
+          <div class="dateRangeDisplayCalendar">
+            Add your travel dates for exact pricing / range of date
+          </div>
         </div>
-        <div class="dateRangeDisplayCalendar">
-          Add your travel dates for exact pricing / range of date
+        <div class="bookingContainer">
+          <CheckInDate
+            checkInValue={props.checkInValue}
+            checkInChange={props.checkInChange}
+          />
+          <CheckOutDate
+            checkOutValue={props.checkOutValue}
+            checkOutChange={props.checkOutChange}
+          />
         </div>
       </div>
-      <CheckInDate
-        checkInValue={props.checkInValue}
-        checkInChange={props.checkInChange}
-      />
-      <CheckOutDate
-        checkOutValue={props.checkOutValue}
-        checkOutChange={props.checkOutChange}
-      />
       <CalendarTable
         updateBookingDates={props.updateBookingDates}
       />

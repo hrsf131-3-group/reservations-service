@@ -15,12 +15,12 @@ function GuestPicker(props) {
   }
 
   return (
-    <div class={props.isGuestDropdownDisplay ? "showGuestPicker" : "hiddenGuestPicker"}>
+    <section class={props.isGuestDropdownDisplay ? "showGuestPicker" : "hiddenGuestPicker"}>
       <ul class="guestPickerList">
         {chooseNumGuest(props.maxGuestCount)}
       </ul>
       <button>Close</button>
-    </div>
+    </section>
 
   )
 }

@@ -3,7 +3,8 @@ import React from 'react'
 function Header(props) {
   return (
     <div class="headerPricePerNight">
-      {`$${props.pricePerNight} / night`}
+      <span class="pricePerNight">{`$${props.pricePerNight}`}</span>
+      <span class="perNightString">{` / night`}</span>
     </div>
   )
 }
