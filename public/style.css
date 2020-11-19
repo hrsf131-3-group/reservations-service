@@ -124,7 +124,7 @@ table {
     box-shadow: lightgrey 0px 6px 16px;
     border: 1px solid lightgrey;
     background-color: white;
-    top: 15%;
+    top: 50px;
     left: 0;
     font-size: 12px;
     width: 600px;
@@ -266,6 +266,35 @@ table {
 }
 .hiddenGuestPicker {
   display: none;
+}
+.pricingTable {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+.pricingColInfo {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 5px;
+}
+.pricingColPrices {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  padding-top: 5px;
+}
+.pricingFooter {
+  padding-top: 5px;
+  padding-bottom: 0px;
+  border-top: 1px solid darkgrey;
+  font-weight: 600;
+  color: black;
+  font-size: 16px;
 }
 .hiddenPricingTable {
   display: none;

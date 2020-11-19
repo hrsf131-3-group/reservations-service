@@ -67,7 +67,8 @@ class App extends React.Component {
     );
     this.setState({
       checkIn: undefined,
-      checkOut: undefined
+      checkOut: undefined,
+      showPricing: false
     })
   }
   handleUpdateBookingDates(event, date, isAvailable) {
@@ -79,7 +80,7 @@ class App extends React.Component {
       } else if (this.checkForDateConflicts(date)) {
         this.setState({checkIn: date, checkOut: undefined})
       } else if (moment(date).isAfter(this.state.checkIn)){
-        this.setState({checkOut: date})
+        this.setState({checkOut: date, showPricing: true})
       }
     }
   }

@@ -10,45 +10,27 @@ function PricingTable(props) {
     // add up for total
   }
   return (
-    <div className={props.isPricingTableDisplay ? "pricingTable" : "hiddenPricingTable"}>
-      <div className="pricingRow">
-        <div>
-          $100 x 1 night
+    <div>
+      <div className={props.isPricingTableDisplay ? "pricingTable" : "hiddenPricingTable"}>
+        <div className="pricingColInfo">
+          <div className="pricingColInfo">$100 x 1 nights</div>
+          <div className="pricingColInfo">Service fee</div>
+          <div className="pricingColInfo">Cleaning fee</div>
+          <div className="pricingColInfo">Occupancy taxes and fees</div>
         </div>
-        <div>
-          $100
-        </div>
-      </div>
-      <div className="pricingRow">
-        <div>
-          Service fee
-        </div>
-        <div>
-          $50
+        <div className="pricingColPrices">
+          <div className="pricingColPrices">$100</div>
+          <div className="pricingColPrices">$50</div>
+          <div className="pricingColPrices">$100</div>
+          <div className="pricingColPrices">$150</div>
         </div>
       </div>
-      <div className="pricingRow">
-        <div>
-          Cleaning fee
+      <div className={props.isPricingTableDisplay ? "pricingTable pricingFooter" : "hiddenPricingTable"}>
+        <div className="pricingColInfo">
+          <div className="pricingColInfo">Total</div>
         </div>
-        <div>
-          $100
-        </div>
-      </div>
-      <div className="pricingRow">
-        <div>
-          Occupancy taxes and fees
-        </div>
-        <div>
-          $150
-        </div>
-      </div>
-      <div className="pricingTotal">
-        <div>
-          Total
-        </div>
-        <div>
-          $400
+        <div className="pricingColPrices">
+          <div className="pricingColPrices">$400</div>
         </div>
       </div>
     </div>
