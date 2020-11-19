@@ -70,9 +70,10 @@ class CalendarTable extends React.Component {
       let isAvailable = moment().isBefore(date) ? this.isDateAvailable(dateDashFormat) : "calendar-day dateUnavailable";
       let isCheckInDate = (moment(this.props.currentCheckInInput).isSame(date)) ? "selectedCheckInDate" : "";
       let isCheckOutDate = (moment(this.props.currentCheckOutInput).isSame(date)) ? "selectedCheckOutDate" : "";
+      let isBetweenDates = moment(date).isBetween(this.props.currentCheckInInput, this.props.currentCheckOutInput) ? "inDateRange" : "";
       daysInMonth.push(<td
           key={d}
-          className={`${isAvailable} ${isCheckInDate} ${isCheckOutDate}`}
+          className={`${isAvailable} ${isCheckInDate} ${isCheckOutDate} ${isBetweenDates}`}
         ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span></td>);
     }
     // play to populate each day

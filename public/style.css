@@ -206,6 +206,9 @@ button,
   color: white;
   border-radius: 50%;
 }
+.inDateRange {
+  background: #f7f7f7;
+}
 .dateUnavailable {
   text-decoration: line-through;
   text-decoration-color: rgb(145, 143, 143);
