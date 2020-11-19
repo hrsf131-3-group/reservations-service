@@ -47,6 +47,11 @@ class CalendarTable extends React.Component {
         if (this.props.datesData[i].available === false) {
           return "calendar-day dateUnavailable"
         }
+        let minStay = moment(this.props.currentCheckInInput).add(this.props.datesData[0].listing.minimum_stay, 'day');
+        console.log('minStay:', minStay)
+        if (moment(date).isBetween(this.props.currentCheckInInput, minStay)) {
+          return
+        }
       }
     }
     return "calendar-day dateAvailable"

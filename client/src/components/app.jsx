@@ -72,6 +72,8 @@ class App extends React.Component {
     if (isAvailable === "calendar-day dateAvailable") {
       if (this.state.checkIn === undefined) {
         this.setState({checkIn: date})
+      } else if (moment(date).isBefore(this.state.checkIn)) {
+        this.setState({checkIn: date, checkOut: undefined})
       } else if (moment(date).isAfter(this.state.checkIn)){
         this.setState({checkOut: date})
       }

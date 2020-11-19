@@ -5,7 +5,7 @@ export default [
         "base_price_per_night": 300,
         "listing": {
             "max_guest_count": 3,
-            "minimum_stay": 1
+            "minimum_stay": 3
         }
     },
     {
