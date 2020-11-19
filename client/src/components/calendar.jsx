@@ -8,12 +8,12 @@ function Calendar(props) {
     <div class={props.isCalendarDisplay ? "showCalendar" : 'hiddenCalendar'}>
       <div class="calendarHead">
         <div class="headerCalendar">
-          Header - Select dates / n-nights
+          <span class="selectDates">Select dates</span>
           <div class="dateRangeDisplayCalendar">
-            Add your travel dates for exact pricing / range of date
+            <span class="selectedDateRange">Minimum stay: 2 nights</span>
           </div>
         </div>
-        <div class="bookingContainer">
+        <div class="calendarBookingContainer">
           <CheckInDate
             checkInValue={props.checkInValue}
             checkInChange={props.checkInChange}
@@ -26,10 +26,12 @@ function Calendar(props) {
       </div>
       <CalendarTable
         updateBookingDates={props.updateBookingDates}
+        datesData={props.datesData}
       />
-      <div>Keyboard shortcuts</div>
-      <button onClick={props.clearDates}>Clear</button>
-      <button onClick={props.hidePopUps}>Close button</button>
+      <div class="calendarButtons">
+        <button class="clearButton" onClick={props.clearDates}>Clear dates</button>
+        <button class="closeButton" onClick={props.hidePopUps}>Close</button>
+      </div>
     </div>
   )
 }

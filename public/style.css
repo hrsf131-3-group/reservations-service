@@ -9,17 +9,21 @@
 input,
   .guestCountDisplay {
   border-style: none;
-  padding-top: 5px;
+  /* padding-top: 5px; */
   padding-left: 10px;
   padding-bottom: 10px;
-  font-size: 16px;
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  font-weight: 300;
 }
 input:focus, button {
   outline: none;
   border-radius: 12px;
 }
 button,
-  input {
+  input,
+  .calendar-day {
     cursor: pointer;
   }
 #app {
@@ -36,7 +40,8 @@ button,
   margin-right: 5%;
   margin-left: 8.33%;
   /* flex-wrap: row wrap; */
-
+  color: #484848;
+  line-height: 1.43;
 }
 .container {
   position: sticky;
@@ -54,11 +59,12 @@ button,
 }
 .headerPricePerNight {
   justify-content: flex-start;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
-.pricePerNight {
-  font-weight: bold;
-  font-size: 25px;
+.pricePerNight,
+  .selectDates {
+    font-weight: 600;
+    font-size: 20px;
 }
 .perNightString {
   font-size: 16px;
@@ -81,7 +87,7 @@ button,
   padding-top: 10px;
   padding-left: 10px;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 8px;
 }
 .checkInDate {
   border-right: 1px solid darkgrey;
@@ -115,12 +121,12 @@ button,
     box-shadow: lightgrey 0px 6px 16px;
     border: 1px solid lightgrey;
     background-color: white;
-    top: 25%;
+    top: 15%;
     left: 0;
     font-size: 14px;
     width: 600px;
-    margin-left: -80%;
-    padding: 24px 32px 16px;
+    margin-left: -85%;
+    padding: 16px 0px 16px;
 }
 .calendarHead {
   display: flex;
@@ -131,13 +137,21 @@ button,
 .headerCalendar {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding-bottom: 20px;
+}
+.calendarBookingContainer {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  border: 1px solid darkgrey;
+  border-radius: 12px;
+  margin-left: 22%;
 }
 .calendars {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding-bottom: 20px;
   text-align: center;
 }
@@ -151,12 +165,60 @@ button,
   justify-content: space-evenly;
   padding-left: 40px;
 }
+.selectedDateRange {
+  font-size: 14px;
+  font-weight: 200;
+}
 .changeMonthButton {
   background-color: white;
   border: none;
 }
+.calendarButtons {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 32px;
+}
+.calendar-table,
+.calendar-day,
+  .week-day {
+  width: 40px;
+  height: 40px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.dateUnavailable {
+  text-decoration: line-through;
+  cursor: text;
+}
+.clearButton,
+  .guestCloseButton {
+  background-color: none;
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+.guestCloseButton {
+  padding-left: 220px;
+  padding-bottom: 10px;
+}
+.closeButton {
+  color: white;
+  background: black;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
 .hiddenCalendar {
   display: none;
+}
+.guestPickerList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-inline-start: 0;
+}
+.guestNumber {
+  background: none;
+  border: none;
 }
 .hiddenGuestPicker {
   display: none;

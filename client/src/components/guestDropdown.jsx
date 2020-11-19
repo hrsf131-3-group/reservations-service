@@ -6,8 +6,7 @@ function GuestDropdown(props) {
     <div
       name="guestDropdown"
       class="guestDropdown"
-      onClick={props.displayGuestPickerOnClick}
-    >
+      onClick={props.displayGuestPickerOnClick}>
       <section class="guestCountTitle">GUESTS</section>
       <section class="guestCountDisplay">{props.guestCount.adults} {props.guestCount.adults === 1 ? 'guest' : 'guests'}</section>
       <GuestPicker

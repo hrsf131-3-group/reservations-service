@@ -110,6 +110,7 @@ class App extends React.Component {
             hidePopUps={this.handleHidePopUpsOnClick}
             clearDates={this.handleClearInputtedDates}
             updateBookingDates={this.handleUpdateBookingDates}
+            datesData={this.state.availabilities}
           />
           <div class="checkAvailability">
             <button class="checkAvailabilityButton">check availability / reserve</button>

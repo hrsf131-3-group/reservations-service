@@ -163,7 +163,7 @@ export default [
     },
     {
         "date": "2020-11-30",
-        "available": true,
+        "available": false,
         "base_price_per_night": 300,
         "listing": {
             "max_guest_count": 3,
@@ -172,7 +172,7 @@ export default [
     },
     {
         "date": "2020-12-01",
-        "available": true,
+        "available": false,
         "base_price_per_night": 300,
         "listing": {
             "max_guest_count": 3,
@@ -181,7 +181,7 @@ export default [
     },
     {
         "date": "2020-12-02",
-        "available": true,
+        "available": false,
         "base_price_per_night": 300,
         "listing": {
             "max_guest_count": 3,
