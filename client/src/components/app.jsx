@@ -74,8 +74,21 @@ class App extends React.Component {
         this.setState({checkIn: date})
       } else if (moment(date).isBefore(this.state.checkIn)) {
         this.setState({checkIn: date, checkOut: undefined})
+      } else if (this.checkForDateConflicts(date)) {
+        this.setState({checkIn: date, checkOut: undefined})
       } else if (moment(date).isAfter(this.state.checkIn)){
         this.setState({checkOut: date})
+      }
+    }
+  }
+  checkForDateConflicts(date) {
+    var checkIn = moment(this.state.checkIn);
+    var selectDate = moment(date);
+    var daysBetweenSelected = selectDate.diff(checkIn, 'days');
+    var daysBetweenToday = checkIn.diff(moment(), 'days');
+    for (var i = 0, j = daysBetweenToday + 1; i < daysBetweenSelected - 2; i++, j++) {
+      if (this.state.availabilities[j].available === false) {
+        return true
       }
     }
   }

@@ -7,6 +7,7 @@ class CalendarTable extends React.Component {
     this.state = {
       dateObject: moment(),
       dateObjectNext: moment().add(1, "month"),
+      // isUnavailable: false
     }
   }
   // to get all the days in the month
@@ -42,15 +43,15 @@ class CalendarTable extends React.Component {
     })
   }
   isDateAvailable(date) {
-    // var isUnavailable = false;
     for (let i = 0; i < this.props.datesData.length; i++) {
-      // if (isUnavailable) {
+      // if (this.state.isUnavailable) {
       //   return "calendar-day dateUnavailable"
       // }
       if (this.props.datesData[i].date === date) {
         if (this.props.datesData[i].available === false) {
           // if (moment(date).isAfter(this.props.currentCheckInInput)) {
-          //   isUnavailable = true
+          //   console.log('this hit', date, this.state.isUnavailable)
+          //   this.setState({isUnavailable: true})
           // }
           return "calendar-day dateUnavailable"
         }

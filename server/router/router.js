@@ -11,7 +11,8 @@ router.route('/:id/calendar')
   Models.Dates.findAll({
     include: {model: Models.Listings, attributes: ['max_guest_count', 'minimum_stay']},
     where: {listingId: req.params.id},
-    attributes: ['date', 'available', 'base_price_per_night']
+    attributes: ['date', 'available', 'base_price_per_night'],
+    order: [['date']]
   })
     .then((data) => res.send(data))
     .catch((err) => res.sendStatus(404))
