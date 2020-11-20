@@ -92,7 +92,7 @@ const createDates = (numOfDays, listing) => {
 
     Dates.create({
       date: currentDay,
-      available: true,
+      available: Math.floor(Math.random() * 2),
       base_price_per_night: basePricePerNight[listing%3],
       cleaning_fee: cleaningFees[listing%3],
       service_fee: serviceFees[listing%3],

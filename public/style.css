@@ -185,6 +185,7 @@ table {
   color: lightgrey;
   background: none;
   border: none;
+  cursor: default;
 }
 .calendar-table {
   table-layout: fixed;
