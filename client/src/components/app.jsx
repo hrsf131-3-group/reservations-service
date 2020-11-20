@@ -21,7 +21,6 @@ class App extends React.Component {
         infants: 0
       },
       maxGuestCount: dummyDataDates[0].listing.max_guest_count,
-      bookingInfoEntered: false,
       showCalendar: false,
       showGuestPicker: false,
       showPricing: false
@@ -134,7 +133,7 @@ class App extends React.Component {
             currentCheckOutInput={this.state.checkOut}
           />
           <div className="checkAvailability">
-            <button className="checkAvailabilityButton">Reserve</button>
+            <button className="checkAvailabilityButton">{this.state.checkOut ? "Reserve" : "Check Availability"}</button>
           </div>
           <PricingTable
             checkInValue={this.state.checkIn}
