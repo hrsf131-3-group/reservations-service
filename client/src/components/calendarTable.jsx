@@ -30,6 +30,7 @@ class CalendarTable extends React.Component {
   }
   // on click event to go back 1 month
   onPrev() {
+    console.log('on prev clicked')
     this.setState({
       dateObject: this.state.dateObject.subtract(1, "month"),
       dateObjectNext: this.state.dateObjectNext.subtract(1, "month")
@@ -37,6 +38,7 @@ class CalendarTable extends React.Component {
   }
   // on click event to go up 1 month
   onNext() {
+    console.log('on next clicked')
     this.setState({
       dateObject: this.state.dateObject.add(1, "month"),
       dateObjectNext: this.state.dateObjectNext.add(1, "month")
@@ -129,7 +131,11 @@ class CalendarTable extends React.Component {
       <div className="calendars">
         <div className="leftCalendar">
           <div className="leftCalendarHeader">
-            <button className={this.state.dateObject.isBefore('2020-11-30') ? 'disableMonthButton' : "changeMonthButton"} onClick={()=>{this.state.dateObject.isBefore('2020-11-30') ? '' : event=>{this.onPrev()}}}>{`<`}</button>
+
+            <button
+            className={this.state.dateObject.isBefore('2020-11-30') ? 'disableMonthButton' : "changeMonthButton"}
+            onClick={event=>{this.onPrev()}}>{`<`}</button>
+
             {this.month(this.state.dateObject)} {this.year(this.state.dateObject)}
           </div>
           <table className="calendar-table">
@@ -146,6 +152,7 @@ class CalendarTable extends React.Component {
         <div className="rightCalendar">
           <div className="rightCalendarHeader">
             {this.month(this.state.dateObjectNext)} {this.year(this.state.dateObjectNext)}
+
             <button className="changeMonthButton" onClick={event=>{this.onNext()}}>{`>`}</button>
           </div>
           <table className="calendar-table">

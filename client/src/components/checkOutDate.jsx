@@ -1,6 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
 
-function CheckOutDate(props) {
+// const CheckOutTitle = styled.section`
+//   padding-top: 10px;
+//   padding-left: 10px;
+//   font-weight: bold;
+//   font-size: 8px;
+// `;
+
+const CheckOutDate = (props) => {
   return (
     <section className='checkOutDate'>
       <section className="checkOutTitle">CHECKOUT</section>
