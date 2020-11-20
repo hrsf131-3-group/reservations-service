@@ -112,7 +112,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <div id="reservations">
-          <Header pricePerNight={this.state.pricePerNight}/>
+          <Header pricePerNight={this.state.availabilities[0].base_price_per_night}/>
           <BookingTable
             checkInValue={this.state.checkIn}
             checkOutValue={this.state.checkOut}
