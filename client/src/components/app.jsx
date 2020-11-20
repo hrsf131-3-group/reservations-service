@@ -81,7 +81,7 @@ class App extends React.Component {
         this.setState({checkIn: date, checkOut: undefined})
       } else if (moment(date).isAfter(this.state.checkIn)){
         this.setState({checkOut: date, showPricing: true
-          // ,numberOfSelectedDays: this.daysSelected(date)
+          ,numberOfSelectedDays: this.daysSelected(date)
         })
       }
     }
@@ -100,13 +100,13 @@ class App extends React.Component {
       console.log(this.state.availabilities[j].available)
     }
   }
-  // daysSelected(date) {
-  //   var checkIn = moment(this.state.checkIn);
-  //   var selectDate = moment(date);
-  //   var daysBetweenSelected = selectDate.diff(checkIn, 'days');
-  //   console.log('hits days selected', daysBetweenSelected, checkIn, selectDate, this.state.checkIn, this.state.checkOut)
-  //   return daysBetweenSelected
-  // }
+  daysSelected(date) {
+    var checkIn = moment(this.state.checkIn);
+    var selectDate = moment(date);
+    var daysBetweenSelected = selectDate.diff(checkIn, 'days');
+    console.log('hits days selected', daysBetweenSelected, checkIn, selectDate, this.state.checkIn, this.state.checkOut)
+    return daysBetweenSelected
+  }
 
   render() {
     return (
@@ -140,13 +140,13 @@ class App extends React.Component {
           <div className="checkAvailability">
             <button className="checkAvailabilityButton">{this.state.checkOut ? "Reserve" : "Check Availability"}</button>
           </div>
-          {/* <PricingTable
+          <PricingTable
             checkInValue={this.state.checkIn}
             checkOutValue={this.state.checkOut}
             isPricingTableDisplay={this.state.showPricing}
             data={this.state.availabilities}
-            // daysSelected={this.state.numberOfSelectedDays}
-            /> */}
+            daysSelected={this.state.numberOfSelectedDays}
+            />
         </div>
       </div>
     )
