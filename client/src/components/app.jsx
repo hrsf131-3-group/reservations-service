@@ -5,6 +5,7 @@ import BookingTable from './bookingTable.jsx'
 import Calendar from './calendar.jsx'
 import moment from 'moment'
 import PricingTable from './pricingTable.jsx'
+import axios from 'axios'
 
 class App extends React.Component {
   constructor(props) {
@@ -32,6 +33,16 @@ class App extends React.Component {
     this.handleHidePopUpsOnClick = this.handleHidePopUpsOnClick.bind(this)
     this.handleClearInputtedDates = this.handleClearInputtedDates.bind(this)
     this.handleUpdateBookingDates = this.handleUpdateBookingDates.bind(this)
+  }
+
+  componentDidMount() {
+    axios.get('/api/homes/2/calendar')
+      .then((res) => {
+        this.setState({availabilities: res.data})
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   handleCheckInChange(event) {
