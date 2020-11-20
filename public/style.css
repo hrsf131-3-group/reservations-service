@@ -83,9 +83,6 @@ table {
   justify-content: space-evenly;
   border-bottom: 1px solid darkgrey;
 }
-.guestDropdown {
-  cursor: pointer;
-}
 .checkInTitle, .checkOutTitle, .guestCountTitle {
   padding-top: 10px;
   padding-left: 10px;
@@ -240,10 +237,14 @@ table {
   background: none;
   border: none;
   text-decoration: underline;
+  padding-right: 15px;
 }
 .guestCloseButton {
-  padding-left: 220px;
+  /* padding-left: 210px; */
+  display: flex;
+  flex-direction: row-reverse;
   padding-bottom: 10px;
+  padding-top: 10px;
 }
 .closeButton {
   color: white;
@@ -254,15 +255,57 @@ table {
 .hiddenCalendar {
   display: none;
 }
+.guestDropdown {
+  cursor: pointer;
+  justify-content: flex-end;
+}
 .guestPickerList {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-inline-start: 0;
 }
+.showGuestPicker {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+  border-radius: 4px;
+  box-shadow: lightgrey 0px 6px 16px;
+  border: 1px solid lightgrey;
+  background-color: white;
+  width: 250px;
+  top: 175px;
+  right: 25px;
+  font-size: 12px;
+  cursor: default;
+  padding: 10px;
+}
+.guestRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 12px;
+}
+.guestQuantityContainer {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 15px;
+  align-items: center;
+}
 .guestNumber {
   background: none;
   border: none;
+}
+.childrenRow {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.guestNote {
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
 }
 .hiddenGuestPicker {
   display: none;

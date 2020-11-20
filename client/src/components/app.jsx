@@ -89,6 +89,7 @@ class App extends React.Component {
     var selectDate = moment(date);
     var daysBetweenSelected = selectDate.diff(checkIn, 'days');
     var daysBetweenToday = checkIn.diff(moment(), 'days');
+    console.log('conflict check')
     for (var i = 0, j = daysBetweenToday + 1; i < daysBetweenSelected - 2; i++, j++) {
       if (this.state.availabilities[j].available === false) {
         return true

@@ -76,7 +76,7 @@ export default [
     },
     {
         "date": "2020-11-21",
-        "available": true,
+        "available": false,
         "base_price_per_night": 300,
         "cleaning_fee": 100,
         "service_fee": 50,
@@ -91,7 +91,7 @@ export default [
     },
     {
         "date": "2020-11-22",
-        "available": true,
+        "available": false,
         "base_price_per_night": 300,
         "cleaning_fee": 100,
         "service_fee": 50,
@@ -406,7 +406,7 @@ export default [
     },
     {
         "date": "2020-12-02",
-        "available": true,
+        "available": false,
         "base_price_per_night": 300,
         "cleaning_fee": 100,
         "service_fee": 50,
@@ -421,7 +421,7 @@ export default [
     },
     {
         "date": "2020-12-03",
-        "available": true,
+        "available": false,
         "base_price_per_night": 300,
         "cleaning_fee": 100,
         "service_fee": 50,
@@ -436,7 +436,7 @@ export default [
     },
     {
         "date": "2020-12-03",
-        "available": true,
+        "available": false,
         "base_price_per_night": 300,
         "cleaning_fee": 100,
         "service_fee": 50,
