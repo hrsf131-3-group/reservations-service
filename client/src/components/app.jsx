@@ -14,6 +14,7 @@ class App extends React.Component {
       availabilities: dummyDataDates,
       checkIn: undefined,
       checkOut: undefined,
+      numberOfSelectedDays: undefined,
       guests: {
         adults: 2,
         children: 0,
@@ -80,7 +81,7 @@ class App extends React.Component {
       } else if (this.checkForDateConflicts(date)) {
         this.setState({checkIn: date, checkOut: undefined})
       } else if (moment(date).isAfter(this.state.checkIn)){
-        this.setState({checkOut: date, showPricing: true})
+        this.setState({checkOut: date, showPricing: true, numberOfSelectedDays: this.daysSelected(date)})
       }
     }
   }
@@ -94,6 +95,13 @@ class App extends React.Component {
         return true
       }
     }
+  }
+  daysSelected(date) {
+    var checkIn = this.state.checkIn;
+    var selectDate = moment(date);
+    var daysBetweenSelected = selectDate.diff(checkIn, 'days');
+    console.log('hits days selected', daysBetweenSelected, checkIn, selectDate)
+    return daysBetweenSelected
   }
 
   render() {
@@ -133,6 +141,7 @@ class App extends React.Component {
             checkOutValue={this.state.checkOut}
             isPricingTableDisplay={this.state.showPricing}
             data={this.state.availabilities}
+            daysSelected={this.state.numberOfSelectedDays}
             />
         </div>
       </div>

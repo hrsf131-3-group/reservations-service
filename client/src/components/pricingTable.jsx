@@ -1,28 +1,21 @@
 import React from 'react'
+import moment from 'moment'
 
 function PricingTable(props) {
-  const getPricing = () => {
-    // get dates
-    // add up per night
-    // 1 service fee
-    // 1 cleaning fee
-    // 1 occupancy tax and fee
-    // add up for total
-  }
   return (
     <div>
       <div className={props.isPricingTableDisplay ? "pricingTable" : "hiddenPricingTable"}>
         <div className="pricingColInfo">
-          <div className="pricingColInfo">$100 x 1 nights</div>
+          <div className="pricingColInfo">{`$${props.data[0].base_price_per_night} x ${props.daysSelected} nights`}</div>
           <div className="pricingColInfo">Service fee</div>
           <div className="pricingColInfo">Cleaning fee</div>
           <div className="pricingColInfo">Occupancy taxes and fees</div>
         </div>
         <div className="pricingColPrices">
-          <div className="pricingColPrices">$100</div>
-          <div className="pricingColPrices">$50</div>
-          <div className="pricingColPrices">$100</div>
-          <div className="pricingColPrices">$150</div>
+          <div className="pricingColPrices">{`$${props.data[0].base_price_per_night * props.daysSelected}`}</div>
+          <div className="pricingColPrices">{`$${props.data[0].service_fee}`}</div>
+          <div className="pricingColPrices">{`$${props.data[0].cleaning_fee}`}</div>
+          <div className="pricingColPrices">{`$${props.data[0].occupancy_taxes_and_fees}`}</div>
         </div>
       </div>
       <div className={props.isPricingTableDisplay ? "pricingTable pricingFooter" : "hiddenPricingTable"}>
@@ -30,7 +23,7 @@ function PricingTable(props) {
           <div className="pricingColInfo">Total</div>
         </div>
         <div className="pricingColPrices">
-          <div className="pricingColPrices">$400</div>
+          <div className="pricingColPrices">{`$${props.data[0].base_price_per_night * props.daysSelected + props.data[0].service_fee + props.data[0].cleaning_fee + props.data[0].occupancy_taxes_and_fees}`}</div>
         </div>
       </div>
     </div>
