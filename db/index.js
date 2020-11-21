@@ -5,7 +5,7 @@ const Faker = require('faker')
 const fs = require('fs')
 
 // ------------connection to database -----------
-const sequelize = new Sequelize('reservations', 'root', '', {
+const sequelize = new Sequelize('reservations', 'root', 'CoconutWater11!', {
   dialect: 'mysql',
   define: { timestamps: false }
 });

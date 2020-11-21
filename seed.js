@@ -4,7 +4,7 @@ const fs = require('fs')
 const {Op} = require('sequelize')
 
 // -------------- connection to database -----------------
-const sequelize = new Sequelize('reservations', 'root', '', {
+const sequelize = new Sequelize('reservations', 'root', 'CoconutWater11!', {
   dialect: 'mysql',
   define: { timestamps: false }
 });

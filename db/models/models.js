@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 
 // connect to db
-const sequelize = new Sequelize('reservations', 'root', '', {
+const sequelize = new Sequelize('reservations', 'root', 'CoconutWater11!', {
   dialect: 'mysql',
   define: { timestamps: false }
 });
