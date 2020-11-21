@@ -5,7 +5,7 @@ const router = require('./router/router.js')
 const path = require('path')
 
 var app = express();
-const port = 3000;
+const port = 3002;
 
 const pathName = path.join(__dirname, '../public')
 

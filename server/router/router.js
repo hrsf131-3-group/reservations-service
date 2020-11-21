@@ -6,7 +6,7 @@ var router = express.Router();
 
 // get requests
 // get booking availabilities
-router.route('/:id/calendar')
+router.route('/:id/reservations')
  .get((req, res) => {
   Models.Dates.findAll({
     include: {model: Models.Listings, attributes: ['max_guest_count', 'minimum_stay']},
@@ -19,7 +19,7 @@ router.route('/:id/calendar')
 })
 
 // // find all
-router.route('/:id/reservations')
+router.route('/:id/reservation')
   .get((req, res) => {
   Models.Dates.findAll({
     where: {
@@ -34,7 +34,7 @@ router.route('/:id/reservations')
 
 // // post request
 // // post new reservation and update dates available
-router.route('/:id/reservations')
+router.route('/:id/reservation')
   .post((req, res) => {
   Models.Reservations.create({
     check_in: req.body.checkIn,
