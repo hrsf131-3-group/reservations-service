@@ -6,7 +6,7 @@ var router = express.Router();
 
 // get requests
 // get booking availabilities
-router.route('/:id/reservations')
+router.route('/:id/calendar')
  .get((req, res) => {
   Models.Dates.findAll({
     include: {model: Models.Listings, attributes: ['max_guest_count', 'minimum_stay']},
