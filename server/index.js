@@ -19,8 +19,8 @@ app.use(bodyParser.json())
 app.use('/api/homes', router)
 
 // listen to port
-app.listen(port, (err) => {
-  console.log(`now listening to http://localhost:${port}`)
+app.listen(port, '18.144.83.36', (err) => {
+  console.log(`now listening to 18.144.83.36:${port}`)
   if (err) {
     console.log('error has occurred', err)
   }
