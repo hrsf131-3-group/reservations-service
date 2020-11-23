@@ -1,9 +1,20 @@
 import React from 'react'
+import styled from 'styled-components'
 
-function CheckInDate(props) {
+const CheckInDateStyle = styled.section`
+  border-right: 1px solid darkgrey;
+`;
+const CheckInTitle = styled.section`
+  padding-top: 10px;
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 8px;
+`;
+
+const CheckInDate = (props) => {
   return (
-    <section className="checkInDate">
-      <section className="checkInTitle">CHECK-IN</section>
+    <CheckInDateStyle>
+      <CheckInTitle>CHECK-IN</CheckInTitle>
       <input
         placeholder="Add date"
         type="text"
@@ -12,7 +23,7 @@ function CheckInDate(props) {
         onChange={props.checkInChange}
         onClick={props.displayCalendar}
       />
-    </section>
+    </CheckInDateStyle>
   )
 }
 

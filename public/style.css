@@ -99,9 +99,9 @@ table {
   font-weight: bold;
   font-size: 8px;
 }
-.checkInDate {
+/* .checkInDateStyle {
   border-right: 1px solid darkgrey;
-}
+} */
 /* .checkAvailability {
   display: flex;
   justify-content: center;
