@@ -266,7 +266,7 @@ table {
 /* .hiddenCalendar {
   display: none;
 } */
-.guestDropdown {
+.guestDropdownStyle {
   cursor: pointer;
   justify-content: flex-end;
 }
