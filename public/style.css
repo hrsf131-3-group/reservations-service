@@ -56,20 +56,20 @@ table {
   color: #484848;
   line-height: 1.43;
 }
-.container {
+/* .container {
   position: sticky;
   max-width: 400px;
   width: auto;
   z-index: 1;
   padding-right: 1px;
   font-size: 8px;
-}
-#innerContainer {
+} */
+/* #innerContainer {
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   padding: 24px;
   box-shadow: lightgrey 0px 6px 16px;
-}
+} */
 /* .headerPricePerNight {
   justify-content: flex-start;
   margin-bottom: 20px;
@@ -102,12 +102,12 @@ table {
 .checkInDate {
   border-right: 1px solid darkgrey;
 }
-.checkAvailability {
+/* .checkAvailability {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-}
-.checkAvailabilityButton {
+} */
+/* .checkAvailabilityButton {
   min-width: 200px;
   width: 100%;
   height: 100%;
@@ -118,7 +118,7 @@ table {
   --mouse-x: 32.8438;
   --mouse-y: 41.6667;
   background-image: var(--dls19-brand-gradient-radial, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ))
-}
+} */
 .checkAvailabilityButton:hover {
   opacity: 1
 }

@@ -22,6 +22,23 @@ const InnerContainer = styled.div`
   padding: 24px;
   box-shadow: lightgrey 0px 6px 16px;
 `;
+const CheckAvailability = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+`;
+const CheckAvailabilityButton = styled.button`
+  min-width: 200px;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  color: white;
+  padding: 14px 24px 14px 24px;
+  background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+  --mouse-x: 32.8438;
+  --mouse-y: 41.6667;
+  background-image: var(--dls19-brand-gradient-radial, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ))
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -163,9 +180,9 @@ class App extends React.Component {
             currentCheckInInput={this.state.checkIn}
             currentCheckOutInput={this.state.checkOut}
           />
-          <div className="checkAvailability">
-            <button className="checkAvailabilityButton">{this.state.checkOut ? "Reserve" : "Check Availability"}</button>
-          </div>
+          <CheckAvailability>
+            <CheckAvailabilityButton>{this.state.checkOut ? "Reserve" : "Check Availability"}</CheckAvailabilityButton>
+          </CheckAvailability>
           <PricingTable
             checkInValue={this.state.checkIn}
             checkOutValue={this.state.checkOut}
