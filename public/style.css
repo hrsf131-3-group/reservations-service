@@ -122,7 +122,7 @@ table {
 .checkAvailabilityButton:hover {
   opacity: 1
 }
-.showCalendar {
+/* .showCalendar {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -138,27 +138,27 @@ table {
     margin-left: -85%;
     padding: 16px 0px 16px;
     cursor: default;
-}
-.calendarHead {
+} */
+/* .calendarHead {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-start;
-}
-.headerCalendar {
+} */
+/* .headerCalendar {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding-bottom: 20px;
-}
-.calendarBookingContainer {
+} */
+/* .calendarBookingContainer {
   display: flex;
   flex-flow: row;
   justify-content: space-evenly;
   border: 1px solid darkgrey;
   border-radius: 12px;
   margin-left: 22%;
-}
+} */
 .calendars {
   display: flex;
   flex-direction: row;
@@ -178,19 +178,19 @@ table {
   padding-left: 50px;
   font-weight: 600;
 }
-.selectedDateRange {
+/* .selectedDateRange {
   font-size: 14px;
   font-weight: 200;
-}
+} */
 .changeMonthButton {
   background-color: white;
   border: none;
 }
-.calendarButtons {
+/* .calendarButtons {
   display: flex;
   justify-content: flex-end;
   padding-right: 32px;
-}
+} */
 .disableMonthButton {
   color: lightgrey;
   background: none;
@@ -257,15 +257,15 @@ table {
   padding-bottom: 10px;
   padding-top: 10px;
 }
-.closeButton {
+/* .closeButton {
   color: white;
   background: black;
   border-radius: 8px;
   padding: 5px 10px;
-}
-.hiddenCalendar {
+} */
+/* .hiddenCalendar {
   display: none;
-}
+} */
 .guestDropdown {
   cursor: pointer;
   justify-content: flex-end;
