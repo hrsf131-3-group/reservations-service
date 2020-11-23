@@ -82,17 +82,17 @@ table {
 .perNightString {
   font-size: 16px;
 }
-#bookingTable {
+/* #bookingTable {
   border-radius: 8px;
   border: 1px solid darkgrey;
   margin-bottom: 16px;
-}
-.bookingContainer {
+} */
+/* .bookingContainer {
   display: flex;
   flex-flow: row;
   justify-content: space-evenly;
   border-bottom: 1px solid darkgrey;
-}
+} */
 .checkInTitle, .checkOutTitle, .guestCountTitle {
   padding-top: 10px;
   padding-left: 10px;
