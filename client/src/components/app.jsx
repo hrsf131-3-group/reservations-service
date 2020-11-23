@@ -121,7 +121,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <div id="reservations">
+        <div id="innerContainer">
           <Header pricePerNight={this.state.availabilities[0].base_price_per_night}/>
           <BookingTable
             checkInValue={this.state.checkIn}

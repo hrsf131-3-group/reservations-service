@@ -39,7 +39,7 @@ button,
 table {
   border-spacing: 0px 1px;
 }
-#app {
+#reservations {
   text-overflow: ellipsis;
   text-overflow: hidden;
   color: rgb(34, 34, 34);
@@ -64,7 +64,7 @@ table {
   padding-right: 1px;
   font-size: 8px;
 }
-#reservations {
+#innerContainer {
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   padding: 24px;
