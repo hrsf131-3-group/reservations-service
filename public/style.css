@@ -70,10 +70,10 @@ table {
   padding: 24px;
   box-shadow: lightgrey 0px 6px 16px;
 }
-.headerPricePerNight {
+/* .headerPricePerNight {
   justify-content: flex-start;
   margin-bottom: 20px;
-}
+} */
 .pricePerNight,
   .selectDates {
     font-weight: 600;

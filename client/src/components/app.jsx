@@ -6,6 +6,22 @@ import Calendar from './calendar.jsx'
 import moment from 'moment'
 import PricingTable from './pricingTable.jsx'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  position: sticky;
+  max-width: 400px;
+  width: auto;
+  z-index: 1;
+  padding-right: 1px;
+  font-size: 8px;
+`;
+const InnerContainer = styled.div`
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: lightgrey 0px 6px 16px;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -120,8 +136,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div id="innerContainer">
+      <Container>
+        <InnerContainer>
           <Header pricePerNight={this.state.availabilities[0].base_price_per_night}/>
           <BookingTable
             checkInValue={this.state.checkIn}
@@ -157,8 +173,8 @@ class App extends React.Component {
             data={this.state.availabilities}
             daysSelected={this.state.numberOfSelectedDays}
             />
-        </div>
-      </div>
+        </InnerContainer>
+      </Container>
     )
   }
 }
