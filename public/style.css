@@ -37,23 +37,19 @@ button,
 table {
   border-spacing: 0px 1px;
 }
-#reservations {
+/* #reservations {
   text-overflow: ellipsis;
   text-overflow: hidden;
   color: rgb(34, 34, 34);
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   display: flex;
-  /* position: relative; */
   margin-top: 48px;
-  /* justify-content: flex-end; */
   flex-direction: row-reverse;
-  /* width: 33.33%; */
   margin-right: 5%;
   margin-left: 8.33%;
-  /* flex-wrap: row wrap; */
   color: #484848;
   line-height: 1.43;
-}
+} */
 /* .container {
   position: sticky;
   max-width: 400px;
@@ -157,48 +153,48 @@ table {
   border-radius: 12px;
   margin-left: 22%;
 } */
-.calendars {
+/* .calendars {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   padding-bottom: 20px;
   text-align: center;
-}
-.leftCalendarHeader {
+} */
+/* .leftCalendarHeader {
   display: flex;
   justify-content: space-evenly;
   padding-right: 40px;
   font-weight: 600;
-}
-.rightCalendarHeader {
+} */
+/* .rightCalendarHeader {
   display: flex;
   justify-content: space-evenly;
   padding-left: 50px;
   font-weight: 600;
-}
+} */
 /* .selectedDateRange {
   font-size: 14px;
   font-weight: 200;
 } */
-.changeMonthButton {
+/* .changeMonthButton {
   background-color: white;
   border: none;
-}
+} */
 /* .calendarButtons {
   display: flex;
   justify-content: flex-end;
   padding-right: 32px;
 } */
-.disableMonthButton {
+/* .disableMonthButton {
   color: lightgrey;
   background: none;
   border: none;
   cursor: default;
-}
-.calendar-table {
+} */
+/* .calendar-table {
   table-layout: fixed;
-}
-.calendar-table,
+} */
+/* .calendar-table,
 .calendar-day,
   .week-day {
   width: 20px;
@@ -206,47 +202,46 @@ table {
   padding-left: 8px;
   padding-right: 8px;
   border: 1px solid white
-}
-.week-day {
+} */
+/* .week-day {
   font-weight: 300;
-}
-.selectedCheckInDate,
+} */
+/* .selectedCheckInDate,
   .selectedCheckOutDate {
   border: none;
   background: black;
   color: white;
   border-radius: 50%;
-}
-.inDateRange {
+} */
+/* .inDateRange {
   background: #f7f7f7;
   border: 1px solid #f7f7f7
-}
-.dateAvailable:hover {
-  /* background: lightgrey; */
+} */
+/* .dateAvailable:hover {
   border: 1px solid black;
   border-width: thin;
   border-radius: 50%;
-}
+} */
 /* .minStay {
   background: #f7f7f7;
   border-radius: 50%;
   cursor: not-allowed;
 } */
-.dateUnavailable {
+/* .dateUnavailable {
   text-decoration: line-through;
   text-decoration-color: rgb(145, 143, 143);
   color: rgb(141, 139, 139);
   cursor: default;
   font-weight: 200;
   background: white;
-}
-.clearButton {
+} */
+/* .clearButton {
   background-color: none;
   background: none;
   border: none;
   text-decoration: underline;
   padding-right: 15px;
-}
+} */
 /* .guestCloseButton {
   background-color: none;
   background: none;
@@ -271,12 +266,12 @@ table {
   cursor: pointer;
   justify-content: flex-end;
 } */
-.guestPickerList {
+/* .guestPickerList {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-inline-start: 0;
-}
+} */
 /* .showGuestPicker {
   display: flex;
   flex-direction: column;
@@ -305,10 +300,10 @@ table {
   column-gap: 15px;
   align-items: center;
 } */
-.guestNumber {
+/* .guestNumber {
   background: none;
   border: none;
-}
+} */
 /* .childrenRow {
   display: flex;
   flex-direction: column;
@@ -351,6 +346,6 @@ table {
   color: black;
   font-size: 16px;
 } */
-.hiddenPricingTable {
+/* .hiddenPricingTable {
   display: none;
-}
+} */

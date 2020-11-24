@@ -1,34 +1,100 @@
 import React from 'react'
 import moment from 'moment'
+import styled from 'styled-components'
+
+const Calendars = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-bottom: 20px;
+  text-align: center;
+`;
+const LeftCalendarHeader = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  padding-right: 40px;
+  font-weight: 600;
+`;
+const RightCalenderHeader = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 50px;
+  font-weight: 600;
+`;
+const DisableMonthButton = styled.button`
+  color: ${(props) => props.disable ? 'lightgrey' : 'default'};
+  background: none;
+  border: none;
+  cursor: default;
+`;
+const ChangeMonthButton = styled.button`
+  background-color: white;
+  border: none;
+`;
+const CalendarTables = styled.table`
+  table-layout: fixed;
+`;
+const CalendarDay = styled.td`
+  width: 20px;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border: 1px solid white;
+  &:hover {
+    border: 1px solid black;
+    border-width: thin;
+    border-radius: 50%;
+  }
+`;
+const DateUnavailable = styled(CalendarDay)`
+  text-decoration: line-through;
+  text-decoration-color: rgb(145, 143, 143);
+  color: rgb(141, 139, 139);
+  cursor: default;
+  font-weight: 200;
+  background: white;
+`;
+const SelectedCheckInDate = styled(CalendarDay)`
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 50%;
+`;
+const SelectedCheckOutDate = styled(CalendarDay)`
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 50%;
+`;
+const InDateRange = styled(CalendarDay)`
+  background: #f7f7f7;
+  border: 1px solid #f7f7f7
+`;
+const WeekDay = styled.th`
+  font-weight: 300;
+`;
 
 class CalendarTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dateObject: moment(),
-      dateObjectNext: moment().add(1, "month"),
-      // isUnavailable: false
+      dateObjectNext: moment().add(1, "month")
     }
   }
-  // to get all the days in the month
   daysInMonth(month) {
     return month.daysInMonth();
   }
-  // get month
   month(month) {
     return month.format("MMMM");
   }
-  // get year
   year(year) {
     return year.format("Y");
   }
-  // get the first day of the month
   firstDayOfMonth(month) {
-    let dateObject = month;
-    let firstDay = moment(dateObject).startOf('month').format('d');
+    let firstDay = moment(month).startOf('month').format('d');
     return firstDay;
   }
-  // on click event to go back 1 month
   onPrev() {
     console.log('on prev clicked')
     this.setState({
@@ -36,7 +102,6 @@ class CalendarTable extends React.Component {
       dateObjectNext: this.state.dateObjectNext.subtract(1, "month")
     })
   }
-  // on click event to go up 1 month
   onNext() {
     console.log('on next clicked')
     this.setState({
@@ -46,32 +111,26 @@ class CalendarTable extends React.Component {
   }
   isDateAvailable(date) {
     for (let i = 0; i < this.props.datesData.length; i++) {
-      // if (this.state.isUnavailable) {
-      //   return "calendar-day dateUnavailable"
-      // }
       if (this.props.datesData[i].date === date) {
         if (this.props.datesData[i].available === false) {
-          // if (moment(date).isAfter(this.props.currentCheckInInput)) {
-          //   console.log('this hit', date, this.state.isUnavailable)
-          //   this.setState({isUnavailable: true})
-          // }
-          return "calendar-day dateUnavailable"
+          return false
         }
-        // let minStay = moment(this.props.currentCheckInInput).add(this.props.datesData[0].listing.minimum_stay, 'day');
-        // if (moment(date).isBetween(this.props.currentCheckInInput, minStay)) {
-        //   return
-        // }
       }
     }
-    return "calendar-day dateAvailable"
+    return true
+  }
+  // get date
+  onDateClick(event, date, isAvailable) {
+    this.props.updateBookingDates(event, date, isAvailable);
   }
   // series of processes to fill up days of the given month
   populateCalendar(month) {
     // fills in any blanks before first day
     let blanks = [];
     for (let i = 0; i < this.firstDayOfMonth(month); i++) {
-    blanks.push(<td className="calendar-day empty">{""}</td>);
+    blanks.push(<td>{""}</td>);
     }
+
     // adds table columns with or without entries
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(month); d++) {
@@ -81,15 +140,51 @@ class CalendarTable extends React.Component {
         var dateDashFormat = month.format(`YYYY-MM-${d}`)
       }
       let date = month.format(`MM/${d}/YYYY`);
-      let isAvailable = moment().isBefore(date) ? this.isDateAvailable(dateDashFormat) : "calendar-day dateUnavailable";
-      let isCheckInDate = (moment(this.props.currentCheckInInput).isSame(date)) ? "selectedCheckInDate" : "";
-      let isCheckOutDate = (moment(this.props.currentCheckOutInput).isSame(date)) ? "selectedCheckOutDate" : "";
-      let isBetweenDates = moment(date).isBetween(this.props.currentCheckInInput, this.props.currentCheckOutInput) ? "inDateRange" : "";
-      daysInMonth.push(<td
-          key={d}
-          className={`${isAvailable} ${isCheckInDate} ${isCheckOutDate} ${isBetweenDates}`}
-        ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span></td>);
+      let isAvailable = (moment().isBefore(dateDashFormat)) ? this.isDateAvailable(dateDashFormat) : false;
+      let isCheckInDate = (moment(this.props.currentCheckInInput).isSame(date)) ? true : false;
+      let isCheckOutDate = (moment(this.props.currentCheckOutInput).isSame(date)) ? true : false;
+      let isBetweenDates = moment(date).isBetween(this.props.currentCheckInInput, this.props.currentCheckOutInput) ? true : false;
+
+      if (isCheckOutDate) {
+        daysInMonth.push(
+          <SelectedCheckOutDate
+            key={d}
+            ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
+          </SelectedCheckOutDate>
+        );
+      } else if (isCheckInDate) {
+        daysInMonth.push(
+          <SelectedCheckInDate
+            key={d}
+            ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
+          </SelectedCheckInDate>
+        );
+      } else if (isBetweenDates) {
+        daysInMonth.push(
+          <InDateRange
+            key={d}
+            ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
+          </InDateRange>
+        );
+      } else
+      if (isAvailable) {
+        daysInMonth.push(
+          <CalendarDay
+            key={d}
+            ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
+          </CalendarDay>
+        );
+      }
+      if (!isAvailable) {
+        daysInMonth.push(
+          <DateUnavailable
+            key={d}
+            ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
+          </DateUnavailable>
+        );
+      }
     }
+
     // play to populate each day
     var totalSlots = [...blanks, ...daysInMonth];
     let rows = [];
@@ -115,30 +210,23 @@ class CalendarTable extends React.Component {
     })
     return daysOfMonth;
   }
-  // get date
-  onDateClick(event, date, isAvailable) {
-    this.props.updateBookingDates(event, date, isAvailable);
-  }
 
   render() {
     let weekdayShortName = moment.weekdaysShort().map(day => {
       return (
-        <th key={day} className="week-day">{day.slice(0, -1)}</th>
+        <WeekDay key={day}>{day.slice(0, -1)}</WeekDay>
       );
     });
 
     return (
-      <div className="calendars">
-        <div className="leftCalendar">
-          <div className="leftCalendarHeader">
-
-            <button
-            className={this.state.dateObject.isBefore('2020-11-30') ? 'disableMonthButton' : "changeMonthButton"}
-            onClick={event=>{this.onPrev()}}>{`<`}</button>
-
+      <Calendars>
+        <div>
+          <LeftCalendarHeader>
+            <DisableMonthButton disable={this.state.dateObject.isBefore('2020-11-30')}
+            onClick={event=>{this.onPrev()}}>{`<`}</DisableMonthButton>
             {this.month(this.state.dateObject)} {this.year(this.state.dateObject)}
-          </div>
-          <table className="calendar-table">
+          </LeftCalendarHeader>
+          <CalendarTables>
             <thead>
               <tr>
                 {weekdayShortName}
@@ -147,15 +235,14 @@ class CalendarTable extends React.Component {
             <tbody>
               {this.populateCalendar(this.state.dateObject)}
             </tbody>
-          </table>
+          </CalendarTables>
         </div>
-        <div className="rightCalendar">
-          <div className="rightCalendarHeader">
+        <div>
+          <RightCalenderHeader>
             {this.month(this.state.dateObjectNext)} {this.year(this.state.dateObjectNext)}
-
-            <button className="changeMonthButton" onClick={event=>{this.onNext()}}>{`>`}</button>
-          </div>
-          <table className="calendar-table">
+            <ChangeMonthButton onClick={event=>{this.onNext()}}>{`>`}</ChangeMonthButton>
+          </RightCalenderHeader>
+          <CalendarTables>
             <thead>
               <tr>
                 {weekdayShortName}
@@ -164,9 +251,9 @@ class CalendarTable extends React.Component {
             <tbody>
               {this.populateCalendar(this.state.dateObjectNext)}
             </tbody>
-          </table>
+          </CalendarTables>
         </div>
-      </div>
+      </Calendars>
     )
   }
 }

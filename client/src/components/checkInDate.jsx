@@ -10,12 +10,16 @@ const CheckInTitle = styled.section`
   font-weight: bold;
   font-size: 8px;
 `;
+const Input = styled.input`
+  outline: none;
+  border-radius: 12px;
+`;
 
 const CheckInDate = (props) => {
   return (
     <CheckInDateStyle>
       <CheckInTitle>CHECK-IN</CheckInTitle>
-      <input
+      <Input
         placeholder="Add date"
         type="text"
         size="15"

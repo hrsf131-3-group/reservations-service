@@ -116,7 +116,7 @@ class App extends React.Component {
     })
   }
   handleUpdateBookingDates(event, date, isAvailable) {
-    if (isAvailable === "calendar-day dateAvailable") {
+    if (isAvailable) {
       if (this.state.checkIn === undefined) {
         this.setState({checkIn: date})
       } else if (moment(date).isBefore(this.state.checkIn)) {

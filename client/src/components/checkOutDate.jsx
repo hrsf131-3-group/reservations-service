@@ -7,12 +7,16 @@ const CheckOutTitle = styled.section`
   font-weight: bold;
   font-size: 8px;
 `;
+const Input = styled.input`
+  outline: none;
+  border-radius: 12px;
+`;
 
 const CheckOutDate = (props) => {
   return (
-    <section className='checkOutDate'>
+    <section>
       <CheckOutTitle>CHECKOUT</CheckOutTitle>
-      <input
+      <Input
         placeholder="Add date"
         type="text"
         size="15"
