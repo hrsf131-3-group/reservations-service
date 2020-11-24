@@ -122,28 +122,30 @@ class App extends React.Component {
       if (this.state.checkIn === undefined) {
         this.setState({checkIn: date})
       } else if (moment(date).isBefore(this.state.checkIn)) {
-        this.setState({checkIn: date, checkOut: ""})
+        this.setState({checkIn: date, checkOut: "", showPricing: false})
       } else if (this.checkForDateConflicts(date)) {
-        this.setState({checkIn: date, checkOut: ""})
+        this.setState({checkIn: date, checkOut: "", showPricing: false})
       } else if (moment(date).isAfter(this.state.checkIn)){
-        this.setState({checkOut: date, showPricing: true
-          ,numberOfSelectedDays: this.daysSelected(date)
-        })
+        this.setState({checkOut: date, showPricing: true, numberOfSelectedDays: this.daysSelected(date)})
       }
     }
   }
   checkForDateConflicts(date) {
     var checkIn = moment(this.state.checkIn);
+    var checkInFormated = checkIn.format('YYYY-MM-DD');
     var selectDate = moment(date);
     var daysBetweenSelected = selectDate.diff(checkIn, 'days');
     var daysBetweenToday = checkIn.diff(moment(), 'days');
-    console.log('conflict check', daysBetweenSelected, daysBetweenToday)
-    for (var i = 0, j = daysBetweenToday + 1; i <= daysBetweenSelected - 2; i++) {
-      if (this.state.availabilities[j].available === false) {
-        return true
+    console.log('conflict check', checkIn, selectDate, daysBetweenSelected, daysBetweenToday)
+    for (var i = 0; i < this.state.availabilities.length; i++) {
+      if (this.state.availabilities[i].date === checkInFormated) {
+        for (var j = 0; j < daysBetweenSelected; i++, j++) {
+          if (this.state.availabilities[i].available === false) {
+            return true;
+          }
+        }
+        break;
       }
-      j++;
-      console.log('is available?:', this.state.availabilities[j].available, j)
     }
   }
   daysSelected(date) {
