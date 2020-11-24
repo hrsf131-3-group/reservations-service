@@ -82,7 +82,11 @@ class App extends React.Component {
 
   handleCheckInChange(event) {
     event.preventDefault();
-    this.setState({checkIn: event.target.value})
+    console.log(event)
+    if (event.charCode === 10) {
+      this.setState({checkIn: event.target.value})
+
+    }
   }
   handleCheckOutChange(event) {
     event.preventDefault();

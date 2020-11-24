@@ -157,35 +157,40 @@ class CalendarTable extends React.Component {
         daysInMonth.push(
           <SelectedCheckOutDate
             // key={d}
-            ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            ><span>{d}</span>
           </SelectedCheckOutDate>
         );
       } else if (isCheckInDate) {
         daysInMonth.push(
           <SelectedCheckInDate
             // key={d}
-            ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            ><span>{d}</span>
           </SelectedCheckInDate>
         );
       } else if (isBetweenDates) {
         daysInMonth.push(
           <InDateRange
             // key={d}
-            ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            ><span>{d}</span>
           </InDateRange>
         );
       } else if (isAvailable) {
         daysInMonth.push(
           <CalendarDay
             // key={d}
-            ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            ><span>{d}</span>
           </CalendarDay>
         );
       } else {
         daysInMonth.push(
           <DateUnavailable
             // key={d}
-            ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            ><span>{d}</span>
           </DateUnavailable>
         );
       }
