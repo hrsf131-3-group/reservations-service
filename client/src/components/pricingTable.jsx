@@ -6,7 +6,7 @@ const PricingTableStyle = styled.div`
   display: ${(props)=> props.isPricingTableDisplay ? 'flex' : 'none'};
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 20px;
+  padding-top: 12px;
   padding-bottom: 15px;
   cursor: default;
 `;

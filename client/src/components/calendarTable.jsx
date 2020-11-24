@@ -148,12 +148,21 @@ class CalendarTable extends React.Component {
         var dateDashFormat = month.format(`YYYY-MM-${d}`)
       }
       let date = month.format(`MM/${d}/YYYY`);
+      let postSixMonths = moment().add(6, 'months');
       let isAvailable = (moment().isBefore(dateDashFormat)) ? this.isDateAvailable(dateDashFormat) : false;
       let isCheckInDate = (moment(this.props.currentCheckInInput).isSame(date)) ? true : false;
       let isCheckOutDate = (moment(this.props.currentCheckOutInput).isSame(date)) ? true : false;
       let isBetweenDates = moment(date).isBetween(this.props.currentCheckInInput, this.props.currentCheckOutInput) ? true : false;
 
-      if (isCheckOutDate) {
+      if (moment(dateDashFormat).isAfter(postSixMonths)) {
+        daysInMonth.push(
+          <DateUnavailable
+            // key={d}
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            ><span>{d}</span>
+          </DateUnavailable>
+        );
+      } else if (isCheckOutDate) {
         daysInMonth.push(
           <SelectedCheckOutDate
             // key={d}

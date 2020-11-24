@@ -15,7 +15,9 @@ const Input = styled.input`
   border-style: none;
   padding-left: 10px;
   padding-bottom: 10px;
-  font-weight: 300;
+  font-size: 14px;
+  padding-top: 4px;
+  color: rgb(34, 34, 34);
 `;
 
 const CheckOutDate = (props) => {

@@ -35,6 +35,7 @@ const BookingTable = (props) => {
         guestCount={props.guestCount}
         isGuestDropdownDisplay={props.isGuestDropdownDisplay}
         displayGuestPickerOnClick={props.displayGuestPickerOnClick}
+        minusGuest={props.minusGuest}
       />
     </BookingTableContainer>
   )

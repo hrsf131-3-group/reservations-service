@@ -25,7 +25,8 @@ const InnerContainer = styled.div`
 const CheckAvailability = styled.div`
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  flex-direction: column;
 `;
 const CheckAvailabilityButton = styled.button`
   min-width: 200px;
@@ -33,13 +34,18 @@ const CheckAvailabilityButton = styled.button`
   height: 100%;
   border-radius: 8px;
   color: white;
-  padding: 14px 24px 14px 24px;
+  padding: 10px 24px 10px 24px;
   background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
   --mouse-x: 32.8438;
   --mouse-y: 41.6667;
   background-image: var(--dls19-brand-gradient-radial, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
   outline: none;
   cursor: pointer;
+`;
+const NoChargedNote = styled.div`
+  cursor: default;
+  font-size: 14px;
+  padding-top: 10px;
 `;
 
 class App extends React.Component {
@@ -52,11 +58,10 @@ class App extends React.Component {
       checkOut: undefined,
       numberOfSelectedDays: 0,
       guests: {
-        adults: 2,
-        children: 0,
-        infants: 0
+        adults: 3,
+        children: 2,
+        infants: 2
       },
-      maxGuestCount: dummyDataDates[0].listing.max_guest_count,
       showCalendar: false,
       showGuestPicker: false,
       showPricing: false
@@ -68,6 +73,7 @@ class App extends React.Component {
     this.handleHidePopUpsOnClick = this.handleHidePopUpsOnClick.bind(this)
     this.handleClearInputtedDates = this.handleClearInputtedDates.bind(this)
     this.handleUpdateBookingDates = this.handleUpdateBookingDates.bind(this)
+    this.handleDecrementGuestCount = this.handleDecrementGuestCount.bind(this)
   }
 
   componentDidMount() {
@@ -101,10 +107,32 @@ class App extends React.Component {
       updateGuests.adults = Number(event.target.name[event.target.name.length - 1]);
       this.setState({
         showGuestPicker: !this.state.showGuestPicker,
-        guests: updateGuests
+        guests: isNaN(updateGuests) ? this.state.guests : updateGuests
       });
     } else {
       this.setState({showGuestPicker: !this.state.showGuestPicker})
+    }
+  }
+  handleDecrementGuestCount(event) {
+    if (event.target.name === 'adults') {
+      if (this.state.guests.adults + this.state.guests.children > 1 && this.state.guests.adults > 1) {
+        let updateGuests = Object.assign({}, this.state.guests);
+        updateGuests[event.target.name]--;
+        this.setState({guests: updateGuests})
+      }
+    } else if (event.target.name === 'children') {
+      if (this.state.guests.adults + this.state.guests.children > 1 && this.state.guests.children > 0) {
+        let updateGuests = Object.assign({}, this.state.guests);
+        updateGuests[event.target.name]--;
+        this.setState({guests: updateGuests})
+      }
+    } else {
+      if (this.state.guests.infants === 0) {
+        return;
+      }
+      let updateGuests = Object.assign({}, this.state.guests);
+        updateGuests[event.target.name]--;
+        this.setState({guests: updateGuests})
     }
   }
   handleHidePopUpsOnClick(event) {
@@ -140,7 +168,6 @@ class App extends React.Component {
     var selectDate = moment(date);
     var daysBetweenSelected = selectDate.diff(checkIn, 'days');
     var daysBetweenToday = checkIn.diff(moment(), 'days');
-    console.log('conflict check', checkIn, selectDate, daysBetweenSelected, daysBetweenToday)
     for (var i = 0; i < this.state.availabilities.length; i++) {
       if (this.state.availabilities[i].date === checkInFormated) {
         for (var j = 0; j < daysBetweenSelected; i++, j++) {
@@ -174,6 +201,7 @@ class App extends React.Component {
             maxGuestCount={this.state.maxGuestCount}
             isGuestDropdownDisplay={this.state.showGuestPicker}
             displayGuestPickerOnClick={this.handleDisplayGuestPickerOnClick}
+            minusGuest={this.handleDecrementGuestCount}
           />
           <Calendar
             checkInValue={this.state.checkIn}
@@ -190,6 +218,7 @@ class App extends React.Component {
           />
           <CheckAvailability>
             <CheckAvailabilityButton>{this.state.checkOut ? "Reserve" : "Check Availability"}</CheckAvailabilityButton>
+            <NoChargedNote>{this.state.checkOut ? "You won't be charged yet" : ""}</NoChargedNote>
           </CheckAvailability>
           <PricingTable
             checkInValue={this.state.checkIn}

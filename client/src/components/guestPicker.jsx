@@ -11,7 +11,7 @@ const ShowGuestPicker = styled.div`
   border: 1px solid lightgrey;
   background-color: white;
   width: 250px;
-  top: 175px;
+  top: 170px;
   right: 25px;
   font-size: 12px;
   cursor: default;
@@ -45,11 +45,14 @@ const MinusButton = styled.button`
   color: #E8E8E8;
   background-color: none;
   background: none;
+  outline: none;
 `;
 const PlusButton = styled.button`
   background: none;
   border-radius: 50%;
   border: 1px solid grey;
+  cursor: pointer;
+  outline: none;
 `;
 const GuestCloseButton = styled.button`
   display: flex;
@@ -61,6 +64,8 @@ const GuestCloseButton = styled.button`
   border: none;
   text-decoration: underline;
   padding-right: 15px;
+  outline: none;
+  cursor: pointer;
 `;
 const GuestPicker = (props) => {
   return (
@@ -68,7 +73,7 @@ const GuestPicker = (props) => {
       <GuestRow>
         <div>Adults</div>
         <GuestQuantityContainer>
-          <MinusButton>-</MinusButton>2<PlusButton>+</PlusButton>
+          <MinusButton name="adults" onClick={props.minusGuest}>-</MinusButton>{props.guestCount.adults}<PlusButton>+</PlusButton>
         </GuestQuantityContainer>
       </GuestRow>
       <GuestRow>
@@ -77,7 +82,7 @@ const GuestPicker = (props) => {
           <GuestNote>Ages 2-12</GuestNote>
         </ChildrenRow>
         <GuestQuantityContainer>
-          <MinusButton>-</MinusButton>0<PlusButton>+</PlusButton>
+          <MinusButton name="children" onClick={props.minusGuest}>-</MinusButton>{props.guestCount.children}<PlusButton>+</PlusButton>
         </GuestQuantityContainer>
       </GuestRow>
       <GuestRow>
@@ -86,7 +91,7 @@ const GuestPicker = (props) => {
           <GuestNote>Under 2</GuestNote>
         </ChildrenRow>
         <GuestQuantityContainer>
-          <MinusButton>-</MinusButton>0<PlusButton>+</PlusButton>
+          <MinusButton name="infants" onClick={props.minusGuest}>-</MinusButton>{props.guestCount.infants}<PlusButton>+</PlusButton>
         </GuestQuantityContainer>
       </GuestRow>
       <GuestNote>
