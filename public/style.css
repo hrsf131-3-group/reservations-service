@@ -20,11 +20,11 @@ input:focus, button {
   outline: none;
   border-radius: 12px;
 }
-button {
+/* button {
   background: none;
   border-radius: 50%;
   border: 1px solid grey;
-}
+} */
 /* .minusButton {
   border: 1px solid #E8E8E8;
   color: #E8E8E8;
@@ -240,21 +240,24 @@ table {
   font-weight: 200;
   background: white;
 }
-.clearButton,
-  .guestCloseButton {
+.clearButton {
   background-color: none;
   background: none;
   border: none;
   text-decoration: underline;
   padding-right: 15px;
 }
-.guestCloseButton {
-  /* padding-left: 210px; */
+/* .guestCloseButton {
+  background-color: none;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  padding-right: 15px;
   display: flex;
   flex-direction: row-reverse;
   padding-bottom: 10px;
   padding-top: 10px;
-}
+} */
 /* .closeButton {
   color: white;
   background: black;
@@ -319,35 +322,35 @@ table {
 /* .hiddenGuestPicker {
   display: none;
 } */
-.pricingTable {
+/* .pricingTableStyle {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-top: 20px;
   padding-bottom: 15px;
-}
-.pricingColInfo {
+} */
+/* .pricingColInfo {
   font-size: 12px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding-top: 5px;
-}
-.pricingColPrices {
+} */
+/* .pricingColPrices {
   font-size: 12px;
   display: flex;
   flex-direction: column;
   align-self: flex-end;
   padding-top: 5px;
-}
-.pricingFooter {
+} */
+/* .pricingFooter {
   padding-top: 5px;
   padding-bottom: 0px;
   border-top: 1px solid darkgrey;
   font-weight: 600;
   color: black;
   font-size: 16px;
-}
+} */
 .hiddenPricingTable {
   display: none;
 }

@@ -42,6 +42,8 @@ const GuestNote = styled.div`
 const MinusButton = styled.button`
   border: 1px solid #E8E8E8;
   color: #E8E8E8;
+  background-color: none;
+  background: none;
 `;
 const PlusButton = styled.button`
   background: none;
