@@ -25,14 +25,18 @@ const DisableMonthButton = styled.button`
   color: ${(props) => props.disable ? 'lightgrey' : 'default'};
   background: none;
   border: none;
-  cursor: default;
+  cursor: ${(props) => props.disable ? 'default' : 'pointer'};
+  outline: none;
 `;
 const ChangeMonthButton = styled.button`
   background-color: white;
   border: none;
+  outline: none;
+  cursor: pointer;
 `;
 const CalendarTables = styled.table`
   table-layout: fixed;
+  border-spacing: 0px 1px;
 `;
 const CalendarDay = styled.td`
   width: 20px;
@@ -40,6 +44,7 @@ const CalendarDay = styled.td`
   padding-left: 8px;
   padding-right: 8px;
   border: 1px solid white;
+  cursor: pointer;
   &:hover {
     border: 1px solid black;
     border-width: thin;
@@ -53,6 +58,9 @@ const DateUnavailable = styled(CalendarDay)`
   cursor: default;
   font-weight: 200;
   background: white;
+  &:hover {
+    border: none;
+  }
 `;
 const SelectedCheckInDate = styled(CalendarDay)`
   border: none;
@@ -148,37 +156,35 @@ class CalendarTable extends React.Component {
       if (isCheckOutDate) {
         daysInMonth.push(
           <SelectedCheckOutDate
-            key={d}
+            // key={d}
             ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
           </SelectedCheckOutDate>
         );
       } else if (isCheckInDate) {
         daysInMonth.push(
           <SelectedCheckInDate
-            key={d}
+            // key={d}
             ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
           </SelectedCheckInDate>
         );
       } else if (isBetweenDates) {
         daysInMonth.push(
           <InDateRange
-            key={d}
+            // key={d}
             ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
           </InDateRange>
         );
-      } else
-      if (isAvailable) {
+      } else if (isAvailable) {
         daysInMonth.push(
           <CalendarDay
-            key={d}
+            // key={d}
             ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
           </CalendarDay>
         );
-      }
-      if (!isAvailable) {
+      } else {
         daysInMonth.push(
           <DateUnavailable
-            key={d}
+            // key={d}
             ><span onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}>{d}</span>
           </DateUnavailable>
         );

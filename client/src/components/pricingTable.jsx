@@ -8,6 +8,7 @@ const PricingTableStyle = styled.div`
   justify-content: space-between;
   padding-top: 20px;
   padding-bottom: 15px;
+  cursor: default;
 `;
 const PricingColInfo = styled.div`
   font-size: 12px;

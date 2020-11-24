@@ -9,10 +9,16 @@ const CheckInTitle = styled.section`
   padding-left: 10px;
   font-weight: bold;
   font-size: 8px;
+  cursor: default;
 `;
 const Input = styled.input`
   outline: none;
   border-radius: 12px;
+  cursor: pointer;
+  border-style: none;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-weight: 300;
 `;
 
 const CheckInDate = (props) => {

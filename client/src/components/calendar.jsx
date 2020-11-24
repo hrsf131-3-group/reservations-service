@@ -60,12 +60,16 @@ const ClearButton = styled.button`
   border: none;
   text-decoration: underline;
   padding-right: 15px;
+  outline: none;
+  cursor: pointer;
 `;
 const CloseButton = styled.button`
   color: white;
   background: black;
   border-radius: 8px;
   padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
 `;
 
 const Calendar = (props) => {

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const HeaderPricePerNight = styled.div`
   justify-content: flex-start;
   margin-bottom: 20px;
+  cursor: default;
 `;
 
 const PricePerNight = styled.span`
