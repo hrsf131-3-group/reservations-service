@@ -9,7 +9,6 @@
 input,
   .guestCountDisplay {
   border-style: none;
-  /* padding-top: 5px; */
   padding-left: 10px;
   padding-bottom: 10px;
   font-size: 14px;
@@ -26,11 +25,10 @@ button {
   border-radius: 50%;
   border: 1px solid grey;
 }
-.minusButton {
+/* .minusButton {
   border: 1px solid #E8E8E8;
   color: #E8E8E8;
-  ;
-}
+} */
 button,
   input,
   .calendar-day {
@@ -93,12 +91,12 @@ table {
   justify-content: space-evenly;
   border-bottom: 1px solid darkgrey;
 } */
-.checkInTitle, .checkOutTitle, .guestCountTitle {
+/* .checkInTitle, .checkOutTitle, .guestCountTitle {
   padding-top: 10px;
   padding-left: 10px;
   font-weight: bold;
   font-size: 8px;
-}
+} */
 /* .checkInDateStyle {
   border-right: 1px solid darkgrey;
 } */
@@ -266,17 +264,17 @@ table {
 /* .hiddenCalendar {
   display: none;
 } */
-.guestDropdownStyle {
+/* .guestDropdownStyle {
   cursor: pointer;
   justify-content: flex-end;
-}
+} */
 .guestPickerList {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-inline-start: 0;
 }
-.showGuestPicker {
+/* .showGuestPicker {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -291,36 +289,36 @@ table {
   font-size: 12px;
   cursor: default;
   padding: 10px;
-}
-.guestRow {
+} */
+/* .guestRow {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 12px;
-}
-.guestQuantityContainer {
+} */
+/* .guestQuantityContainer {
   display: grid;
   grid-template-columns: auto auto auto;
   column-gap: 15px;
   align-items: center;
-}
+} */
 .guestNumber {
   background: none;
   border: none;
 }
-.childrenRow {
+/* .childrenRow {
   display: flex;
   flex-direction: column;
   align-content: center;
-}
-.guestNote {
+} */
+/* .guestNote {
   display: flex;
   justify-content: center;
   font-size: 10px;
-}
-.hiddenGuestPicker {
+} */
+/* .hiddenGuestPicker {
   display: none;
-}
+} */
 .pricingTable {
   display: flex;
   flex-direction: row;

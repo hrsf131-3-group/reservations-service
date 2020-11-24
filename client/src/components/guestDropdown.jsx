@@ -22,7 +22,7 @@ const GuestCountDisplay = styled.section`
   font-weight: 300;
 `;
 
-function GuestDropdown(props) {
+const GuestDropdown = (props) => {
   return (
     <div>
       <GuestDropdownStyle
