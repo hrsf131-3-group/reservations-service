@@ -10,7 +10,7 @@ const GuestCountTitle = styled.section`
   padding-top: 10px;
   padding-left: 10px;
   font-weight: bold;
-  font-size: 8px;
+  font-size: 10px;
 `;
 const GuestCountDisplay = styled.section`
   border-style: none;

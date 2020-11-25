@@ -12,7 +12,7 @@ const BookingTableContainer = styled.div`
 const BookingTableInnerContainer = styled.div`
   display: flex;
   flex-flow: row;
-  justify-content: space-evenly;
+  justify-content: space-inbetween;
   border-bottom: 1px solid darkgrey;
 `;
 

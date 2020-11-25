@@ -56,7 +56,6 @@ const GuestNote = styled.div`
 const Button = styled.button`
   border: 1px solid grey;
   cursor: pointer;
-  box-sizing: border-box;
   padding: 10px 10px;
   border-radius: 100%;
   background: none;
@@ -72,6 +71,7 @@ const MinusImage = styled.svg`
   stroke: currentcolor;
   stroke-width: 5.33333;
   overflow: visible;
+  pointer-events: none;
 `;
 const PlusImage = styled.svg`
   display: block;
@@ -81,6 +81,7 @@ const PlusImage = styled.svg`
   stroke: currentcolor;
   stroke-width: 5.33333;
   overflow: visible;
+  pointer-events: none;
 `;
 const MinusButtonAdult = styled(Button)`
   border: ${props => {if (props.guestCount.adults === 1) {return '1px solid #E8E8E8;'}}}

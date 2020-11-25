@@ -10,8 +10,8 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   position: sticky;
-  max-width: 400px;
-  width: auto;
+  width: 33.33%;
+  max-width: 372px;
   z-index: 1;
   padding-right: 1px;
   font-size: 8px;
@@ -34,13 +34,17 @@ const CheckAvailabilityButton = styled.button`
   height: 100%;
   border-radius: 8px;
   color: white;
-  padding: 10px 24px 10px 24px;
+  padding: 13px 24px;
   background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
   --mouse-x: 32.8438;
   --mouse-y: 41.6667;
   background-image: var(--dls19-brand-gradient-radial, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
   outline: none;
   cursor: pointer;
+  border: none;
+  &: focus-visible {
+    background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
+  }
 `;
 const NoChargedNote = styled.div`
   cursor: default;
@@ -115,6 +119,7 @@ class App extends React.Component {
     }
   }
   handleDecrementGuestCount(event) {
+    console.log(event.target.name)
     if (event.target.name === 'adults') {
       if (this.state.guests.adults + this.state.guests.children > 1 && this.state.guests.adults > 1) {
         let updateGuests = Object.assign({}, this.state.guests);
@@ -235,7 +240,7 @@ class App extends React.Component {
             currentCheckOutInput={this.state.checkOut}
           />
           <CheckAvailability>
-            <CheckAvailabilityButton>{this.state.checkOut ? "Reserve" : "Check Availability"}</CheckAvailabilityButton>
+            <CheckAvailabilityButton>{this.state.checkOut ? "Reserve" : "Check availability"}</CheckAvailabilityButton>
             <NoChargedNote>{this.state.checkOut ? "You won't be charged yet" : ""}</NoChargedNote>
           </CheckAvailability>
           <PricingTable

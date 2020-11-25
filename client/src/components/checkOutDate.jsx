@@ -5,7 +5,7 @@ const CheckOutTitle = styled.section`
   padding-top: 10px;
   padding-left: 10px;
   font-weight: bold;
-  font-size: 8px;
+  font-size: 10px;
   cursor: default;
 `;
 const Input = styled.input`
@@ -18,6 +18,7 @@ const Input = styled.input`
   font-size: 14px;
   padding-top: 4px;
   color: rgb(34, 34, 34);
+  background: none;
 `;
 
 const CheckOutDate = (props) => {
