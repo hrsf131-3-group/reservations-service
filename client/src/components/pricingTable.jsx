@@ -9,6 +9,9 @@ const PricingTableStyle = styled.div`
   padding-top: 12px;
   padding-bottom: 15px;
   cursor: default;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: underline;
 `;
 const PricingColInfo = styled.div`
   font-size: 12px;
@@ -16,6 +19,9 @@ const PricingColInfo = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   padding-top: 5px;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: underline;
 `;
 const PricingColPrices = styled.div`
   font-size: 12px;
@@ -23,14 +29,18 @@ const PricingColPrices = styled.div`
   flex-direction: column;
   align-self: flex-end;
   padding-top: 5px;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: underline;
 `;
 const PricingFooter = styled(PricingTableStyle)`
   padding-top: 5px;
   padding-bottom: 0px;
   border-top: 1px solid darkgrey;
-  font-weight: 600;
+  font-weight: 800;
   color: black;
   font-size: 16px;
+  text-decoration: none;
 `;
 
 const PricingTable = (props) => {
