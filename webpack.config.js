@@ -5,7 +5,7 @@ const ENTRY_DIR = __dirname + '/client/src';
 const OUTPUT_DIR = __dirname + '/public';
 
 const config = {
-  mode: 'production',
+  mode: 'development',
   entry: ENTRY_DIR + '/index.jsx',
   module: {
     rules:

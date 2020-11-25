@@ -8,9 +8,14 @@ import PricingTable from './pricingTable.jsx'
 import axios from 'axios'
 import styled from 'styled-components'
 
+const OuterContainer = styled.div`
+  display: grid;
+  grid-template-columns: 67% 33%;
+  width: 60%;
+  margin: 10px auto;
+`;
 const Container = styled.div`
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
-  width: 33.33%;
   max-width: 372px;
   z-index: 1;
   padding-right: 1px;
@@ -20,10 +25,10 @@ const Container = styled.div`
   }
   text-overflow: ellipsis;
   margin-top: 48px;
-  margin-right: 20%;
   float: right;
   color: #484848;
   line-height: 1.43;
+  grid-area: 1 / 2 / 4 / 2;
 `;
 const InnerContainer = styled.div`
   position: sticky;
@@ -73,6 +78,20 @@ const NoChargedNote = styled.div`
   cursor: default;
   font-size: 14px;
   padding-top: 10px;
+`;
+const Img = styled.img`
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+`;
+const ImgTop = styled(Img)`
+
+`;
+const ImgBot = styled(Img)`
+
+`;
+const ImgCalendar = styled(Img)`
+
 `;
 
 class App extends React.Component {
@@ -247,59 +266,61 @@ class App extends React.Component {
 
   render() {
     return (
-      <Container>
-        <InnerContainer>
-          <Header pricePerNight={this.state.availabilities[0].base_price_per_night}/>
-          <BookingTable
-            checkInValue={this.state.checkIn}
-            checkOutValue={this.state.checkOut}
-            checkInChange={this.handleCheckInChange}
-            checkOutChange={this.handleCheckOutChange}
-            displayCalendar={this.handleDisplayCalendarOnClick}
-            guestCount={this.state.guests}
-            maxGuestCount={this.state.availabilities[0].listing.max_guest_count}
-            isGuestDropdownDisplay={this.state.showGuestPicker}
-            displayGuestPickerOnClick={this.handleDisplayGuestPickerOnClick}
-            minusGuest={this.handleDecrementGuestCount}
-            plusGuest={this.handleIncrementGuestCount}
-          />
-          <Calendar
-            checkInValue={this.state.checkIn}
-            checkOutValue={this.state.checkOut}
-            checkInChange={this.handleCheckInChange}
-            checkOutChange={this.handleCheckOutChange}
-            isCalendarDisplay={this.state.showCalendar}
-            hidePopUps={this.handleHidePopUpsOnClick}
-            clearDates={this.handleClearInputtedDates}
-            updateBookingDates={this.handleUpdateBookingDates}
-            datesData={this.state.availabilities}
-            currentCheckInInput={this.state.checkIn}
-            currentCheckOutInput={this.state.checkOut}
-            daysSelected={this.state.numberOfSelectedDays}
-          />
-          <CheckAvailability>
-            <CheckAvailabilityButton
-              onMouseMove={this.handleMouseMoveOverCheckAvailability}
-              coordinateX={this.state.x}
-              coordinateY={this.state.y}
-            ><CheckAvailabilityButtonSpan>{this.state.checkOut ? "Reserve" : "Check availability"}</CheckAvailabilityButtonSpan></CheckAvailabilityButton>
-            <NoChargedNote>{this.state.checkOut ? "You won't be charged yet" : ""}</NoChargedNote>
-          </CheckAvailability>
-          <PricingTable
-            checkInValue={this.state.checkIn}
-            checkOutValue={this.state.checkOut}
-            isPricingTableDisplay={this.state.showPricing}
-            data={this.state.availabilities}
-            daysSelected={this.state.numberOfSelectedDays}
+      <OuterContainer>
+        <div><ImgTop src="https://rest-n-react.s3-us-west-1.amazonaws.com/airbnb_topshot.jpg"></ImgTop></div>
+        <Container>
+          <InnerContainer>
+            <Header pricePerNight={this.state.availabilities[0].base_price_per_night}/>
+            <BookingTable
+              checkInValue={this.state.checkIn}
+              checkOutValue={this.state.checkOut}
+              checkInChange={this.handleCheckInChange}
+              checkOutChange={this.handleCheckOutChange}
+              displayCalendar={this.handleDisplayCalendarOnClick}
+              guestCount={this.state.guests}
+              maxGuestCount={this.state.availabilities[0].listing.max_guest_count}
+              isGuestDropdownDisplay={this.state.showGuestPicker}
+              displayGuestPickerOnClick={this.handleDisplayGuestPickerOnClick}
+              minusGuest={this.handleDecrementGuestCount}
+              plusGuest={this.handleIncrementGuestCount}
             />
-        </InnerContainer>
-      </Container>
+            <Calendar
+              checkInValue={this.state.checkIn}
+              checkOutValue={this.state.checkOut}
+              checkInChange={this.handleCheckInChange}
+              checkOutChange={this.handleCheckOutChange}
+              isCalendarDisplay={this.state.showCalendar}
+              hidePopUps={this.handleHidePopUpsOnClick}
+              clearDates={this.handleClearInputtedDates}
+              updateBookingDates={this.handleUpdateBookingDates}
+              datesData={this.state.availabilities}
+              currentCheckInInput={this.state.checkIn}
+              currentCheckOutInput={this.state.checkOut}
+              daysSelected={this.state.numberOfSelectedDays}
+            />
+            <CheckAvailability>
+              <CheckAvailabilityButton
+                onMouseMove={this.handleMouseMoveOverCheckAvailability}
+                coordinateX={this.state.x}
+                coordinateY={this.state.y}
+              ><CheckAvailabilityButtonSpan>{this.state.checkOut ? "Reserve" : "Check availability"}</CheckAvailabilityButtonSpan></CheckAvailabilityButton>
+              <NoChargedNote>{this.state.checkOut ? "You won't be charged yet" : ""}</NoChargedNote>
+            </CheckAvailability>
+            <PricingTable
+              checkInValue={this.state.checkIn}
+              checkOutValue={this.state.checkOut}
+              isPricingTableDisplay={this.state.showPricing}
+              data={this.state.availabilities}
+              daysSelected={this.state.numberOfSelectedDays}
+              />
+          </InnerContainer>
+        </Container>
+        <div><ImgBot src="https://rest-n-react.s3-us-west-1.amazonaws.com/airbnb_bottomshot.jpg"></ImgBot></div>
+        <div></div>
+        <div><ImgCalendar src="https://rest-n-react.s3-us-west-1.amazonaws.com/airbnb_static_calendar.jpg"></ImgCalendar></div>
+      </OuterContainer>
     )
   }
 }
 
 export default App
-
-const Div = styled.div`
-  height: 2000px;
-`;
