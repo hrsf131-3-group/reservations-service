@@ -3,6 +3,7 @@ import CheckInDate from './checkInDate.jsx'
 import CheckOutDate from './checkOutDate.jsx'
 import CalendarTable from './calendarTable.jsx'
 import styled from 'styled-components'
+import moment from 'moment'
 
 const ShowCalendar = styled.div`
   display: ${props => props.isCalendarDisplay ? 'flex' : 'none'};
@@ -23,8 +24,9 @@ const ShowCalendar = styled.div`
 const CalendarHead = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: flex-start;
+  padding: 0 25px;
 `;
 const HeaderCalendar = styled.div`
   display: flex;
@@ -79,8 +81,10 @@ const Calendar = (props) => {
     <ShowCalendar isCalendarDisplay={props.isCalendarDisplay}>
       <CalendarHead>
         <HeaderCalendar>
-          <SelectDates>Select dates</SelectDates>
-          <SelectedDateRange>Minimum stay: 2 nights</SelectedDateRange>
+          <div>
+            <SelectDates>{props.checkOutValue ? (props.daysSelected > 1 ? `${props.daysSelected} nights` : `${props.daysSelected} night`) : 'Select dates'}</SelectDates>
+            <SelectedDateRange>{props.checkOutValue ? `${moment(props.checkInValue).format('MMM D, YYYY')} - ${moment(props.checkOutValue).format('MMM D, YYYY')}`: `Minimum stay: 1 night`}</SelectedDateRange>
+          </div>
         </HeaderCalendar>
         <CalendarBookingContainer>
           <CheckInDate

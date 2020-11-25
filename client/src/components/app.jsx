@@ -267,6 +267,7 @@ class App extends React.Component {
             datesData={this.state.availabilities}
             currentCheckInInput={this.state.checkIn}
             currentCheckOutInput={this.state.checkOut}
+            daysSelected={this.state.numberOfSelectedDays}
           />
           <CheckAvailability>
             <CheckAvailabilityButton

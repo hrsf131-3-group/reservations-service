@@ -14,12 +14,14 @@ const LeftCalendarHeader = styled.div`
   justify-content: space-evenly;
   padding-right: 40px;
   font-weight: 600;
+  padding-bottom: 12px;
 `;
 const RightCalenderHeader = styled.div`
   display: flex;
   justify-content: space-evenly;
   padding-left: 50px;
   font-weight: 600;
+  padding-bottom: 12px;
 `;
 const DisableMonthButton = styled.button`
   color: ${(props) => props.disable ? 'lightgrey' : 'default'};
