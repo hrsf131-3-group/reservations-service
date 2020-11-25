@@ -9,7 +9,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  position: sticky;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
   width: 33.33%;
   max-width: 372px;
   z-index: 1;
@@ -18,8 +18,16 @@ const Container = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
+  text-overflow: ellipsis;
+  margin-top: 48px;
+  margin-right: 20%;
+  float: right;
+  color: #484848;
+  line-height: 1.43;
 `;
 const InnerContainer = styled.div`
+  position: sticky;
+  top: 80px;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   padding: 24px;
@@ -291,3 +299,7 @@ class App extends React.Component {
 }
 
 export default App
+
+const Div = styled.div`
+  height: 2000px;
+`;
