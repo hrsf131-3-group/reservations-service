@@ -31,38 +31,31 @@ const CheckAvailability = styled.div`
   align-items: center;
   flex-direction: column;
 `;
-// background-image: var(--dls19-brand-gradient-radial, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
-// background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
-// --mouse-x: ${props=>props.coordinateX};
-// --mouse-y: ${props=>props.coordinateY};
-// background-image: var(--dls19-brand-gradient-radial, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
+// transition: width 0.2s ease, height 0.2s ease;
 const CheckAvailabilityButton = styled.button`
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  color: white;
-  padding: 13px 24px;
-  position: relative;
-  &::before {
+width: 100%;
+height: 100%;
+border-radius: 8px;
+color: white;
+padding: 13px 24px;
+position: relative;
+overflow: hidden;
+background-image: var(--dls19-brand-gradient-radial, linear-gradient(to right, #E61E4D 0%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
+&::before {
+    background-position: ${props=>props.coordinateX}px ${props=>props.coordinateY}px;
+    background-image: radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #ff385c 100% );
     --size: 0;
     content: '';
     position: absolute;
-    left: var(--x);
-    top: var(--y);
     width: var(--size);
     height: var(--size);
-    background: radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% );
-    --mouse-x: ${props=>props.coordinateX};
-    --mouse-y: ${props=>props.coordinateY};
-    background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
     transform: translate(-50%, -50%);
-    transition: width 0.2s ease, height 0.2s ease;
   }
   outline: none;
   cursor: pointer;
   border: none;
   &: hover:before {
-    --size: 400px;
+    --size: 500px;
   };
 `;
 const CheckAvailabilityButtonSpan = styled.span`;
@@ -144,7 +137,6 @@ class App extends React.Component {
     }
   }
   handleDecrementGuestCount(event) {
-    console.log(event.target.name)
     if (event.target.name === 'adults') {
       if (this.state.guests.adults + this.state.guests.children > 1 && this.state.guests.adults > 1) {
         let updateGuests = Object.assign({}, this.state.guests);
@@ -233,11 +225,12 @@ class App extends React.Component {
     return daysBetweenSelected
   }
   handleMouseMoveOverCheckAvailability(event) {
-    console.log('x', this.state.x, 'y', this.state.y)
     const x = event.pageX - event.target.offsetLeft;
     const y = event.pageY - event.target.offsetTop;
     event.target.style.setProperty('--x', `${ x }px`)
     event.target.style.setProperty('--y', `${ y }px`)
+    // setX(event.clientX)
+    // setY(event.clientY)
     this.setState({
       x: event.clientX,
       y: event.clientY
