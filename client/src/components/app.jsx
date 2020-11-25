@@ -31,22 +31,42 @@ const CheckAvailability = styled.div`
   align-items: center;
   flex-direction: column;
 `;
+// background-image: var(--dls19-brand-gradient-radial, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
+// background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+// --mouse-x: ${props=>props.coordinateX};
+// --mouse-y: ${props=>props.coordinateY};
+// background-image: var(--dls19-brand-gradient-radial, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
 const CheckAvailabilityButton = styled.button`
   width: 100%;
   height: 100%;
   border-radius: 8px;
   color: white;
   padding: 13px 24px;
-  background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
-  --mouse-x: 32.8438;
-  --mouse-y: 41.6667;
-  background-image: var(--dls19-brand-gradient-radial, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
+  position: relative;
+  &::before {
+    --size: 0;
+    content: '';
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% );
+    --mouse-x: ${props=>props.coordinateX};
+    --mouse-y: ${props=>props.coordinateY};
+    background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+  }
   outline: none;
   cursor: pointer;
   border: none;
-  &: focus-visible {
-    background: linear-gradient(to right, #E61E4D 0%, #E31C5F 50%, #D70466 100%);
-  }
+  &: hover:before {
+    --size: 400px;
+  };
+`;
+const CheckAvailabilityButtonSpan = styled.span`;
+  position: relative;
 `;
 const NoChargedNote = styled.div`
   cursor: default;
@@ -70,7 +90,9 @@ class App extends React.Component {
       },
       showCalendar: false,
       showGuestPicker: false,
-      showPricing: false
+      showPricing: false,
+      x: 0,
+      y: 0
     }
     this.handleCheckInChange = this.handleCheckInChange.bind(this)
     this.handleCheckOutChange = this.handleCheckOutChange.bind(this)
@@ -81,6 +103,7 @@ class App extends React.Component {
     this.handleUpdateBookingDates = this.handleUpdateBookingDates.bind(this)
     this.handleDecrementGuestCount = this.handleDecrementGuestCount.bind(this)
     this.handleIncrementGuestCount = this.handleIncrementGuestCount.bind(this)
+    this.handleMouseMoveOverCheckAvailability = this.handleMouseMoveOverCheckAvailability.bind(this)
   }
 
   componentDidMount() {
@@ -209,6 +232,17 @@ class App extends React.Component {
     var daysBetweenSelected = selectDate.diff(checkIn, 'days');
     return daysBetweenSelected
   }
+  handleMouseMoveOverCheckAvailability(event) {
+    console.log('x', this.state.x, 'y', this.state.y)
+    const x = event.pageX - event.target.offsetLeft;
+    const y = event.pageY - event.target.offsetTop;
+    event.target.style.setProperty('--x', `${ x }px`)
+    event.target.style.setProperty('--y', `${ y }px`)
+    this.setState({
+      x: event.clientX,
+      y: event.clientY
+    })
+  }
 
   render() {
     return (
@@ -242,7 +276,11 @@ class App extends React.Component {
             currentCheckOutInput={this.state.checkOut}
           />
           <CheckAvailability>
-            <CheckAvailabilityButton>{this.state.checkOut ? "Reserve" : "Check availability"}</CheckAvailabilityButton>
+            <CheckAvailabilityButton
+              onMouseMove={this.handleMouseMoveOverCheckAvailability}
+              coordinateX={this.state.x}
+              coordinateY={this.state.y}
+            ><CheckAvailabilityButtonSpan>{this.state.checkOut ? "Reserve" : "Check availability"}</CheckAvailabilityButtonSpan></CheckAvailabilityButton>
             <NoChargedNote>{this.state.checkOut ? "You won't be charged yet" : ""}</NoChargedNote>
           </CheckAvailability>
           <PricingTable
