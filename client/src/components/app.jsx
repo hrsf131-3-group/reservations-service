@@ -24,7 +24,7 @@ const Container = styled.div`
     display: none;
   }
   text-overflow: ellipsis;
-  margin-top: 48px;
+  margin-top: 8px;
   float: right;
   color: #484848;
   line-height: 1.43;
