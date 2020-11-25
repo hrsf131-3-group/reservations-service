@@ -39,20 +39,36 @@ const GuestNote = styled.div`
   justify-content: center;
   font-size: 10px;
 `;
-const MinusButton = styled.button`
-  border: 1px solid #E8E8E8;
+const Button = styled.button`
+  border: 1px solid grey;
+  cursor: pointer;
   border-radius: 50%;
-  color: #E8E8E8;
-  background-color: none;
   background: none;
   outline: none;
 `;
-const PlusButton = styled.button`
-  background: none;
-  border-radius: 50%;
-  border: 1px solid grey;
-  cursor: pointer;
-  outline: none;
+const MinusButtonAdult = styled(Button)`
+  border: ${props => {if (props.guestCount.adults === 1) {return '1px solid #E8E8E8;'}}}
+  color: #E8E8E8;
+`;
+const MinusButtonChildren = styled(Button)`
+  border: ${props => {if (props.guestCount.children === 0) {return '1px solid #E8E8E8;'}}}
+  color: #E8E8E8;
+`;
+const MinusButtonInfants = styled(Button)`
+  border: ${props => {if (props.guestCount.infants === 0) {return '1px solid #E8E8E8;'}}}
+  color: #E8E8E8;
+`;
+const PlusButtonAdult = styled(Button)`
+  border: ${props => {if (props.guestCount.adults + props.guestCount.children === props.maxGuestCount) {return '1px solid #E8E8E8;'}}}
+  color: #E8E8E8;
+`;
+const PlusButtonChildren = styled(Button)`
+  border: ${props => {if (props.guestCount.adults + props.guestCount.children === props.maxGuestCount) {return '1px solid #E8E8E8;'}}}
+  color: #E8E8E8;
+`;
+const PlusButtonInfants= styled(Button)`
+  border: ${props => {if (props.guestCount.infants === 5) {return '1px solid #E8E8E8;'}}}
+  color: #E8E8E8;
 `;
 const GuestCloseButton = styled.button`
   display: flex;
@@ -73,7 +89,7 @@ const GuestPicker = (props) => {
       <GuestRow>
         <div>Adults</div>
         <GuestQuantityContainer>
-          <MinusButton name="adults" onClick={props.minusGuest}>-</MinusButton>{props.guestCount.adults}<PlusButton>+</PlusButton>
+          <MinusButtonAdult name="adults" guestCount={props.guestCount} onClick={props.minusGuest}>-</MinusButtonAdult>{props.guestCount.adults}<PlusButtonAdult name="adults" guestCount={props.guestCount} maxGuestCount={props.maxGuestCount} onClick={props.plusGuest}>+</PlusButtonAdult>
         </GuestQuantityContainer>
       </GuestRow>
       <GuestRow>
@@ -82,7 +98,7 @@ const GuestPicker = (props) => {
           <GuestNote>Ages 2-12</GuestNote>
         </ChildrenRow>
         <GuestQuantityContainer>
-          <MinusButton name="children" onClick={props.minusGuest}>-</MinusButton>{props.guestCount.children}<PlusButton>+</PlusButton>
+          <MinusButtonChildren name="children" guestCount={props.guestCount} onClick={props.minusGuest}>-</MinusButtonChildren>{props.guestCount.children}<PlusButtonChildren name="children" guestCount={props.guestCount} maxGuestCount={props.maxGuestCount} onClick={props.plusGuest}>+</PlusButtonChildren>
         </GuestQuantityContainer>
       </GuestRow>
       <GuestRow>
@@ -91,11 +107,11 @@ const GuestPicker = (props) => {
           <GuestNote>Under 2</GuestNote>
         </ChildrenRow>
         <GuestQuantityContainer>
-          <MinusButton name="infants" onClick={props.minusGuest}>-</MinusButton>{props.guestCount.infants}<PlusButton>+</PlusButton>
+          <MinusButtonInfants name="infants" guestCount={props.guestCount} onClick={props.minusGuest}>-</MinusButtonInfants>{props.guestCount.infants}<PlusButtonInfants name="infants" guestCount={props.guestCount} onClick={props.plusGuest}>+</PlusButtonInfants>
         </GuestQuantityContainer>
       </GuestRow>
       <GuestNote>
-        Infants don't count <br/>towards number of guests
+        {props.maxGuestCount} guests maximum. Infants don't count <br/>towards number of guests
       </GuestNote>
       <GuestCloseButton onClick={props.displayGuestPickerOnClick}>Close</GuestCloseButton>
     </ShowGuestPicker>

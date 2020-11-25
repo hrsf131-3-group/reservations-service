@@ -33,9 +33,11 @@ const BookingTable = (props) => {
       </BookingTableInnerContainer>
       <GuestDropdown
         guestCount={props.guestCount}
+        maxGuestCount={props.maxGuestCount}
         isGuestDropdownDisplay={props.isGuestDropdownDisplay}
         displayGuestPickerOnClick={props.displayGuestPickerOnClick}
         minusGuest={props.minusGuest}
+        plusGuest={props.plusGuest}
       />
     </BookingTableContainer>
   )

@@ -74,6 +74,7 @@ class App extends React.Component {
     this.handleClearInputtedDates = this.handleClearInputtedDates.bind(this)
     this.handleUpdateBookingDates = this.handleUpdateBookingDates.bind(this)
     this.handleDecrementGuestCount = this.handleDecrementGuestCount.bind(this)
+    this.handleIncrementGuestCount = this.handleIncrementGuestCount.bind(this)
   }
 
   componentDidMount() {
@@ -132,6 +133,22 @@ class App extends React.Component {
       }
       let updateGuests = Object.assign({}, this.state.guests);
         updateGuests[event.target.name]--;
+        this.setState({guests: updateGuests})
+    }
+  }
+  handleIncrementGuestCount(event) {
+    if (event.target.name === 'adults' || event.target.name === 'children') {
+      if (this.state.guests.adults + this.state.guests.children < this.state.availabilities[0].listing.max_guest_count) {
+        let updateGuests = Object.assign({}, this.state.guests);
+        updateGuests[event.target.name]++;
+        this.setState({guests: updateGuests})
+      }
+    } else {
+      if (this.state.guests.infants > 4) {
+        return;
+      }
+      let updateGuests = Object.assign({}, this.state.guests);
+        updateGuests[event.target.name]++;
         this.setState({guests: updateGuests})
     }
   }
@@ -198,10 +215,11 @@ class App extends React.Component {
             checkOutChange={this.handleCheckOutChange}
             displayCalendar={this.handleDisplayCalendarOnClick}
             guestCount={this.state.guests}
-            maxGuestCount={this.state.maxGuestCount}
+            maxGuestCount={this.state.availabilities[0].listing.max_guest_count}
             isGuestDropdownDisplay={this.state.showGuestPicker}
             displayGuestPickerOnClick={this.handleDisplayGuestPickerOnClick}
             minusGuest={this.handleDecrementGuestCount}
+            plusGuest={this.handleIncrementGuestCount}
           />
           <Calendar
             checkInValue={this.state.checkIn}
