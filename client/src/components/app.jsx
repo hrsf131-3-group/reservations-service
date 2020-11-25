@@ -15,6 +15,9 @@ const Container = styled.div`
   z-index: 1;
   padding-right: 1px;
   font-size: 8px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 const InnerContainer = styled.div`
   border: 1px solid rgb(221, 221, 221);
@@ -29,7 +32,6 @@ const CheckAvailability = styled.div`
   flex-direction: column;
 `;
 const CheckAvailabilityButton = styled.button`
-  min-width: 200px;
   width: 100%;
   height: 100%;
   border-radius: 8px;

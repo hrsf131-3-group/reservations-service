@@ -14,10 +14,9 @@ const ShowCalendar = styled.div`
   border: 1px solid lightgrey;
   background-color: white;
   top: 50px;
-  left: 0;
+  right: -15px;
   font-size: 12px;
   width: 600px;
-  margin-left: -85%;
   padding: 16px 0px 16px;
   cursor: default;
 `;
@@ -104,7 +103,7 @@ const Calendar = (props) => {
         <ClearButton onClick={props.clearDates}>Clear dates</ClearButton>
         <CloseButton onClick={props.hidePopUps}>Close</CloseButton>
       </CalendarButtons>
-      </ShowCalendar>
+    </ShowCalendar>
   )
 }
 

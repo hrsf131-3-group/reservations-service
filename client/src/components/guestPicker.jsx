@@ -10,8 +10,8 @@ const ShowGuestPicker = styled.div`
   box-shadow: lightgrey 0px 6px 16px;
   border: 1px solid lightgrey;
   background-color: white;
-  width: 280px;
-  top: 175px;
+  width: 301px;
+  top: 183px;
   right: 25px;
   font-size: 12px;
   cursor: default;
@@ -196,7 +196,7 @@ const GuestPicker = (props) => {
         </GuestQuantityContainer>
       </GuestRow>
       <GuestNote>
-        {props.maxGuestCount} guests maximum. Infants don't <br/>count towards number of guests
+        {props.maxGuestCount} guests maximum. Infants don't count towards number of guests
       </GuestNote>
       <CloseButtonContainer>
         <GuestCloseButton onClick={props.displayGuestPickerOnClick}>Close</GuestCloseButton>
