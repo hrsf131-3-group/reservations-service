@@ -56,11 +56,31 @@ const GuestNote = styled.div`
 const Button = styled.button`
   border: 1px solid grey;
   cursor: pointer;
-  border-radius: 50%;
+  box-sizing: border-box;
+  padding: 10px 10px;
+  border-radius: 100%;
   background: none;
   outline: none;
   font-size: 16px;
   color: grey;
+`;
+const MinusImage = styled.svg`
+  display: block;
+  fill: none;
+  height: 12px;
+  width: 12px;
+  stroke: currentcolor;
+  stroke-width: 5.33333;
+  overflow: visible;
+`;
+const PlusImage = styled.svg`
+  display: block;
+  fill: none;
+  height: 12px;
+  width: 12px;
+  stroke: currentcolor;
+  stroke-width: 5.33333;
+  overflow: visible;
 `;
 const MinusButtonAdult = styled(Button)`
   border: ${props => {if (props.guestCount.adults === 1) {return '1px solid #E8E8E8;'}}}
@@ -141,7 +161,11 @@ const GuestPicker = (props) => {
       <GuestRow>
         <GuestName>Adults</GuestName>
         <GuestQuantityContainer>
-          <MinusButtonAdult name="adults" guestCount={props.guestCount} onClick={props.minusGuest}>-</MinusButtonAdult>{props.guestCount.adults}<PlusButtonAdults name="adults" guestCount={props.guestCount} maxGuestCount={props.maxGuestCount} onClick={props.plusGuest}>+</PlusButtonAdults>
+          <MinusButtonAdult name="adults" guestCount={props.guestCount} onClick={props.minusGuest}>
+            <MinusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28"/></MinusImage>
+            </MinusButtonAdult>{props.guestCount.adults}<PlusButtonAdults name="adults" guestCount={props.guestCount} maxGuestCount={props.maxGuestCount} onClick={props.plusGuest}>
+            <PlusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28m-14-14v28"/></PlusImage>
+            </PlusButtonAdults>
         </GuestQuantityContainer>
       </GuestRow>
       <GuestRow>
@@ -150,7 +174,11 @@ const GuestPicker = (props) => {
           <GuestAges>Ages 2-12</GuestAges>
         </ChildrenRow>
         <GuestQuantityContainer>
-          <MinusButtonChildren name="children" guestCount={props.guestCount} onClick={props.minusGuest}>-</MinusButtonChildren>{props.guestCount.children}<PlusButtonChildren name="children" guestCount={props.guestCount} maxGuestCount={props.maxGuestCount} onClick={props.plusGuest}>+</PlusButtonChildren>
+          <MinusButtonChildren name="children" guestCount={props.guestCount} onClick={props.minusGuest}>
+            <MinusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28"/></MinusImage>
+          </MinusButtonChildren>{props.guestCount.children}<PlusButtonChildren name="children" guestCount={props.guestCount} maxGuestCount={props.maxGuestCount} onClick={props.plusGuest}>
+          <PlusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28m-14-14v28"/></PlusImage>
+          </PlusButtonChildren>
         </GuestQuantityContainer>
       </GuestRow>
       <GuestRow>
@@ -159,7 +187,11 @@ const GuestPicker = (props) => {
           <GuestAges>Under 2</GuestAges>
         </ChildrenRow>
         <GuestQuantityContainer>
-          <MinusButtonInfants name="infants" guestCount={props.guestCount} onClick={props.minusGuest}>-</MinusButtonInfants>{props.guestCount.infants}<PlusButtonInfants name="infants" guestCount={props.guestCount} onClick={props.plusGuest}>+</PlusButtonInfants>
+          <MinusButtonInfants name="infants" guestCount={props.guestCount} onClick={props.minusGuest}>
+          <MinusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28"/></MinusImage>
+          </MinusButtonInfants>{props.guestCount.infants}<PlusButtonInfants name="infants" guestCount={props.guestCount} onClick={props.plusGuest}>
+          <PlusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28m-14-14v28"/></PlusImage>
+          </PlusButtonInfants>
         </GuestQuantityContainer>
       </GuestRow>
       <GuestNote>
