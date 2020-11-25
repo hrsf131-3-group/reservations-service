@@ -77,9 +77,9 @@ class App extends React.Component {
       checkOut: undefined,
       numberOfSelectedDays: 0,
       guests: {
-        adults: 3,
-        children: 2,
-        infants: 2
+        adults: 2,
+        children: 0,
+        infants: 0
       },
       showCalendar: false,
       showGuestPicker: false,
