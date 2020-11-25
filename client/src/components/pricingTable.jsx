@@ -11,9 +11,8 @@ const PricingTableStyle = styled.div`
   cursor: default;
   font-size: 14px;
   font-weight: 300;
-  text-decoration: underline;
 `;
-const PricingColInfo = styled.div`
+const PricingColInfoTotal = styled.div`
   font-size: 12px;
   display: flex;
   flex-direction: column;
@@ -21,7 +20,13 @@ const PricingColInfo = styled.div`
   padding-top: 5px;
   font-size: 14px;
   font-weight: 300;
+`;
+const PricingColInfo = styled(PricingColInfoTotal)`
   text-decoration: underline;
+  cursor: pointer;
+  &: hover {
+    font-weight: 400;
+  }
 `;
 const PricingColPrices = styled.div`
   font-size: 12px;
@@ -31,7 +36,7 @@ const PricingColPrices = styled.div`
   padding-top: 5px;
   font-size: 14px;
   font-weight: 300;
-  text-decoration: underline;
+  text-decoration: none;
 `;
 const PricingFooter = styled(PricingTableStyle)`
   padding-top: 5px;
@@ -61,9 +66,9 @@ const PricingTable = (props) => {
         </PricingColPrices>
       </PricingTableStyle>
       <PricingFooter isPricingTableDisplay={props.isPricingTableDisplay}>
-        <PricingColInfo>
-          <PricingColInfo>Total</PricingColInfo>
-        </PricingColInfo>
+        <PricingColInfoTotal>
+          <PricingColInfoTotal>Total</PricingColInfoTotal>
+        </PricingColInfoTotal>
         <PricingColPrices>
           <PricingColPrices>{`$${props.data[0].base_price_per_night * props.daysSelected + props.data[0].service_fee + props.data[0].cleaning_fee + props.data[0].occupancy_taxes_and_fees}`}</PricingColPrices>
         </PricingColPrices>

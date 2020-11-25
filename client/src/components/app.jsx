@@ -66,7 +66,7 @@ const NoChargedNote = styled.div`
   font-size: 14px;
   padding-top: 10px;
 `;
-//
+
 class App extends React.Component {
   constructor(props) {
     super(props);
