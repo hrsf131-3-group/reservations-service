@@ -10,24 +10,37 @@ const ShowGuestPicker = styled.div`
   box-shadow: lightgrey 0px 6px 16px;
   border: 1px solid lightgrey;
   background-color: white;
-  width: 250px;
-  top: 170px;
+  width: 280px;
+  top: 175px;
   right: 25px;
   font-size: 12px;
   cursor: default;
   padding: 10px;
 `;
+const GuestName = styled.div`
+  font-size: 16px;
+  font-weight: 600;
+`;
+const GuestAges = styled.div`
+  font-size: 12px;
+`;
 const GuestRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 12px;
 `;
 const GuestQuantityContainer = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 30px 15px 30px;
+  grid-template-rows: 30px;
   column-gap: 15px;
+  justify-items: center;
   align-items: center;
+  align-self: center;
+  place-self: center;
+  font-size: 16px;
 `;
 const ChildrenRow = styled.div`
   display: flex;
@@ -36,8 +49,9 @@ const ChildrenRow = styled.div`
 `;
 const GuestNote = styled.div`
   display: flex;
-  justify-content: center;
-  font-size: 10px;
+  justify-content: flex-start;
+  font-size: 14px;
+  padding: 12px 0 12px 12px;
 `;
 const Button = styled.button`
   border: 1px solid grey;
@@ -45,57 +59,95 @@ const Button = styled.button`
   border-radius: 50%;
   background: none;
   outline: none;
+  font-size: 16px;
+  color: grey;
 `;
 const MinusButtonAdult = styled(Button)`
   border: ${props => {if (props.guestCount.adults === 1) {return '1px solid #E8E8E8;'}}}
   color: #E8E8E8;
+  &: hover {
+    border: ${props => {if (props.guestCount.adults > 1) {return '1px solid black;'}}};
+    color: ${props => {if (props.guestCount.adults > 1) {return 'black;'}}};
+    cursor: ${props => {if (props.guestCount.adults === 1) {return 'not-allowed;'}}};
+  }
 `;
 const MinusButtonChildren = styled(Button)`
   border: ${props => {if (props.guestCount.children === 0) {return '1px solid #E8E8E8;'}}}
   color: #E8E8E8;
+  &: hover {
+    border: ${props => {if (props.guestCount.children > 0) {return '1px solid black;'}}};
+    color: ${props => {if (props.guestCount.children > 0) {return 'black;'}}};
+    cursor: ${props => {if (props.guestCount.children === 0) {return 'not-allowed;'}}};
+  }
 `;
 const MinusButtonInfants = styled(Button)`
   border: ${props => {if (props.guestCount.infants === 0) {return '1px solid #E8E8E8;'}}}
   color: #E8E8E8;
+  &: hover {
+    border: ${props => {if (props.guestCount.infants > 0) {return '1px solid black;'}}};
+    color: ${props => {if (props.guestCount.infants > 0) {return 'black;'}}};
+    cursor: ${props => {if (props.guestCount.infants === 0) {return 'not-allowed;'}}};
+  }
 `;
-const PlusButtonAdult = styled(Button)`
+const PlusButtonAdults = styled(Button)`
   border: ${props => {if (props.guestCount.adults + props.guestCount.children === props.maxGuestCount) {return '1px solid #E8E8E8;'}}}
   color: #E8E8E8;
+  &: hover {
+    border: ${props => {if (props.guestCount.adults + props.guestCount.children !== props.maxGuestCount) {return '1px solid black;'}}};
+    color: ${props => {if (props.guestCount.adults + props.guestCount.children !== props.maxGuestCount) {return 'black;'}}};
+    cursor: ${props => {if (props.guestCount.adults + props.guestCount.children === props.maxGuestCount) {return 'not-allowed;'}}};
+  }
 `;
 const PlusButtonChildren = styled(Button)`
   border: ${props => {if (props.guestCount.adults + props.guestCount.children === props.maxGuestCount) {return '1px solid #E8E8E8;'}}}
   color: #E8E8E8;
+  &: hover {
+    border: ${props => {if (props.guestCount.adults + props.guestCount.children !== props.maxGuestCount) {return '1px solid black;'}}};
+    color: ${props => {if (props.guestCount.adults + props.guestCount.children !== props.maxGuestCount) {return 'black;'}}};
+    cursor: ${props => {if (props.guestCount.adults + props.guestCount.children === props.maxGuestCount) {return 'not-allowed;'}}};
+  }
 `;
 const PlusButtonInfants= styled(Button)`
   border: ${props => {if (props.guestCount.infants === 5) {return '1px solid #E8E8E8;'}}}
   color: #E8E8E8;
+  &: hover {
+    border: ${props => {if (props.guestCount.infants < 5) {return '1px solid black;'}}};
+    color: ${props => {if (props.guestCount.infants < 5) {return 'black;'}}};
+    cursor: ${props => {if (props.guestCount.infants === 5) {return 'not-allowed;'}}};
+  }
+`;
+const CloseButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 12px;
 `;
 const GuestCloseButton = styled.button`
   display: flex;
-  flex-direction: row-reverse;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  background-color: none;
+  justify-content: flex-end;
+  padding: 5px 15px;
   background: none;
   border: none;
   text-decoration: underline;
-  padding-right: 15px;
   outline: none;
   cursor: pointer;
+  &: hover {
+    background: #f7f7f7;
+    border-radius: 12px;
+  }
 `;
 const GuestPicker = (props) => {
   return (
     <ShowGuestPicker isGuestDropdownDisplay={props.isGuestDropdownDisplay}>
       <GuestRow>
-        <div>Adults</div>
+        <GuestName>Adults</GuestName>
         <GuestQuantityContainer>
-          <MinusButtonAdult name="adults" guestCount={props.guestCount} onClick={props.minusGuest}>-</MinusButtonAdult>{props.guestCount.adults}<PlusButtonAdult name="adults" guestCount={props.guestCount} maxGuestCount={props.maxGuestCount} onClick={props.plusGuest}>+</PlusButtonAdult>
+          <MinusButtonAdult name="adults" guestCount={props.guestCount} onClick={props.minusGuest}>-</MinusButtonAdult>{props.guestCount.adults}<PlusButtonAdults name="adults" guestCount={props.guestCount} maxGuestCount={props.maxGuestCount} onClick={props.plusGuest}>+</PlusButtonAdults>
         </GuestQuantityContainer>
       </GuestRow>
       <GuestRow>
         <ChildrenRow>
-          <div>Children</div>
-          <GuestNote>Ages 2-12</GuestNote>
+          <GuestName>Children</GuestName>
+          <GuestAges>Ages 2-12</GuestAges>
         </ChildrenRow>
         <GuestQuantityContainer>
           <MinusButtonChildren name="children" guestCount={props.guestCount} onClick={props.minusGuest}>-</MinusButtonChildren>{props.guestCount.children}<PlusButtonChildren name="children" guestCount={props.guestCount} maxGuestCount={props.maxGuestCount} onClick={props.plusGuest}>+</PlusButtonChildren>
@@ -103,17 +155,19 @@ const GuestPicker = (props) => {
       </GuestRow>
       <GuestRow>
         <ChildrenRow>
-          <div>Infants</div>
-          <GuestNote>Under 2</GuestNote>
+          <GuestName>Infants</GuestName>
+          <GuestAges>Under 2</GuestAges>
         </ChildrenRow>
         <GuestQuantityContainer>
           <MinusButtonInfants name="infants" guestCount={props.guestCount} onClick={props.minusGuest}>-</MinusButtonInfants>{props.guestCount.infants}<PlusButtonInfants name="infants" guestCount={props.guestCount} onClick={props.plusGuest}>+</PlusButtonInfants>
         </GuestQuantityContainer>
       </GuestRow>
       <GuestNote>
-        {props.maxGuestCount} guests maximum. Infants don't count <br/>towards number of guests
+        {props.maxGuestCount} guests maximum. Infants don't <br/>count towards number of guests
       </GuestNote>
-      <GuestCloseButton onClick={props.displayGuestPickerOnClick}>Close</GuestCloseButton>
+      <CloseButtonContainer>
+        <GuestCloseButton onClick={props.displayGuestPickerOnClick}>Close</GuestCloseButton>
+      </CloseButtonContainer>
     </ShowGuestPicker>
   )
 }

@@ -28,7 +28,7 @@ const GuestDropdown = (props) => {
       <GuestDropdownStyle
         onClick={props.displayGuestPickerOnClick}>
         <GuestCountTitle>GUESTS</GuestCountTitle>
-        <GuestCountDisplay>{props.guestCount.adults + props.guestCount.children} {props.guestCount.adults === 1 ? 'guest' : 'guests'} {props.guestCount.infants > 0 ? `, ${props.guestCount.infants} ${props.guestCount.infants === 1 ? 'infant' : 'infants'}` : ''} </GuestCountDisplay>
+        <GuestCountDisplay>{props.guestCount.adults + props.guestCount.children} {props.guestCount.adults === 1 ? 'guest' : 'guests'}{props.guestCount.infants > 0 ? `, ${props.guestCount.infants} ${props.guestCount.infants === 1 ? 'infant' : 'infants'}` : ''} </GuestCountDisplay>
       </GuestDropdownStyle>
       <GuestPicker
         guestCount={props.guestCount}

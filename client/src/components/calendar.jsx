@@ -55,19 +55,22 @@ const CalendarButtons = styled.div`
   padding-right: 32px;
 `;
 const ClearButton = styled.button`
-  background-color: none;
   background: none;
   border: none;
   text-decoration: underline;
-  padding-right: 15px;
+  padding: 5px 15px 5px;
   outline: none;
   cursor: pointer;
+  &: hover {
+    background: #f7f7f7;
+    border-radius: 12px;
+  }
 `;
 const CloseButton = styled.button`
   color: white;
   background: black;
   border-radius: 8px;
-  padding: 5px 10px;
+  padding: 8px 12px;
   outline: none;
   cursor: pointer;
 `;

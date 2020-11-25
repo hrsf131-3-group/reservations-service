@@ -45,6 +45,7 @@ const CalendarDay = styled.td`
   padding-right: 8px;
   border: 1px solid white;
   cursor: pointer;
+  font-weight: bold;
   &:hover {
     border: 1px solid black;
     border-width: thin;
