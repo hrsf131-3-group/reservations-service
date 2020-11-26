@@ -28,7 +28,7 @@ const Container = styled.div`
   float: right;
   color: #484848;
   line-height: 1.43;
-  grid-area: 1 / 2 / 4 / 2;
+  grid-area: 1 / 2 / 5 / 2;
 `;
 const InnerContainer = styled.div`
   position: sticky;
