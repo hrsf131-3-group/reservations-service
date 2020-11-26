@@ -17,18 +17,17 @@ const OuterContainer = styled.div`
 const Container = styled.div`
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
   max-width: 372px;
-  z-index: 1;
   padding-right: 1px;
   font-size: 8px;
-  @media (max-width: 768px) {
-    display: none;
-  }
   text-overflow: ellipsis;
   margin-top: 8px;
-  float: right;
+  margin-right: 0;
   color: #484848;
   line-height: 1.43;
   grid-area: 1 / 2 / 5 / 2;
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
 const InnerContainer = styled.div`
   position: sticky;
@@ -37,6 +36,7 @@ const InnerContainer = styled.div`
   border-radius: 12px;
   padding: 24px;
   box-shadow: lightgrey 0px 6px 16px;
+  margin-bottom: 24px;
 `;
 const CheckAvailability = styled.div`
   display: flex;
@@ -46,15 +46,15 @@ const CheckAvailability = styled.div`
 `;
 // transition: width 0.2s ease, height 0.2s ease;
 const CheckAvailabilityButton = styled.button`
-width: 100%;
-height: 100%;
-border-radius: 8px;
-color: white;
-padding: 13px 24px;
-position: relative;
-overflow: hidden;
-background-image: var(--dls19-brand-gradient-radial, linear-gradient(to right, #E61E4D 0%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
-&::before {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  color: white;
+  padding: 13px 24px;
+  position: relative;
+  overflow: hidden;
+  background-image: var(--dls19-brand-gradient-radial, linear-gradient(to right, #E61E4D 0%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
+  &::before {
     background-position: ${props=>props.coordinateX}px ${props=>props.coordinateY}px;
     background-image: radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #ff385c 100% );
     --size: 0;
@@ -85,13 +85,16 @@ const Img = styled.img`
   width: 100%;
 `;
 const ImgTop = styled(Img)`
-
+`;
+const ImgBotDiv = styled.div`
+  grid-area: 2 / 1 / 2 / 1;
 `;
 const ImgBot = styled(Img)`
-
+`;
+const ImgCalendarDiv = styled.div`
+  grid-area: 3 / 1 / 3 / 1;
 `;
 const ImgCalendar = styled(Img)`
-
 `;
 
 class App extends React.Component {
@@ -315,9 +318,8 @@ class App extends React.Component {
               />
           </InnerContainer>
         </Container>
-        <div><ImgBot src="https://rest-n-react.s3-us-west-1.amazonaws.com/airbnb_bottomshot.jpg"></ImgBot></div>
-        <div></div>
-        <div><ImgCalendar src="https://rest-n-react.s3-us-west-1.amazonaws.com/airbnb_static_calendar.jpg"></ImgCalendar></div>
+        <ImgBotDiv><ImgBot src="https://rest-n-react.s3-us-west-1.amazonaws.com/airbnb_bottomshot.jpg"></ImgBot></ImgBotDiv>
+        <ImgCalendarDiv><ImgCalendar src="https://rest-n-react.s3-us-west-1.amazonaws.com/airbnb_static_calendar.jpg"></ImgCalendar></ImgCalendarDiv>
       </OuterContainer>
     )
   }
