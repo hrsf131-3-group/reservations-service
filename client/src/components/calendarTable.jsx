@@ -107,14 +107,14 @@ class CalendarTable extends React.Component {
     return firstDay;
   }
   onPrev() {
-    console.log('on prev clicked')
-    this.setState({
-      dateObject: this.state.dateObject.subtract(1, "month"),
-      dateObjectNext: this.state.dateObjectNext.subtract(1, "month")
-    })
+    if (moment().format('MMYY') !== this.state.dateObject.format('MMYY')) {
+      this.setState({
+        dateObject: this.state.dateObject.subtract(1, "month"),
+        dateObjectNext: this.state.dateObjectNext.subtract(1, "month")
+      })
+    }
   }
   onNext() {
-    console.log('on next clicked')
     this.setState({
       dateObject: this.state.dateObject.add(1, "month"),
       dateObjectNext: this.state.dateObjectNext.add(1, "month")
