@@ -54,6 +54,16 @@ const CalendarDay = styled.td`
     border-radius: 50%;
   }
 `;
+const CheckOutOnly = styled(CalendarDay)`
+  text-decoration-color: rgb(145, 143, 143);
+  color: rgb(141, 139, 139);
+  cursor: pointer;
+  font-weight: bold;
+  background: white;
+  &:hover {
+    border: 1px solid rgb(141, 139, 139);
+  }
+`;
 const DateUnavailable = styled(CalendarDay)`
   text-decoration: line-through;
   text-decoration-color: rgb(145, 143, 143);
@@ -163,6 +173,8 @@ class CalendarTable extends React.Component {
         var dateDashFormat = month.format(`YYYY-MM-${d}`)
       }
       let date = month.format(`MM/${d}/YYYY`);
+      let yesterday = moment(dateDashFormat).subtract(1, 'day').format(`YYYY-MM-DD`);
+      let yesterdayAvailable = this.isDateAvailable(yesterday);
       let postSixMonths = moment().add(6, 'months');
       let isAvailable = (moment().isBefore(dateDashFormat)) ? this.isDateAvailable(dateDashFormat) : false;
       let isCheckInDate = (moment(this.props.currentCheckInInput).isSame(date)) ? true : false;
@@ -172,48 +184,50 @@ class CalendarTable extends React.Component {
       if (moment(dateDashFormat).isAfter(postSixMonths)) {
         daysInMonth.push(
           <DateUnavailable
-            // key={d}
-            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable, yesterdayAvailable)}}
             ><span>{d}</span>
           </DateUnavailable>
         );
       } else if (isCheckOutDate) {
         daysInMonth.push(
           <SelectedCheckOutDate
-            // key={d}
-            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable, yesterdayAvailable)}}
             ><span>{d}</span>
           </SelectedCheckOutDate>
         );
       } else if (isCheckInDate) {
         daysInMonth.push(
           <SelectedCheckInDate
-            // key={d}
-            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable, yesterdayAvailable)}}
             ><span>{d}</span>
           </SelectedCheckInDate>
         );
       } else if (isBetweenDates) {
         daysInMonth.push(
           <InDateRange
-            // key={d}
-            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable, yesterdayAvailable)}}
             ><span>{d}</span>
           </InDateRange>
         );
       } else if (isAvailable) {
         daysInMonth.push(
           <CalendarDay
-            // key={d}
-            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable, yesterdayAvailable)}}
             ><span>{d}</span>
           </CalendarDay>
         );
-      } else {
+      } else if ((!isAvailable) && yesterdayAvailable && moment().isBefore(date)) {
+        daysInMonth.push(
+          <CheckOutOnly
+          onClick={(event)=>{this.onDateClick(event, date, isAvailable, yesterdayAvailable)}}
+          ><span>{d}</span>
+        </CheckOutOnly>
+        );
+      }
+      else {
         daysInMonth.push(
           <DateUnavailable
-            // key={d}
-            onClick={(event)=>{this.onDateClick(event, date, isAvailable)}}
+            onClick={(event)=>{this.onDateClick(event, date, isAvailable, yesterdayAvailable)}}
             ><span>{d}</span>
           </DateUnavailable>
         );

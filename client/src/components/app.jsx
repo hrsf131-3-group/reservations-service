@@ -218,7 +218,7 @@ class App extends React.Component {
       showPricing: false
     })
   }
-  handleUpdateBookingDates(event, date, isAvailable) {
+  handleUpdateBookingDates(event, date, isAvailable, yesterdayAvailable) {
     if (isAvailable) {
       if (this.state.checkIn === undefined) {
         this.setState({checkIn: date})
@@ -229,6 +229,9 @@ class App extends React.Component {
       } else if (moment(date).isAfter(this.state.checkIn)){
         this.setState({checkOut: date, showPricing: true, numberOfSelectedDays: this.daysSelected(date)})
       }
+    }
+    if (!isAvailable && this.state.checkIn !== undefined && moment(date).isAfter(this.state.checkIn)) {
+      this.setState({checkOut: date, showPricing: true, numberOfSelectedDays: this.daysSelected(date)})
     }
   }
   checkForDateConflicts(date) {
@@ -259,8 +262,6 @@ class App extends React.Component {
     const y = event.pageY - event.target.offsetTop;
     event.target.style.setProperty('--x', `${ x }px`)
     event.target.style.setProperty('--y', `${ y }px`)
-    // setX(event.clientX)
-    // setY(event.clientY)
     this.setState({
       x: event.clientX,
       y: event.clientY
