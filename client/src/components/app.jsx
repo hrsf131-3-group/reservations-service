@@ -231,7 +231,9 @@ class App extends React.Component {
       }
     }
     if (!isAvailable && this.state.checkIn !== undefined && moment(date).isAfter(this.state.checkIn)) {
-      this.setState({checkOut: date, showPricing: true, numberOfSelectedDays: this.daysSelected(date)})
+      if (!this.checkForDateConflicts(date)) {
+        this.setState({checkOut: date, showPricing: true, numberOfSelectedDays: this.daysSelected(date)})
+      }
     }
   }
   checkForDateConflicts(date) {
