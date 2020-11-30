@@ -36,7 +36,7 @@ const InnerContainer = styled.div`
   border-radius: 12px;
   padding: 24px;
   box-shadow: lightgrey 0px 6px 16px;
-  margin-bottom: 24px;
+  margin-bottom: ${props=>props.showPricing ? '100px' : '24px'};
 `;
 const CheckAvailability = styled.div`
   display: flex;
@@ -95,6 +95,20 @@ const ImgCalendarDiv = styled.div`
   grid-area: 3 / 1 / 3 / 1;
 `;
 const ImgCalendar = styled(Img)`
+`;
+const RareFindContainer = styled.div`
+  display: ${props=>props.showPricing ? 'flex' : 'none'};
+  justify-content: center;
+  padding-top: 60px;
+  position: sticky;
+  z-index: -1;
+  top: 525px;
+  margin-top: -140px;
+`;
+const RareFind = styled.img`
+  width: 95%;
+  max-width: 372px;
+  position: sticky;
 `;
 
 class App extends React.Component {
@@ -275,7 +289,7 @@ class App extends React.Component {
       <OuterContainer>
         <div><ImgTop src="https://rest-n-react.s3-us-west-1.amazonaws.com/airbnb_topshot.jpg"></ImgTop></div>
         <Container>
-          <InnerContainer>
+          <InnerContainer showPricing={this.state.showPricing}>
             <Header pricePerNight={this.state.availabilities[0].base_price_per_night}/>
             <BookingTable
               checkInValue={this.state.checkIn}
@@ -320,6 +334,9 @@ class App extends React.Component {
               daysSelected={this.state.numberOfSelectedDays}
               />
           </InnerContainer>
+          <RareFindContainer showPricing={this.state.showPricing}>
+            <RareFind src="https://rest-n-react.s3-us-west-1.amazonaws.com/rarefind.jpg"></RareFind>
+          </RareFindContainer>
         </Container>
         <ImgBotDiv><ImgBot src="https://rest-n-react.s3-us-west-1.amazonaws.com/airbnb_bottomshot.jpg"></ImgBot></ImgBotDiv>
         <ImgCalendarDiv><ImgCalendar src="https://rest-n-react.s3-us-west-1.amazonaws.com/airbnb_static_calendar.jpg"></ImgCalendar></ImgCalendarDiv>
