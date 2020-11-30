@@ -84,6 +84,18 @@ const InDateRange = styled(CalendarDay)`
 const WeekDay = styled.th`
   font-weight: 300;
 `;
+const LeftArrow = styled.svg`
+  height: 12px;
+  width: 12px;
+  display: block;
+  fill: currentcolor;
+`;
+const RightArrow = styled.svg`
+  height: 12px;
+  width: 12px;
+  display: block;
+  fill: rgb(34, 34, 34);
+`;
 
 class CalendarTable extends React.Component {
   constructor(props) {
@@ -246,7 +258,9 @@ class CalendarTable extends React.Component {
         <div>
           <LeftCalendarHeader>
             <DisableMonthButton disable={this.state.dateObject.isBefore('2020-11-30')}
-            onClick={event=>{this.onPrev()}}>{`<`}</DisableMonthButton>
+            onClick={event=>{this.onPrev()}}>
+              <LeftArrow xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false"><path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z"/></LeftArrow>
+            </DisableMonthButton>
             {this.month(this.state.dateObject)} {this.year(this.state.dateObject)}
           </LeftCalendarHeader>
           <CalendarTables>
@@ -263,7 +277,9 @@ class CalendarTable extends React.Component {
         <div>
           <RightCalenderHeader>
             {this.month(this.state.dateObjectNext)} {this.year(this.state.dateObjectNext)}
-            <ChangeMonthButton onClick={event=>{this.onNext()}}>{`>`}</ChangeMonthButton>
+            <ChangeMonthButton onClick={event=>{this.onNext()}}>
+            <RightArrow xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"/></RightArrow>
+            </ChangeMonthButton>
           </RightCalenderHeader>
           <CalendarTables>
             <thead>
