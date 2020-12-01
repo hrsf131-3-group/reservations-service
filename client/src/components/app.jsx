@@ -45,6 +45,7 @@ const CheckAvailability = styled.div`
   flex-direction: column;
 `;
 // transition: width 0.2s ease, height 0.2s ease;
+// background-image: radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #ff385c 100% );
 const CheckAvailabilityButton = styled.button`
   width: 100%;
   height: 100%;
@@ -56,7 +57,7 @@ const CheckAvailabilityButton = styled.button`
   background-image: var(--dls19-brand-gradient-radial, linear-gradient(to right, #E61E4D 0%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% ));
   &::before {
     background-position: ${props=>props.coordinateX}px ${props=>props.coordinateY}px;
-    background-image: radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #ff385c 100% );
+    background-image: linear-gradient(to right, #FF385C 0%, #D70466 25%, #E31C5F 50%, #D70466 75%, #FF385C 100%);
     --size: 0;
     content: '';
     position: absolute;
@@ -68,7 +69,7 @@ const CheckAvailabilityButton = styled.button`
   cursor: pointer;
   border: none;
   &: hover:before {
-    --size: 500px;
+    --size: 400px;
   };
 `;
 const CheckAvailabilityButtonSpan = styled.span`;
@@ -155,15 +156,17 @@ class App extends React.Component {
 
   handleCheckInChange(event) {
     event.preventDefault();
-    console.log(event)
-    if (event.charCode === 10) {
+    let lengthCheck = event.target.value.length;
+    if (lengthCheck === 10) {
       this.setState({checkIn: event.target.value})
-
     }
   }
   handleCheckOutChange(event) {
     event.preventDefault();
-    this.setState({checkOut: event.target.value})
+    let lengthCheck = event.target.value.length;
+    if (lengthCheck === 10) {
+      this.setState({checkOut: event.target.value})
+    }
   }
   handleDisplayCalendarOnClick(event) {
     this.setState({showCalendar: true})

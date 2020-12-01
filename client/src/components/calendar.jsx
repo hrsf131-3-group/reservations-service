@@ -90,10 +90,12 @@ const Calendar = (props) => {
           <CheckInDate
             checkInValue={props.checkInValue}
             checkInChange={props.checkInChange}
+            updateBookingDates={props.updateBookingDates}
           />
           <CheckOutDate
             checkOutValue={props.checkOutValue}
             checkOutChange={props.checkOutChange}
+            updateBookingDates={props.updateBookingDates}
           />
         </CalendarBookingContainer>
       </CalendarHead>

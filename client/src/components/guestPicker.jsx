@@ -72,6 +72,9 @@ const MinusImage = styled.svg`
   stroke-width: 5.33333;
   overflow: visible;
   pointer-events: none;
+  &: hover {
+    cursor: ${props => {if (props.guestCount.children === 0) {return 'not-allowed;'}}};
+  }
 `;
 const PlusImage = styled.svg`
   display: block;
@@ -163,7 +166,7 @@ const GuestPicker = (props) => {
         <GuestName>Adults</GuestName>
         <GuestQuantityContainer>
           <MinusButtonAdult name="adults" guestCount={props.guestCount} onClick={props.minusGuest}>
-            <MinusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28"/></MinusImage>
+            <MinusImage name="children" guestCount={props.guestCount} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28"/></MinusImage>
             </MinusButtonAdult>{props.guestCount.adults}<PlusButtonAdults name="adults" guestCount={props.guestCount} maxGuestCount={props.maxGuestCount} onClick={props.plusGuest}>
             <PlusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28m-14-14v28"/></PlusImage>
             </PlusButtonAdults>
@@ -176,7 +179,7 @@ const GuestPicker = (props) => {
         </ChildrenRow>
         <GuestQuantityContainer>
           <MinusButtonChildren name="children" guestCount={props.guestCount} onClick={props.minusGuest}>
-            <MinusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28"/></MinusImage>
+            <MinusImage name="children" guestCount={props.guestCount} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28"/></MinusImage>
           </MinusButtonChildren>{props.guestCount.children}<PlusButtonChildren name="children" guestCount={props.guestCount} maxGuestCount={props.maxGuestCount} onClick={props.plusGuest}>
           <PlusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28m-14-14v28"/></PlusImage>
           </PlusButtonChildren>
@@ -189,7 +192,7 @@ const GuestPicker = (props) => {
         </ChildrenRow>
         <GuestQuantityContainer>
           <MinusButtonInfants name="infants" guestCount={props.guestCount} onClick={props.minusGuest}>
-          <MinusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28"/></MinusImage>
+          <MinusImage name="children" guestCount={props.guestCount} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28"/></MinusImage>
           </MinusButtonInfants>{props.guestCount.infants}<PlusButtonInfants name="infants" guestCount={props.guestCount} onClick={props.plusGuest}>
           <PlusImage viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><path d="m2 16h28m-14-14v28"/></PlusImage>
           </PlusButtonInfants>

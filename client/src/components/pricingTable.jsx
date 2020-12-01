@@ -32,7 +32,7 @@ const PricingColPrices = styled.div`
   font-size: 12px;
   display: flex;
   flex-direction: column;
-  align-self: flex-end;
+  align-self: flex-start;
   padding-top: 5px;
   font-size: 14px;
   font-weight: 300;

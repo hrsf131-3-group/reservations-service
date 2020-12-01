@@ -32,6 +32,7 @@ const CheckOutDate = (props) => {
         value={props.checkOutValue}
         onChange={props.checkOutChange}
         onClick={props.displayCalendar}
+        updateBookingDates={props.updateBookingDates}
       />
     </section>
   )

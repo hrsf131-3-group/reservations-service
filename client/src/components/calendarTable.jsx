@@ -11,15 +11,15 @@ const Calendars = styled.div`
 `;
 const LeftCalendarHeader = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  padding-right: 40px;
+  justify-content: space-between;
+  padding-right: 85px;
   font-weight: 600;
   padding-bottom: 12px;
 `;
 const RightCalenderHeader = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  padding-left: 50px;
+  justify-content: space-between;
+  padding-left: 85px;
   font-weight: 600;
   padding-bottom: 12px;
 `;
@@ -271,11 +271,13 @@ class CalendarTable extends React.Component {
       <Calendars>
         <div>
           <LeftCalendarHeader>
-            <DisableMonthButton disable={this.state.dateObject.isBefore('2020-11-30')}
+            <DisableMonthButton disable={this.state.dateObject.isBefore(moment())}
             onClick={event=>{this.onPrev()}}>
               <LeftArrow xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false"><path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z"/></LeftArrow>
             </DisableMonthButton>
-            {this.month(this.state.dateObject)} {this.year(this.state.dateObject)}
+            <div>
+              {this.month(this.state.dateObject)} {this.year(this.state.dateObject)}
+            </div>
           </LeftCalendarHeader>
           <CalendarTables>
             <thead>
@@ -290,7 +292,9 @@ class CalendarTable extends React.Component {
         </div>
         <div>
           <RightCalenderHeader>
-            {this.month(this.state.dateObjectNext)} {this.year(this.state.dateObjectNext)}
+            <div>
+              {this.month(this.state.dateObjectNext)} {this.year(this.state.dateObjectNext)}
+            </div>
             <ChangeMonthButton onClick={event=>{this.onNext()}}>
             <RightArrow xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"/></RightArrow>
             </ChangeMonthButton>

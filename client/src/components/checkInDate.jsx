@@ -36,6 +36,7 @@ const CheckInDate = (props) => {
         value={props.checkInValue}
         onChange={props.checkInChange}
         onClick={props.displayCalendar}
+        updateBookingDates={props.updateBookingDates}
       />
     </CheckInDateStyle>
   )
