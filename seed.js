@@ -4,7 +4,7 @@ const fs = require('fs')
 const {Op} = require('sequelize')
 
 // -------------- connection to database -----------------
-const sequelize = new Sequelize('reservations', 'root', '', {
+const sequelize = new Sequelize('reservations', 'root', 'CoconutWater11!', {
   dialect: 'mysql',
   define: { timestamps: false }
 });
@@ -92,14 +92,14 @@ const createDates = (numOfDays, listing) => {
 
     Dates.create({
       date: currentDay,
-      available: true,
+      available: Math.floor(Math.random() * 2),
       base_price_per_night: basePricePerNight[listing%3],
       cleaning_fee: cleaningFees[listing%3],
       service_fee: serviceFees[listing%3],
       occupancy_taxes_and_fees: occupancyTaxesAndFees[listing%3],
       weekly_discount: weeklyDiscount[listing%2],
       monthly_discount: monthlyDiscount[listing%2],
-      total_price: cleaningFees[listing%3] + serviceFees[listing%3] + occupancyTaxesAndFees[listing%3],
+      total_price: basePricePerNight[listing%3] + cleaningFees[listing%3] + serviceFees[listing%3] + occupancyTaxesAndFees[listing%3],
       listingId: listing
     })
     currentDay.setDate(currentDay.getDate() + 1);

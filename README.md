@@ -20,6 +20,8 @@ FEC is to build a front end copy of a web application's item details page. Our g
 ## Usage
 
 > Some usage instructions
+'npm run clean-database' to clear all data from database
+'npm run seed-database' to populate 100 listings
 
 ## Requirements
 

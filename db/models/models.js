@@ -1,16 +1,12 @@
-// this file is only used to wipe development seed data and repopulate
-
 const Sequelize = require('sequelize')
-const Faker = require('faker')
-const fs = require('fs')
 
-// ------------connection to database -----------
+// connect to db
 const sequelize = new Sequelize('reservations', 'root', 'CoconutWater11!', {
   dialect: 'mysql',
   define: { timestamps: false }
 });
 
-// ------------------ tables --------------------
+// schema for tables
 const Listings = sequelize.define('listing', {
   max_guest_count: Sequelize.INTEGER,
   minimum_stay: Sequelize.INTEGER
@@ -43,10 +39,13 @@ const Dates = sequelize.define('date', {
   underscored: true
 })
 
-// set foreign keys
 Listings.hasMany(Reservations);
 Reservations.belongsTo(Listings);
 Listings.hasMany(Dates);
 Dates.belongsTo(Listings);
 
-sequelize.sync({force: true})
+sequelize.sync()
+
+module.exports.Dates = Dates;
+module.exports.Listings = Listings;
+module.exports.Reservations = Reservations;
