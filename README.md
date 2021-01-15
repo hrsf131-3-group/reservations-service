@@ -1,5 +1,4 @@
-# Project Name
-Rest-n-React
+# Rest-n-React
 Vacation rental booking application.
 
 This repo is the reservation component. 
@@ -8,7 +7,7 @@ It consists of:
 * update guest count by adults/children/infants
 * selected booking costs and fees
 
-## Related Projects
+## Related components
 
   https://github.com/hrsf131-3-group/image-carousel-service.git \
   https://github.com/hrsf131-3-group/reservations-service.git (this repo)\
