@@ -9,10 +9,10 @@ It consists of:
 
 ## Related components
 
-  https://github.com/hrsf131-3-group/image-carousel-service.git \
-  https://github.com/hrsf131-3-group/reservations-service.git (this repo)\
-  https://github.com/hrsf131-3-group/reviews-service.git \
-  https://github.com/hrsf131-3-group/more-places-service.git
+  - https://github.com/hrsf131-3-group/image-carousel-service.git
+  - https://github.com/hrsf131-3-group/reservations-service.git (this repo)
+  - https://github.com/hrsf131-3-group/reviews-service.git
+  - https://github.com/hrsf131-3-group/more-places-service.git
 
 ## Table of Contents
 
